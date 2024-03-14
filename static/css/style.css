@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* globals */
+::after,
+::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+h1 {
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+/*Sidebar*/
+
+.wrapper {
+    display: flex;
+}
+
+.main {
+    width: 100%;
+    overflow: hidden;
+    transition: all 0.35s ease-in-out;
+    background-color: #121212;
+}
+
+.main-content {
+    margin-top: 90px;
+    padding-top: 90px;
+}
+
+#sidebar {
+    min-height: 100vh;
+    width: 70px;
+    min-width: 70px;
+    z-index: 1000;
+    transition: heigth 0.25s ease-in;
+    display: flex;
+    flex-direction: column;
+    background-color: #000000;
+    border-right: 2px solid #171717;
+}
+
+/*css js*/
+
+#sidebar.expand {
+    width: 260px;
+    min-width: 260px;
+
+}
+
+#toggle-btn {
+    background-color: transparent;
+    cursor: pointer;
+    border: 0;
+    padding: 1rem 1.5rem;
+    margin-top: 15px;
+}
+
+#toggle-btn i {
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.sidebar-logo {
+    margin: auto 0;
+}
+
+.sidebar-logo a {
+    color: #FFF;
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
+#sidebar:not(.expand) .sidebar-logo,
+#sidebar:not(.expand) a.sidebar-link span {
+    display: none;
+}
+
+.sidebar-nav {
+    width: auto;
+    padding: 2rem 0;
+    flex: 1 1 auto;
+}
+
+#sidebar:not(.expand) a.sidebar-link {
+    padding-right: 10.5px;
+    padding-left: 24.5px;
+    margin: 0;
+}
+
+a.sidebar-link {
+    align-items: center;
+    padding: .700rem;
+    padding-left: 27.5px;
+    padding-right: 82.5px;
+    color: #fff;
+    display: block;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    border-left: 3px solid transparent;
+}
+
+.sidebar-link i {
+    font-size: 1.1rem;
+    margin-right:  .75rem;
+}
+
+a.sidebar-link:hover {
+    background-color: rgba(255, 255, 255, .075);
+    border-left: 3px solid #2f2f2f;
+}
+
+.sidebar-item {
+    position: relative;
+    position: sticky;
+
+}
+
+#sidebar:not(.expand) .sidebar-item .sidebar-dropdown{
+    position: absolute;
+    top: 0;
+    left: 70px;
+    background-color: #000000;
+    padding: 0;
+    min-width: 15rem;
+    display: none;
+}
+
+#sidebar:not(.expand) .sidebar-item:hover .has-dropdown+.sidebar-dropdown {
+    display: block;
+    max-height: 15em;
+    width: 100%;
+    opacity: 1;
+}
+
+#sidebar.expand .sidebar-link[data-bs-toggle="collapse"]::after{
+    border: solid;
+    border-width: 0 .075rem .075rem 0;
+    content: "";
+    display: inline-block;
+    padding: 2px;
+    position: absolute;
+    right: 1.5rem;
+    top: 1.4rem;
+    transform: rotate(-135deg);
+    transition: all .2s ease-out;
+}
+
+#sidebar.expand .sidebar-link[data-bs-toggle="collapse"].collapsed::after{
+    transform: rotate(45deg);
+}
+/* header */
+
+header {
+    width: 100%;
+    height: 90px;
+    background-color: #000000;
+    border-bottom: 2px solid #171717;
+    position: fixed;
+    z-index: 999;
+}
+
+.player {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90px;
+    color: white;
+    position: relative;
+}
+
+.player {
+    display: grid;  
+    grid-template-columns: 48px 1fr 48px;
+    grid-gap: 16px;
+    padding: 8px 24px;
+    position: relative;
+    border-radius: 64px;
+}
+
+#playbtn {
+    font-size: 3em;
+    color: transparent;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: white;
+    cursor: pointer;
+}
+
+#playbtn:hover {
+    -webkit-text-fill-color: white;
+}
+
+.info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1em;
+}
+
+#current {
+    text-align: right;
+}
+
+#progress {
+    display: block;
+    width: var(--progress, 0%)
+}
+
+/* CARROSEL */
+
+.img-carousel {
+    height: 50vh;
+    object-fit: cover;
+}
+
+/* CARDS AVISOS */
+

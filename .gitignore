@@ -1,0 +1,7 @@
+# DJANGO DEFAULT
+__pycache__
+media
+db.sqlite3
+
+# ENVIROMENT
+venv
