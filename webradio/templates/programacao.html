@@ -1,0 +1,79 @@
+{% extends 'base.html'%}
+
+{% block title%}
+<title>Programação</title>
+{% endblock%}
+
+{% block content %}
+<div class="main p-0">
+  <header>
+      <div class="container-fluid playbody position-fixed">
+          <div class="row">
+              <div class="col">
+                  <div>
+                      
+
+                  <div class="player">
+                  
+                  <div class="control">
+                    <i class="bx bx-play" style='color: #f7f4f4;' id="playbtn"></i>
+                  </div>
+                
+                  <div class="info">Dragão Negro - Jubarte Ataca                   
+                    <div class="bar">
+                      <div id="progress"></div>
+                    </div>
+                  </div>
+                  <div id="current">0:00</div>
+              </div>
+          </div>
+      </div>
+  </header>
+  
+  <div class="container-fluid p-5 main-content">              
+    <div class="row">
+      <div class="col">
+        
+        <h1 class="p-3">PROGRAMAÇÃO</h1>
+
+        <div class="text-end pb-3">
+          <a class="btn btn-success" href="{% url 'program_create' %}">Cadastrar Produto</a>
+        </div>
+          
+        <div class="row">
+          {% for object in object_list %}
+          <div class="col-md-6 mb-3">
+            <div class="card">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  
+                  {% if object.image %}
+                  <img src="{{ object.image.url }}" class="img-fluid rounded-start" alt="...">
+                  {% else %}
+                  <p>Nenhuma imagem disponível</p>
+                  {% endif %}
+
+
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ object.name }}</h5>
+                    <p class="card-text">{{ object.description }}</p>
+                    <p class="card-text"><small class="text-body-secondary">{{ object.timestamp|date:"SHORT_DATETIME_FORMAT" }}</small></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% empty %}
+          <div>
+            <h6>A lista de programas está vazia, peça desculpas pelo inconveniente</h6>
+          </div>
+          {% endfor %}
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock%}
