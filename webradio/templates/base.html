@@ -68,7 +68,7 @@
                     </a>
                     <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Login</a>
+                            <a href="{% url 'login' %}" class="sidebar-link">Login</a>
                         </li>
                         <li class="sidebar-item">
                             <a href="#" class="sidebar-link">Cadastrar</a>
@@ -78,12 +78,17 @@
                         </li>
                     </ul>
                 </li>
+                {% if request.user.is_authenticated %}
                 <div class="sidebar-footer">
-                    <a href="#" class="sidebar-link ">
-                        <i class="lni lni-exit"></i>
-                        <span>Sair</span>
-                    </a>
+                    <form action="{% url 'logout' %}" method="post">
+                        {% csrf_token %}
+                        <a href="{% url 'logout' %}" class="sidebar-link ">
+                            <i class="lni lni-exit"></i>
+                            <span>Sair</span>
+                        </a>
+                    </form>
                 </div>
+                {% endif %}
             </ul>
         </aside>
         {% endblock %}
