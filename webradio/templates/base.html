@@ -79,15 +79,17 @@
                     </ul>
                 </li>
                 {% if request.user.is_authenticated %}
-                <div class="sidebar-footer">
+                
                     <form action="{% url 'logout' %}" method="post">
                         {% csrf_token %}
-                        <a href="{% url 'logout' %}" class="sidebar-link ">
-                            <i class="lni lni-exit"></i>
-                            <span>Sair</span>
-                        </a>
+                        <div class="sidebar-footer">
+                            <a href="{% url 'logout' %}" class="sidebar-link ">
+                                <i class="lni lni-exit"></i>
+                                <span>Sair</span>
+                            </a>
+                        </div>
                     </form>
-                </div>
+                
                 {% endif %}
             </ul>
         </aside>
