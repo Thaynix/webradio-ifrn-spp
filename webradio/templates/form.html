@@ -15,7 +15,7 @@
 
     <div class="p-3">
       <p class="lead">Preencha as informações necessárias.</p>
-      <form method="post" action="">
+      <form method="post"  enctype="multipart/form-data">
         {% csrf_token %}
         {{ form|crispy }}
 
