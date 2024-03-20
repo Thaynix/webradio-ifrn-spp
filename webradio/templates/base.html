@@ -61,36 +61,44 @@
                         <span>Sobre</span>
                     </a>
                 </li>
+                
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse" data-bs-target="#auth" aria-expanded="false" aria-controls="auth">
                         <i class="lni lni-user"></i>
                         <span>Usuario</span>
                     </a>
                     <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+
+                        {% if not request.user.is_authenticated %}
                         <li class="sidebar-item">
                             <a href="{% url 'login' %}" class="sidebar-link">Login</a>
                         </li>
                         <li class="sidebar-item">
                             <a href="#" class="sidebar-link">Cadastrar</a>
                         </li>
+                        {% endif %}
+
+                        {% if request.user.is_authenticated %}
                         <li class="sidebar-item">
                             <a href="#" class="sidebar-link">Perfil</a>
                         </li>
+                        {% endif %}
+
                     </ul>
                 </li>
+                {% comment %} LOGOUT {% endcomment %}
                 {% if request.user.is_authenticated %}
-                
-                    <form action="{% url 'logout' %}" method="post">
-                        {% csrf_token %}
-                        <div class="sidebar-footer">
-                            <a href="{% url 'logout' %}" class="sidebar-link ">
-                                <i class="lni lni-exit"></i>
-                                <span>Sair</span>
-                            </a>
-                        </div>
-                    </form>
-                
+                <form action="{% url 'logout' %}" method="post">
+                    {% csrf_token %}
+                    <div class="sidebar-footer">
+                        <button type="submit" class="sidebar-link accordion-item btn">
+                            <i class="lni lni-exit"></i>
+                            <span>Sair</span>
+                        </button>
+                    </div>
+                </form>
                 {% endif %}
+                
             </ul>
         </aside>
         {% endblock %}
