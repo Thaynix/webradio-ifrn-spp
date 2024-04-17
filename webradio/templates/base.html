@@ -28,7 +28,8 @@
         <!--SIDEBAR-->
         {% block sidebar %}
         <aside id="sidebar">
-            <div class="d-flex">
+
+            <div class="sidebar-header d-flex">
                 <button id="toggle-btn" type="button">
                     <i class="lni lni-menu position-fixed"></i>
                 </button>
@@ -36,6 +37,7 @@
                     <a href="#">Rádio IFRN-SPP</a>
                 </div>
             </div>
+
             <ul class="sidebar-nav position-fixed mt-5">
                 <li class="sidebar-item">
                     <a href="{% url 'index' %}" class="sidebar-link">
@@ -55,50 +57,37 @@
                         <span>Agenda</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
-                        <i class="lni lni-popup"></i>
-                        <span>Sobre</span>
-                    </a>
-                </li>
                 
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse" data-bs-target="#auth" aria-expanded="false" aria-controls="auth">
-                        <i class="lni lni-user"></i>
-                        <span>Usuario</span>
-                    </a>
-                    <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-
-                        {% if not request.user.is_authenticated %}
-                        <li class="sidebar-item">
-                            <a href="{% url 'login' %}" class="sidebar-link">Login</a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="{% url 'register' %}" class="sidebar-link">Cadastrar</a>
-                        </li>
-                        {% endif %}
-
-                        {% if request.user.is_authenticated %}
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Perfil</a>
-                        </li>
-                        {% endif %}
-
-                    </ul>
-                </li>
-                {% comment %} LOGOUT {% endcomment %}
-                {% if request.user.is_authenticated %}
-                <form action="{% url 'logout' %}" method="post">
-                    {% csrf_token %}
-                    <div class="sidebar-footer">
-                        <button type="submit" class="sidebar-link accordion-item btn">
+                
+                <div class="sidebar-footer">
+                    {% if request.user.is_authenticated %}
+                    <form action="{% url 'logout' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="sidebar-link">
                             <i class="lni lni-exit"></i>
-                            <span>Sair</span>
+                            <span class="footer-span">Sair</span>
                         </button>
-                    </div>
-                </form>
+                    </form>
+
+                    {% else %}
+                    <form action="{% url 'login' %}" method="post" class="sidebar-item">
+                        {% csrf_token %}
+                        <button type="submit" class="sidebar-link">
+                            <i class="lni lni-enter"></i>
+                            <span class="footer-span">Entrar</span>
+                        </button>
+                    </form>
+                </div>
                 {% endif %}
-                
+<!--                <div class="sidebar-footer">
+                    <li class="sidebar-item">
+                        <a href="{% url 'login' %}" class="sidebar-link">
+                            <i class="lni lni-enter"></i>
+                            <span>Entrar</span>
+                        </a>
+                    </li>
+                </div>
+            -->
             </ul>
         </aside>
         {% endblock %}
