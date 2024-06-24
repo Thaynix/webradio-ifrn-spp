@@ -1,0 +1,57 @@
+{% load static %}
+<div class="row">
+  <div class="col-12 p-sm-0 p-0">
+      <div class="sidebar">
+          <header class="sidebar-header">
+              <img class="logo-img" src= {% static 'img/icons/icons8-iheartradio-100.png' %} alt="">
+          </header>
+          <ul>
+              <li>
+                  <a href={% url "index" %} class="btn-menu">
+                  <img src= {% static 'img/icons/icons8-casa-32.png' %} alt="" class="nav-icon">
+                  <span class="nav-text">Inicio</span>
+                  </a>
+              </li>
+              <li>
+                  <a href={% url "program_list" %} class="btn-menu">
+                  <img src= {% static 'img/icons/icons8-microfone-32.png' %} alt="" class="nav-icon">
+                  <span class="nav-text">Programas</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="#" class="btn-menu">
+                  <img src= {% static 'img/icons/icons8-semana-da-linha-do-tempo-32.png' %} alt="" class="nav-icon">
+                  <span class="nav-text">Agenda</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="#" class="btn-menu">
+                  <img src= {% static 'img/icons/icons8-balão-de-fala-com-pontos-32.png' %} alt="" class="nav-icon">
+                  <span class="nav-text">Pedidos</span>
+                  </a>
+              </li>
+          </ul>
+          <div class="sidebar-footer d-md-block">
+              <ul>
+
+                  {% if request.user.is_authenticated %}
+              
+                  <form action="{% url 'logout' %}" method="post">
+                      {% csrf_token %}
+                      <button class="bg-transparent border-0" type="submit">
+                      <li><a href="{% url 'logout' %}" class="btn-menu"><img src= {% static 'img/icons/icons8-sair-32.png' %} alt="" class="nav-icon"><span class="nav-text">Sair</span></a></li></button>
+                  </form>
+                  
+              
+                  {% else %}
+                  <div class="nav-item">
+                      <li><f href="{% url 'login' %}" class="btn-menu"><img src= {% static 'img/icons/icons8-entrar-32.png' %} alt="" class="nav-icon"><span class="nav-text">Login</span></f></li>
+                  {% endif %}
+
+                  
+                  <li><a href="#" class="btn-menu"><img src= {% static 'img/icons/icons8-rolo-de-pintura-32.png' %} alt="" class="nav-icon"><span class="nav-text">Mode</span></a></li>
+              </ul>
+          </div>
+      </div>
+  </div>
+</div>
