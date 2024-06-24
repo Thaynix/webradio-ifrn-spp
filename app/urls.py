@@ -4,7 +4,7 @@ from django.contrib.auth.views import LogoutView, LoginView
 
 urlpatterns = [
     path('', index, name='index'),
-    path('programacao', programacao, name= 'programacao'),
+    path('programacao', program_list, name= 'program_list'),
     # CRUD
     path('programacao/cadastrar/', program_create, name='program_create'),
     path('programacao/<int:pk>/atualizar/', program_update, name='program-update'),

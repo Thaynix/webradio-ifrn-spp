@@ -9,13 +9,10 @@ from django.contrib.auth import authenticate, login
 def index(request):
     return render(request, 'index.html')
 
-def programacao(request):
-    return render(request, 'programacao.html')
-
 # Listar os programas na tela de programação
-def programacao(request):
+def program_list(request):
     programs = Program.objects.all()
-    return render(request, 'programacao.html', {'object_list': programs})
+    return render(request, 'program/list.html', {'object_list': programs})
 
 # Create
 @login_required
