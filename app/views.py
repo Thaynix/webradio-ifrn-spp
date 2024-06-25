@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Program
+from .models import Program, WarningCard
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from .forms import ProgramForm, UserForm
@@ -7,7 +7,8 @@ from django.contrib.auth import authenticate, login
 
 
 def index(request):
-    return render(request, 'index.html')
+    cards = WarningCard.objects.all()
+    return render(request, 'index.html', {'cards': cards})
 
 # Listar os programas na tela de programação
 def program_list(request):

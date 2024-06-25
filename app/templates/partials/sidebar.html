@@ -35,7 +35,7 @@
               <ul>
 
                   {% if request.user.is_authenticated %}
-              
+
                   <form action="{% url 'logout' %}" method="post">
                       {% csrf_token %}
                       <button class="bg-transparent border-0" type="submit">
@@ -44,11 +44,9 @@
                   
               
                   {% else %}
-                  <div class="nav-item">
-                      <li><f href="{% url 'login' %}" class="btn-menu"><img src= {% static 'img/icons/icons8-entrar-32.png' %} alt="" class="nav-icon"><span class="nav-text">Login</span></f></li>
+                      <li class="nav-item"><a href="{% url 'login' %}" class="btn-menu"><img src= {% static 'img/icons/icons8-entrar-32.png' %} alt="" class="nav-icon"><span class="nav-text">Login</span></a></li>
                   {% endif %}
 
-                  
                   <li><a href="#" class="btn-menu"><img src= {% static 'img/icons/icons8-rolo-de-pintura-32.png' %} alt="" class="nav-icon"><span class="nav-text">Mode</span></a></li>
               </ul>
           </div>
