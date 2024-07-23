@@ -1,14 +1,30 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Program, WarningCard
+from .models import Program, WarningCard, ProfileCard, ImageCarousel, AboutRadio
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
-from .forms import ProgramForm, UserForm
+from .forms import ProgramForm, UserForm, ImageCarouselForm
 from django.contrib.auth import authenticate, login
 
 
 def index(request):
     cards = WarningCard.objects.all()
-    return render(request, 'index.html', {'cards': cards})
+    profilecards = ProfileCard.objects.all()
+    carousel = ImageCarousel.objects.all()
+    about = AboutRadio.objects.all()
+    form = ImageCarouselForm()
+    return render(request, 'index.html', {'cards': cards, 'profilecards': profilecards, 'carousel': carousel, 'about': about, 'carouselform': form})
+    
+def admin_system(request):
+    return render(request, 'system/base.html')
+
+# Create das imagens do carrosel
+def img_carousel_create(request):
+    if request.method == "POST":
+        form = ImageCarouselForm(request.POST, request. FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('img_carousel') 
+
 
 # Listar os programas na tela de programação
 def program_list(request):
@@ -22,7 +38,7 @@ def program_create(request):
         form = ProgramForm(request.POST, request.FILES) # coisa a img
         if form.is_valid():
             form.save()
-            return redirect('programacao')
+            return redirect('program_list')
     else:
         form = ProgramForm()
     context = {
@@ -39,7 +55,7 @@ def program_update(request, pk):
         form = ProgramForm(request.POST, request.FILES, instance=program)
         if form.is_valid():
             form.save()
-            return redirect('programacao')
+            return redirect('program_list')
     else:
         form = ProgramForm(instance=program)
     context = {
@@ -54,7 +70,7 @@ def program_delete(request, pk):
     program = get_object_or_404(Program, pk=pk)
     if request.method== 'POST':
         program.delete()
-        return redirect('programacao')
+        return redirect('program_list')
     context = {
         'object': program,
         'title':f"Deletar o programa {program}",

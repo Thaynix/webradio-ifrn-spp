@@ -1,5 +1,5 @@
 from django import forms
-from .models import Program
+from .models import Program, ImageCarousel
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
@@ -15,3 +15,8 @@ class UserForm(UserCreationForm):
     class Meta:
         model = User
         fields  = ('username', 'email', 'password1', 'password2')
+
+class ImageCarouselForm(forms.ModelForm):
+    class Meta:
+        model = ImageCarousel
+        fields = ['title', 'image']
