@@ -229,7 +229,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: var(--card-primary-color);
+    background: var(--primary-color);
     border-radius: 20px;
 }
 
@@ -240,6 +240,7 @@ body {
     justify-content: center;
     flex-direction: column;
     margin: 20px;
+
 
     color: var(--text-color);
 
@@ -268,7 +269,7 @@ body {
 }
 
 .card-img-eqp {
-    width: 120px;
+    width: 100px;
     height: auto;
     margin-top: 5px;
     margin-bottom: 5px;
@@ -278,16 +279,17 @@ body {
 }
 
 .pos-eqp {
-    font-weight: 600;
-    font-size: 1.5rem;
-    color: var(--primary-color);
-}
-
-.name-eqp {
     font-weight: 500;
     font-size: 1rem;
     color: var(--sidebar-color);
+}
+
+.name-eqp {
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: var(--primary-color);
     margin: 0;
+
 
 }
 .ct-desc {
@@ -295,6 +297,14 @@ body {
     font-weight: 300;
     font-size: 1rem;
     color: var(--primary-color);
+}
+
+/* olhar isso aqui dps */
+.img-about{
+    width: 332px;
+    height: 245px;
+    object-fit: cover;
+
 }
 
 /* ========== OWL CAROUSEL ========== */
