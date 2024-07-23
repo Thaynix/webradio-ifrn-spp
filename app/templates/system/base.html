@@ -1,0 +1,90 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}{% endblock %} - Rádio IFRN SPP</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="{% static 'css/system.css' %}">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 p-sm-0 p-0">
+                <div class="sidebar">
+                    <header class="sidebar-header">
+                        <img class="logo-img" src= "{% static 'img/icons/icons8-iheartradio-100.png' %}" alt="">
+                    </header>
+                    <ul>
+                        <li>
+                            <a href="{% url 'index' %}" class="btn-menu">
+                            <img src="{% static 'img/icons/icons8-casa-32.png' %}" alt="" class="nav-icon">
+                            <span class="nav-text">Inicio</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'program_list' %}" class="btn-menu">
+                            <img src="{% static 'img/icons/icons8-microfone-32.png' %}" alt="" class="nav-icon">
+                            <span class="nav-text">Programas</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="btn-menu">
+                            <img src="{% static 'img/icons/icons8-semana-da-linha-do-tempo-32.png' %}" alt="" class="nav-icon">
+                            <span class="nav-text">Agenda</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="btn-menu">
+                            <img src= "{% static 'img/icons/icons8-balão-de-fala-com-pontos-32.png' %}" alt="" class="nav-icon">
+                            <span class="nav-text">Pedidos</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="sidebar-footer d-md-block">
+                        <ul>
+                        
+                            {% if request.user.is_authenticated %}
+                        
+                            <form action="{% url 'logout' %}" method="post">
+                                {% csrf_token %}
+                                <button class="bg-transparent border-0" type="submit">
+                                <li><a href="{% url 'logout' %}" class="btn-menu"><img src="{% static 'img/icons/icons8-sair-32.png' %}" alt="" class="nav-icon"><span class="nav-text">Sair</span></a></li></button>
+                            </form>
+
+                        
+                            {% else %}
+                                <li class="nav-item"><a href="{% url 'login' %}" class="btn-menu"><img src="{% static 'img/icons/icons8-entrar-32.png' %}" alt="" class="nav-icon"><span class="nav-text">Login</span></a></li>
+                            {% endif %}
+                        
+                            <li><a href="#" class="btn-menu"><img src="{% static 'img/icons/icons8-rolo-de-pintura-32.png' %}" alt="" class="nav-icon"><span class="nav-text">Mode</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row">
+
+                <div class="col-12 content pt-0 justify-content-center">
+
+                </div>
+
+            </div>
+
+    </div>
+
+</body>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+
+</html>

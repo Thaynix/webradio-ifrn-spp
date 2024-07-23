@@ -10,23 +10,22 @@
             <div class="col-12 content justify-content-center">
                 <div class="container-fluid home-container">
                     <div class="row">
+                    <div class="title-section">
                         <h1 class="text-main">INICIO</h1>
+                        
+                    </div>
                         <div class="col pb-3">
                             <div class="owl-carousel carousel-imgs owl-theme">
-                                <div class="item">
-                                    <img src="https://i.pinimg.com/564x/99/d3/53/99d35305ea6990d392273a9c595693e9.jpg" alt="">
-                                </div>
-                                <div class="item">
-                                    <img src="https://i.pinimg.com/736x/1a/cd/04/1acd048f74c336d9adcc9fde8e74aa86.jpg" alt="">
-                                </div>
-                                <div class="item">
-                                    <img src="https://i.pinimg.com/564x/98/a6/b1/98a6b1fa1d65c9e6cba4c689d9fb3f0d.jpg" alt="">
-                                </div>
-                                <div class="item">
-                                    <img src="https://i.pinimg.com/736x/da/13/7c/da137cf70e8990e78685b909b83347c4.jpg" alt="">
-                                </div>
+                                {% for ImageCarousel in carousel %}
+                                {% if ImageCarousel.image %}
+                                    <div class="item">
+                                        <img src="{{ ImageCarousel.image.url }}" alt="">
+                                    </div>
+                                {% endif %}
+                                {% endfor %}
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -34,21 +33,18 @@
         <section class="avisos">
             <div class="col-12 content pt-0 justify-content-center">
                 <h1 class="text-main">AVISOS</h1>
-                {% comment %} <button type="button" class="btn btn-success">Success</button> {% endcomment %}
-
                 <!-- ==== CARDS ====-->
                 <div class="container-fluid card-container">
                     <div class="row">
                         <div class="col pb-3">
                             <div class="owl-carousel carousel-cards owl-theme">
-                                {% for W_Card in cards %}
+                                {% for WarningCard in cards %}
                                 <div class="item">
-                                    <div class="card card-carousel" style="background-color: {{ W_Card.color }};">
+                                    <div class="card card-carousel">
                                         <div class="card-body cb-avisos">
-                                            <h5 class="card-title">{{ W_Card.title }}</h5>
-                                            <h6 class="card-subtitle mb-2 text-body">{{ W_Card.author.username }}</h6>
-                                            <p class="card-text wordwrap:p ">{{ W_Card.description }}</p>
-                                            <p class="card-text text-white"><small class="text-body">publicado {{ W_Card.date }}</small></p>
+                                            <h5 class="card-title">{{ WarningCard.title }}</h5>
+                                            <p class="card-text wordwrap:p ">{{ WarningCard.description }}</p>
+                                            <p class="card-text text-white"><small class="text-body text-white">publicado por {{ WarningCard.author.username }} em {{ WarningCard.date|date:"SHORT_DATE_FORMAT" }}</small></p>
                                         </div>
                                     </div>
                                 </div>
@@ -64,26 +60,44 @@
         </section>
         <section class="about">
             <div class="col-12 content pt-0 justify-content-center">
-                <h1 class="text-main">SOBRE A RÁDIO IFRN-SPP</h1>
-                <!-- ==== CARDS ====-->
+
+                <div class="title-section">
+                    <h1 class="text-main">SOBRE A RÁDIO IFRN-SPP</h1>
+
+                    <a href=""></a>
+                </div>
+                    <!-- ==== CARDS ====-->
                 <div class="container content-about align-items-center">
                     <div class="row">
                         <div class="col pb-3">
-                            <img src="https://i.pinimg.com/564x/ad/82/5f/ad825fbabcb3769fd27f6a9f46986b0f.jpg" class="object-fit-cover img-fluid float-lg-end float-md-none w-auto float-none align-content-center p-3 rounded" alt="...">
-                            <p class="about-text"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel augue ornare, porttitor velit ac, pulvinar sem. Donec maximus leo velit, non vehicula enim pulvinar sed. Fusce accumsan felis at nibh tincidunt bibendum. Vivamus mi justo, ullamcorper commodo ipsum eget, tincidunt semper odio. Mauris luctus pretium pulvinar. Duis euismod lorem mauris, vitae vestibulum tellus dictum ut. Sed arcu justo, commodo nec nibh eget, tempor tempor sem. Fusce bibendum fermentum nibh, eu ullamcorper sapien rhoncus vel. Nullam sed augue sed neque malesuada bibendum. Ut blandit aliquam lacinia. Vivamus eu lectus venenatis, imperdiet justo et, convallis massa. Curabitur volutpat metus vel urna aliquet, nec laoreet mi varius. Morbi feugiat posuere tortor, sit amet rhoncus metus ornare in. Donec vel nibh non quam pulvinar pulvinar et ac lorem. Donec cursus ex dapibus arcu tempor pulvinar.Nunc orci metus, elementum ac pretium eget, suscipit quis turpis. Vivamus metus tellus, convallis ut nunc eget, congue porttitor mauris. Interdum et malesuada fames ac ante ipsum primis in faucibus. Mauris accumsan mi a nulla elementum, eget pulvinar libero auctor. Nunc id consequat tellus. Donec aliquam feugiat tellus eget varius. Nunc arcu urna, vehicula mattis urna nec, pulvinar hendrerit velit. Aliquam vitae dolor laoreet, ultrices sapien id, hendrerit nibh. Proin libero neque, luctus at enim ac, finibus posuere erat. Morbi a libero sapien. Proin porttitor finibus tincidunt. </p>
+                            {% for AboutRadio in about %}
                             
+                            <div class="row">
+                                <div class="col pb-3 d-flex justify-content-center p-3 rounded">
+                                    {% if AboutRadio.image %}
+                                    <img src="{{ AboutRadio.image.url }}" class="img-about align-self-center" alt="...">
+                                    {% endif %}
+                                </div>
+                            </div>
+                            
+                            <p class="about-text">{{ AboutRadio.text }}</p>
+                            {% endfor %}
                             <div class="row">
                                 <div class="col pb-3">
                                     <div class="owl-carousel carousel-cards-team owl-theme">
-                                        {% for member in team_members %}
+                                        {% for ProfileCard in profilecards %}
                                         <div class="item">
                                             <div class="equipe-card">
                                                 <div class="card card-eqp">
                                                     <div class="card-body cb-eqp">
-                                                        <img src="https://i.pinimg.com/564x/23/b9/e8/23b9e86b29aecf76cc46575303487018.jpg" class="card-img-eqp" alt="...">
-                                                        <h5 class="card-title pos-eqp m-0">{{ member.position }}</h5>
-                                                        <p class="card-text name-eqp">{{ member.name }}</p>
-                                                        <p class="card-text ct-desc m-0">{{ member.description }}</p>
+                                                        {% if ProfileCard.image %}
+                                                        <img src="{{ ProfileCard.image.url }}" class="card-img-eqp" alt="...">
+                                                        {% else %}
+                                                        <p>Nenhuma imagem disponível</p>
+                                                        {% endif %}
+                                                        <h5 class="card-text name-eqp">{{ ProfileCard.name }}</h5>
+                                                        <p class="card-title pos-eqp m-0">{{ ProfileCard.position }}</p>
+                                                        <p class="card-text ct-desc m-0">{{ ProfileCard.description }}</p>
                                                     </div>
                                                 </div>
                                             </div>
