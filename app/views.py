@@ -13,7 +13,8 @@ def index(request):
     about = AboutRadio.objects.all()
     form = ImageCarouselForm()
     return render(request, 'index.html', {'cards': cards, 'profilecards': profilecards, 'carousel': carousel, 'about': about, 'carouselform': form})
-    
+
+@login_required
 def admin_system(request):
     return render(request, 'system/base.html')
 
