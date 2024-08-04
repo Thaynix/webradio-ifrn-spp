@@ -169,7 +169,7 @@ body {
 
 .sidebar .sidebar-footer .profile {
     position: relative;
-    padding: 10px 6px;
+    padding: 2px;
     height: 60px;
     background: var(--sidebar-color);
 }
@@ -199,15 +199,17 @@ body {
 
 .profile .profile-details .profile-name {
     margin-left: 10px;
+    margin-bottom: 5px;
+
 }
 
 .profile .profile-details .name {
-    font-size: 15px;
+    font-size: 20px;
     font-weight: 500;
 }
 
 .profile .profile-details .position {
-    font-size: 13px;
+    font-size: 15px;
 }
 
 .profile a {
@@ -253,4 +255,13 @@ body {
     width: calc(100% - 240px);
     left: 240px;
     transition: all 0.2s ease;
+}
+
+.header-main{
+    justify-content: space-between;
+
+}
+
+.btn-search i{
+    font-size: 1.5rem;
 }

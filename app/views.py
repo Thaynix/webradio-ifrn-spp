@@ -17,7 +17,7 @@ def index(request):
 @login_required
 def admin_system(request):
     profilecards = ProfileCard.objects.all()
-    return render(request, 'system/base.html', {'profilecards': profilecards})
+    return render(request, 'system/index.html', {'profilecards': profilecards})
 
 # Create das imagens do carrosel
 def img_carousel_create(request):
@@ -27,6 +27,9 @@ def img_carousel_create(request):
             form.save()
             return redirect('img_carousel') 
 
+def program_list_system(request):
+    programs = Program.objects.all()
+    return render(request, 'system/programs/programs-list.html', {'object_list': programs})
 
 # Listar os programas na tela de programação
 def program_list(request):
@@ -40,7 +43,7 @@ def program_create(request):
         form = ProgramForm(request.POST, request.FILES) # coisa a img
         if form.is_valid():
             form.save()
-            return redirect('program_list')
+            return redirect('program_list_system')
     else:
         form = ProgramForm()
     context = {
@@ -57,7 +60,7 @@ def program_update(request, pk):
         form = ProgramForm(request.POST, request.FILES, instance=program)
         if form.is_valid():
             form.save()
-            return redirect('program_list')
+            return redirect('program_list_system')
     else:
         form = ProgramForm(instance=program)
     context = {
@@ -72,7 +75,7 @@ def program_delete(request, pk):
     program = get_object_or_404(Program, pk=pk)
     if request.method== 'POST':
         program.delete()
-        return redirect('program_list')
+        return redirect('program_list_system')
     context = {
         'object': program,
         'title':f"Deletar o programa {program}",

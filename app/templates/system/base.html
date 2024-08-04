@@ -32,7 +32,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{% url 'program_list_system' %}">
                     <i class='bx bx-microphone' ></i>
                     <span class="nav-text">Programas</span>
                 </a>
@@ -78,11 +78,12 @@
     </div>
     {% endblock %}
 
-    <div class="container-fluid content">
-        <div class="text">
-            PROGRAMAS
-        </div>
-    </div>
+
+
+    {% block content %}
+    {% endblock content %}
+        
+
         
    
 
