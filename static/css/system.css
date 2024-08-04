@@ -26,6 +26,231 @@
     --tran-05: all 0.5s ease;
     /* ===== FONTS ===== */
 
-    font-size: 16px;
     font-family: "Poppins", sans-serif;
+}
+
+body {
+    background-color: var(--body-color);
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 78px;
+    background: var(--primary-color);
+    padding: 6px;
+    transition: width 0.3s ease;
+
+}
+
+.sidebar.active {
+    width: 240px;
+    transition: width 0.3s ease;
+
+}
+
+.logo-img {
+    width: 40px;
+    height: 40px;
+}
+
+.sidebar .sidebar-header {
+    color: var(--text-color);
+    display: flex;
+    height: 50px;
+    width: 100%;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.sidebar.active .sidebar-header {
+    opacity: 1;
+    pointer-events: none;
+
+}
+
+.sidebar-header i {
+    font-size: 20px;
+    padding-left: 2rem;
+
+}
+
+.sidebar-header .logo-text {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.sidebar #btn {
+    position: absolute;
+    color: var(--text-color);
+    left: 50%;
+    top: 6px;
+    font-size: 25px;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    line-height: 50px;
+    transform: translateX(-50%);
+}
+
+.sidebar.active #btn {
+    left: 90%;
+}
+
+.sidebar ul {
+    margin-top: 20px;
+    
+}
+
+.sidebar ul li {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    margin: 0 5px;
+    list-style: none;
+    line-height: 50px;
+}
+
+.sidebar ul li a:hover {
+    background: var(--body-color);
+    color: var(--primary-color);
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    text-align: center;
+    min-width: 50px;
+} 
+
+.sidebar .nav-text {
+    visibility: hidden;
+}
+
+.sidebar ul li a {
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0 ease;
+}
+
+.sidebar:active ul li a:hover {
+    color: var(--text-color);
+    background: var(--body-color);
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    transform: scale(1.1);
+    margin-left: 10px;
+}
+
+.sidebar.active .nav-text {
+    visibility: visible;
+}
+
+.sidebar ul li a i {
+    font-size: 23px;
+    min-width: 50px;
+    line-height: 50px;
+    text-align: center;
+}
+
+.sidebar .sidebar-footer {
+    position: absolute;
+    color: var(--text-color);
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.sidebar .sidebar-footer .profile {
+    position: relative;
+    padding: 10px 6px;
+    height: 60px;
+    background: var(--sidebar-color);
+}
+
+.sidebar-footer .profile .profile-details{
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+.sidebar.active .profile .profile-details {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* 
+.profile .profile-details img{
+    height: 45px;
+    width: 45px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 2px solid var(--body-color);
+}
+ */
+
+.profile .profile-details .profile-name {
+    margin-left: 10px;
+}
+
+.profile .profile-details .name {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.profile .profile-details .position {
+    font-size: 13px;
+}
+
+.profile a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.profile #logout {
+    position: absolute;
+    left: 50%;
+    bottom: 5px;
+    transform: translateX(-50%);
+    min-width: 50px;
+    line-height: 50px;
+    font-size: 25px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.sidebar.active .profile #logout {
+    left: 88%;
+
+}
+
+/* ===== CONTENT ===== */
+
+.content {
+    position: absolute;
+    height: 200vh;
+    width: calc(100% - 78px);
+    left: 85px;
+    transition: all 0.5s ease-in-out;
+}
+
+.content .text {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-top: 12px;
+}
+
+.sidebar.active ~ .content {
+    width: calc(100% - 240px);
+    left: 240px;
+    transition: all 0.2s ease;
 }

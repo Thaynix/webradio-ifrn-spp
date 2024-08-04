@@ -16,7 +16,8 @@ def index(request):
 
 @login_required
 def admin_system(request):
-    return render(request, 'system/base.html')
+    profilecards = ProfileCard.objects.all()
+    return render(request, 'system/base.html', {'profilecards': profilecards})
 
 # Create das imagens do carrosel
 def img_carousel_create(request):
