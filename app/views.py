@@ -19,19 +19,50 @@ def admin_system(request):
     profilecards = ProfileCard.objects.all()
     return render(request, 'system/index.html', {'profilecards': profilecards})
 
+# ===== CRUD INICIO =====
+# ===== List =====
+def home_list_system(request):
+    img_carousel = ImageCarousel.objects.all() 
+    return render(request,'system/home/home-list.html', {'object_list': img_carousel})
+
 # Create das imagens do carrosel
 def img_carousel_create(request):
     if request.method == "POST":
         form = ImageCarouselForm(request.POST, request. FILES)
         if form.is_valid():
             form.save()
-            return redirect('img_carousel') 
+            return redirect('home_list_system') 
+    else:
+        form = ImageCarouselForm()
+    context = {
+        'form': form,
+        'title':'Criar uma nova imagem para o carrosel'
+    }
+    return render(request, 'system/home/form.html', context)
 
+# Update
+def img_carousel_update(request):
+    ImageCarousel = get_object_or_404(ImageCarousel)
+    if request.method == "POST":
+        form = ImageCarouselForm(request.POST, request.FILES, instance=ImageCarousel)
+        if form.is_valid():
+            form.save()
+            return redirect('home_list_system')
+    else:
+        form = ImageCarouselForm(instance=ImageCarousel)
+    context = {
+        'form': form,
+        'title':  f"Editar a imagem {ImageCarousel}"
+    }
+    return render(request, 'form.html', context)
+
+
+# ===== CRUD PROGRAMAS ======
 def program_list_system(request):
     programs = Program.objects.all()
     return render(request, 'system/programs/programs-list.html', {'object_list': programs})
 
-# Listar os programas na tela de programação
+# List
 def program_list(request):
     programs = Program.objects.all()
     return render(request, 'program/list.html', {'object_list': programs})
@@ -83,6 +114,8 @@ def program_delete(request, pk):
     }
     return render(request,'form-delete.html', context)
 
+
+# ===== AUTH =====
 # Register
 def register(request):
     if request.method == 'POST':

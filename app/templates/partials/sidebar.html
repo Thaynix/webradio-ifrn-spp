@@ -42,7 +42,7 @@
                     <li><a href="{% url 'logout' %}" class="btn-menu"><img src="{% static 'img/icons/icons8-sair-32.png' %}" alt="" class="nav-icon"><span class="nav-text">Sair</span></a></li></button>
                 </form>
 
-                <li><a href="{% url 'admin_system' %}" class="btn-menu"><img src="{% static 'img/icons/icons8-config-32.png' %}" alt="" class="nav-icon"><span class="nav-text">Sistema</span></a></li>
+                <li><a href="{% url 'home_list_system' %}" class="btn-menu"><img src="{% static 'img/icons/icons8-config-32.png' %}" alt="" class="nav-icon"><span class="nav-text">Sistema</span></a></li>
 
                 {% else %}
                     <li class="nav-item"><a href="{% url 'login' %}" class="btn-menu"><img src="{% static 'img/icons/icons8-entrar-32.png' %}" alt="" class="nav-icon"><span class="nav-text">Login</span></a></li>

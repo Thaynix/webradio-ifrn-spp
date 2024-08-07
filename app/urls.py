@@ -7,7 +7,12 @@ urlpatterns = [
     path('programacao', program_list, name='program_list'),
     path('sistema/', admin_system, name='admin_system'),
 
-    # CRUD
+    # CRUD INICIO
+    path('sistema/inicio/', home_list_system, name='home_list_system'),
+    path('cadastrar/inicio', img_carousel_create, name='img_carousel_create'),
+    path('cadastrar/inicio', img_carousel_create, name='img_carousel'),  # Adicione esta linha
+
+    # CRUD PROGRAMAS
     path('sistema/programas/', program_list_system, name='program_list_system'),
     path('cadastrar/', program_create, name='program_create'),
     path('<int:pk>/atualizar/', program_update, name='program_update'),
