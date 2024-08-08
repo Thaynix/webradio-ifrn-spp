@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Program, WarningCard, ProfileCard, ImageCarousel, AboutRadio
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
-from .forms import ProgramForm, UserForm, ImageCarouselForm
+from .forms import ProgramForm, UserForm, ImageCarouselForm, WarningCardForm, AboutRadioForm, ProfileCardForm
 from django.contrib.auth import authenticate, login
 
 
@@ -19,11 +19,12 @@ def admin_system(request):
     profilecards = ProfileCard.objects.all()
     return render(request, 'system/index.html', {'profilecards': profilecards})
 
-# ===== CRUD INICIO =====
-# ===== List =====
+# ========== CRUD INICIO ==========
+# ===== CARROSEL =====
+# List 
 def home_list_system(request):
     img_carousel = ImageCarousel.objects.all() 
-    return render(request,'system/home/home-list.html', {'object_list': img_carousel})
+    return render(request,'system/home/home-list.html', {'img_carousel': img_carousel})
 
 # Create das imagens do carrosel
 def img_carousel_create(request):
@@ -41,31 +42,165 @@ def img_carousel_create(request):
     return render(request, 'system/home/form.html', context)
 
 # Update
-def img_carousel_update(request):
-    ImageCarousel = get_object_or_404(ImageCarousel)
+def img_carousel_update(request, pk):
+    img_carousel = get_object_or_404(ImageCarousel, pk=pk)
     if request.method == "POST":
-        form = ImageCarouselForm(request.POST, request.FILES, instance=ImageCarousel)
+        form = ImageCarouselForm(request.POST, request.FILES, instance=img_carousel)
         if form.is_valid():
             form.save()
             return redirect('home_list_system')
     else:
-        form = ImageCarouselForm(instance=ImageCarousel)
+        form = ImageCarouselForm(instance=img_carousel)
     context = {
         'form': form,
-        'title':  f"Editar a imagem {ImageCarousel}"
+        'title':  f"Editar o programa {img_carousel}"
     }
     return render(request, 'form.html', context)
 
+# Delete
+def img_carousel_delete(request, pk):
+    img_carousel = get_object_or_404(ImageCarousel, pk=pk)
+    if request.method== 'POST':
+        img_carousel.delete()
+        return redirect('home_list_system')
+    context = {
+        'object': img_carousel,
+        'title':f"Deletar a imagem {img_carousel}",
+        'message':f"Tem certeza que deseja deletar a imagem {img_carousel}?"
+    }
+    return render(request,'form-delete.html', context)
+
+# ===== AVISOS =====
+# List
+def warning_list_system(request):
+    cards = WarningCard.objects.all()
+    return render(request,'system/home/warning-list.html', {'cards': cards})
+
+# Create
+def warning_create(request):
+    if request.method == "POST":
+        form = WarningCardForm(request.POST, request. FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('warning_list_system') 
+    else:
+        form = WarningCardForm()
+    context = {
+        'form': form,
+        'title':'Criar um novo card de avisos'
+    }
+    return render(request, 'system/home/form.html', context)
+
+# Update
+def warning_update(request, pk):
+    cards = get_object_or_404(WarningCard, pk=pk)
+    if request.method == "POST":
+        form = WarningCardForm(request.POST, request.FILES, instance=cards)
+        if form.is_valid():
+            form.save()
+            return redirect('warning_list_system')
+    else:
+        form = WarningCardForm(instance=cards)
+    context = {
+        'form': form,
+        'title':  f"Editar o card de aviso {cards}"
+    }
+    return render(request, 'form.html', context)
+
+# Delete
+def warning_delete(request, pk):
+    cards = get_object_or_404(WarningCard, pk=pk)
+    if request.method== 'POST':
+        cards.delete()
+        return redirect('warning_list_system')
+    context = {
+        'object': cards,
+        'title':f"Deletar a imagem {cards}",
+        'message':f"Tem certeza que deseja deletar a imagem {cards}?"
+    }
+    return render(request,'form-delete.html', context)
+
+# ===== SOBRE =====
+# List
+def about_list_system(request):
+    about = AboutRadio.objects.all()
+    return render(request,'system/home/about-list.html', {'about': about})
+
+# update
+def about_update(request, pk):
+    about = get_object_or_404(AboutRadio, pk=pk)
+    if request.method == "POST":
+        form = AboutRadioForm(request.POST, request.FILES, instance=about)
+        if form.is_valid():
+            form.save()
+            return redirect('warning_list_system')
+    else:
+        form = AboutRadioForm(instance=about)
+    context = {
+        'form': form,
+        'title':  f"Editar texto {about}"
+    }
+    return render(request, 'form.html', context)
+
+# ===== CARDS DE PERFIL DOS MEMBROS DA RADIO =====
+# List
+def profile_list_system(request):
+    profile_cards = ProfileCard.objects.all()
+    return render(request,'system/home/profile-card-list.html', {'profile_cards': profile_cards})
+
+# Create
+def profile_create(request):
+    if request.method == "POST":
+        form = ProfileCardForm(request.POST, request. FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('profile_list_system') 
+    else:
+        form = ProfileCardForm()
+    context = {
+        'form': form,
+        'title':'Criar um novo card para membro da equipe'
+    }
+    return render(request, 'system/home/form.html', context)
+
+# Update
+def profile_update(request, pk):
+    profile_cards = get_object_or_404(ProfileCard, pk=pk)
+    if request.method == "POST":
+        form = ProfileCardForm(request.POST, request.FILES, instance=profile_cards)
+        if form.is_valid():
+            form.save()
+            return redirect('profile_list_system')
+    else:
+        form = ProfileCardForm(instance=profile_cards)
+    context = {
+        'form': form,
+        'title':  f"Editar o card do membro {profile_cards}"
+    }
+    return render(request, 'form.html', context)
+
+# Delete
+def profile_delete(request, pk):
+    profile_cards = get_object_or_404(ProfileCard, pk=pk)
+    if request.method== 'POST':
+        profile_cards.delete()
+        return redirect('profile_list_system')
+    context = {
+        'object': profile_cards,
+        'title':f"Deletar a imagem {profile_cards}",
+        'message':f"Tem certeza que deseja deletar a imagem {profile_cards}?"
+    }
+    return render(request,'form-delete.html', context)
 
 # ===== CRUD PROGRAMAS ======
 def program_list_system(request):
     programs = Program.objects.all()
-    return render(request, 'system/programs/programs-list.html', {'object_list': programs})
+    return render(request, 'system/programs/programs-list.html', {'programs': programs})
 
 # List
 def program_list(request):
     programs = Program.objects.all()
-    return render(request, 'program/list.html', {'object_list': programs})
+    return render(request, 'program/list.html', {'programs': programs})
 
 # Create
 @login_required

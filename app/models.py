@@ -11,7 +11,7 @@ class ImageCarousel(models.Model):
         ordering = ['-timestamp']
 
     def __str__(self):
-        return str(self.image)
+        return self.title
 
 # Cards de avisos na pagina inicial
 class WarningCard(models.Model):

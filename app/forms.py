@@ -1,5 +1,5 @@
 from django import forms
-from .models import Program, ImageCarousel
+from .models import Program, ImageCarousel, WarningCard, AboutRadio, ProfileCard
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
@@ -20,3 +20,18 @@ class ImageCarouselForm(forms.ModelForm):
     class Meta:
         model = ImageCarousel
         fields = ['title', 'image']
+
+class WarningCardForm(forms.ModelForm):
+    class Meta:
+        model = WarningCard
+        fields = ['title', 'description', 'author']
+
+class AboutRadioForm(forms.ModelForm):
+    class Meta:
+        model = AboutRadio
+        fields = ['text', 'image']
+
+class ProfileCardForm(forms.ModelForm):
+    class Meta:
+        model = ProfileCard
+        fields = ['image', 'position', 'name', 'description']

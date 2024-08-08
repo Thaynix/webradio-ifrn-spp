@@ -1,6 +1,4 @@
-{% extends 'base.html'%}
-
-{% block title%}{{title}}{% endblock%}
+{% extends 'system/base.html'%}
 
 {% block content%}
 <div class="content conatainer-fluid">
@@ -15,7 +13,7 @@
         <p class="fs-4"> Deseja excluir: <strong>{{ object }}</strong>?</p>
 
         <div>
-          <a class="btn btn-secondary btn-lg" href="{% url 'program_list' %}">Voltar</a>
+          <a class="btn btn-secondary btn-lg" href="{% url 'index' %}">Voltar</a>
           <button class="btn btn-danger btn-lg" type="submit">Excluir</button>
         </div>
 

@@ -10,9 +10,9 @@
         INICIO
       </div>
 
-      <div class="col">
-        <a href="{% url 'img_carousel_create' %}" type="button" class="btn btn-success mt-3 mx-2"><i class='bx bx-plus' ></i></a>
-      </div>
+      {% comment %} <div class="col">
+        <a href="{% url 'warning_create' %}" type="button" class="btn btn-success mt-3 mx-2"><i class='bx bx-plus' ></i></a>
+      </div> {% endcomment %}
 
       <div class="col-5 pt-3">
         <form class="d-flex" role="search">
@@ -29,25 +29,20 @@
         <table class="table">
           <thead>
             <tr>
-              <th scope="col">IMAGEM</th>
-              <th scope="col">TITULO</th>
-              <th scope="col">DATA</th>
+              <th scope="col">TEXTO</th>
               <th scopa="col">AÇÕES</th>
             </tr>
           </thead>
           <tbody>
-            {% for object in img_carousel %}
+            {% for object in about %}
             <tr>
-              <th scope="row">
-                {% if object.image %}
-                <img class="img-fluid img-list" src="{{ object.image.url }}">
-                {% endif %}
-              </th>
-              <th>{{ object.title}}</th>
-              <th>{{ object.timestamp}}</th>
+              <th>{{ object.text}}</th>
+              {% if object.image %}
+              <img class="img-fluid img-list" src="{{ object.image.url }}">
+              {% endif %}
               <th>
-                <a href="{% url 'img_carousel_update' object.pk %}" type="button" class="btn btn-primary"><i class='bx bx-edit'></i></a>
-                <a href="{% url 'img_carousel_delete' object.pk %}" type="button" class="btn btn-danger"><i class='bx bx-trash'></i></a>
+                <a href="{% url 'about_update' object.pk %}" type="button" class="btn btn-primary"><i class='bx bx-edit'></i></a>
+                <a href="{% url 'warning_delete' object.pk %}" type="button" class="btn btn-danger"><i class='bx bx-trash'></i></a>
                 <a href="{% url 'index' %}" type="button" class="btn btn-secondary"><i class='bx bx-show-alt'></i></a>
               </th>
             </tr>
