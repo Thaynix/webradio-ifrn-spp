@@ -38,7 +38,7 @@ class ProfileCard(models.Model):
         ordering = ['-position']
 
     def __str__(self):
-        return self.name
+        return self.position
 
 
 
@@ -55,7 +55,36 @@ class Program(models.Model):
     def __str__(self):
         return self.name
 
+# Cada episódio deve ter um título, descrição e o arquivo de áudio.
 
+class ProgramEp(models.Model):
+    title = models.CharField(max_length=100, verbose_name='titulo')
+    description = models.CharField(max_length=255, verbose_name='description')
+    audio = models.FileField(upload_to='audios/', verbose_name='Audio')
+    timestamp = models.DateTimeField(auto_now_add=True, verbose_name="Cadastrado em")
+    
+    program = models.ForeignKey(Program, on_delete=models.PROTECT, null=True, blank=True)
+
+
+
+    class Meta:
+        ordering = ['-timestamp']
+    
+    def __str__(self):
+        return self.title
+    
+
+class Event(models.Model):
+    name = models.CharField(max_length=100, verbose_name='nome')
+    date = models.DateField()
+    hour = models.TimeField()
+    description = models.CharField(max_length=255, verbose_name='description')
+
+    class Meta:
+        ordering = ['date']
+
+    def __str__(self):
+        return self.name
 
 
 

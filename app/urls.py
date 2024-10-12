@@ -8,11 +8,11 @@ urlpatterns = [
     path('sistema/', admin_system, name='admin_system'),
 
     # CRUD INICIO - CARROSEL
-    path('sistema/inicio/', home_list_system, name='home_list_system'),
-    path('cadastrar/inicio', img_carousel_create, name='img_carousel_create'),
-    path('cadastrar/inicio', img_carousel_create, name='img_carousel'),
-    path("<int:pk>/atualizar/", img_carousel_update, name="img_carousel_update"),
-    path('<int:pk>/deletar/sistema', img_carousel_delete, name='img_carousel_delete'),
+    path('sistema/carrosel/', home_list_system, name='home_list_system'),
+    path('cadastrar/carrosel', img_carousel_create, name='img_carousel_create'),
+    path('cadastrar/carrosel', img_carousel_create, name='img_carousel'),
+    path("<int:pk>/atualizar/carrosel", img_carousel_update, name="img_carousel_update"),
+    path('<int:pk>/deletar/carrosel', img_carousel_delete, name='img_carousel_delete'),
     
     # CRUD INICIO - WARNING
     path('sistema/avisos/', warning_list_system, name="warning_list_system"),
@@ -37,6 +37,9 @@ urlpatterns = [
     path('cadastrar/programas/', program_create, name='program_create'),
     path('<int:pk>/atualizar/programas', program_update, name='program_update'),
     path('<int:pk>/deletar/programas', program_delete, name='program_delete'),
+
+    # CRUD PEDIDOS
+    path('pedidos', music_request_list, name='music_request_list'),
     
     # AUTH
     path('login/', LoginView.as_view(), name='login'),

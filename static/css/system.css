@@ -267,6 +267,12 @@
     object-fit: cover;
 }
 
+.about-img-list {
+    width: 100%;
+    height: 50vh;
+    object-fit: cover;
+}
+
 .sidebar.active ~ .content {
     width: calc(100% - 240px);
     left: 240px;

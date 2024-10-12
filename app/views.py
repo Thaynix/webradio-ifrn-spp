@@ -249,6 +249,12 @@ def program_delete(request, pk):
     }
     return render(request,'form-delete.html', context)
 
+# CRUD PEDIDOS DE MUSICAS
+
+# List
+def music_request_list(request):
+    return render(request, 'music-requests/music-request-list.html')
+
 
 # ===== AUTH =====
 # Register

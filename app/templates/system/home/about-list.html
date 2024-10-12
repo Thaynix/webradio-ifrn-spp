@@ -6,13 +6,16 @@
 <div class="container-fluid content ">
   <div class="row">
     <div class="col-12 d-flex header-main">
-      <div class="text">
-        INICIO
-      </div>
+      <div class="text">SOBRE</div>
 
-      {% comment %} <div class="col">
-        <a href="{% url 'warning_create' %}" type="button" class="btn btn-success mt-3 mx-2"><i class='bx bx-plus' ></i></a>
-      </div> {% endcomment %}
+
+      <div class="col  mt-3 mx-2">
+        {% for object in about %}
+          <a href="{% url 'about_update' object.pk %}" type="button" class="btn btn-primary"><i class='bx bx-edit'></i></a>
+          <a href="{% url 'warning_delete' object.pk %}" type="button" class="btn btn-danger"><i class='bx bx-trash'></i></a>
+          <a href="{% url 'index' %}" type="button" class="btn btn-secondary"><i class='bx bx-show-alt'></i></a>
+        {% endfor %}
+      </div>
 
       <div class="col-5 pt-3">
         <form class="d-flex" role="search">
@@ -27,24 +30,13 @@
     <div class="row">
       <div class="col">
         <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">TEXTO</th>
-              <th scopa="col">AÇÕES</th>
-            </tr>
-          </thead>
           <tbody>
             {% for object in about %}
             <tr>
               <th>{{ object.text}}</th>
               {% if object.image %}
-              <img class="img-fluid img-list" src="{{ object.image.url }}">
+              <img class="img-fluid about-img-list" src="{{ object.image.url }}">
               {% endif %}
-              <th>
-                <a href="{% url 'about_update' object.pk %}" type="button" class="btn btn-primary"><i class='bx bx-edit'></i></a>
-                <a href="{% url 'warning_delete' object.pk %}" type="button" class="btn btn-danger"><i class='bx bx-trash'></i></a>
-                <a href="{% url 'index' %}" type="button" class="btn btn-secondary"><i class='bx bx-show-alt'></i></a>
-              </th>
             </tr>
             {% endfor %}
           </tbody>

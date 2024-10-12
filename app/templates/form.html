@@ -16,7 +16,7 @@
         {{ form|crispy }}
 
         <div class="text-end">
-          <a class="btn btn-secondary btn-lg" href="{% url 'program_list' %}">Voltar</a>
+          <a class="btn btn-secondary btn-lg" href="{{ request.META.HTTP_REFERER }}">Voltar</a>
           <button class="btn btn-success btn-lg" type="submit">Salvar</button>
         </div>
 
