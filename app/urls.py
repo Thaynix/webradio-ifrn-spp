@@ -4,7 +4,7 @@ from django.contrib.auth.views import LogoutView, LoginView
 
 urlpatterns = [
     path('', index, name='index'),
-    path('programacao', program_list, name='program_list'),
+    path('programacao/', program_list, name='program_list'),
     path('sistema/', admin_system, name='admin_system'),
 
     # CRUD INICIO - CARROSEL
@@ -31,12 +31,13 @@ urlpatterns = [
     path('<int:pk>/atualizar/equipe', profile_update, name='profile_update'),
     path('<int:pk>/deletar/equipe', profile_delete, name='profile_delete'),
 
-
     # CRUD PROGRAMAS
     path('sistema/programas/', program_list_system, name='program_list_system'),
     path('cadastrar/programas/', program_create, name='program_create'),
     path('<int:pk>/atualizar/programas', program_update, name='program_update'),
     path('<int:pk>/deletar/programas', program_delete, name='program_delete'),
+    # EP PROGRAMAS
+    path('programas/<int:pk>/', program_detail, name='program_detail'),
 
     # CRUD PEDIDOS
     path('pedidos', music_request_list, name='music_request_list'),

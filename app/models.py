@@ -56,7 +56,6 @@ class Program(models.Model):
         return self.name
 
 # Cada episódio deve ter um título, descrição e o arquivo de áudio.
-
 class ProgramEp(models.Model):
     title = models.CharField(max_length=100, verbose_name='titulo')
     description = models.CharField(max_length=255, verbose_name='description')
@@ -65,15 +64,13 @@ class ProgramEp(models.Model):
     
     program = models.ForeignKey(Program, on_delete=models.PROTECT, null=True, blank=True)
 
-
-
     class Meta:
         ordering = ['-timestamp']
     
     def __str__(self):
         return self.title
     
-
+# Calendario de eventos.
 class Event(models.Model):
     name = models.CharField(max_length=100, verbose_name='nome')
     date = models.DateField()

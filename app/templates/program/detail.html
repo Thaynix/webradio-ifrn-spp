@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}EPISODIOS_PROGRAMA{% endblock %}
+
+{% block content %}
+<div class="container-fluid main">
+    <div class="row">
+        <div class="col-12 content justify-content-center">
+            <h1 class="text-main">{{ program.name }}</h1>
+            <p>{{ program.description }}</p>
+
+            <div class="container-fluid card-container">
+                <div class="row g-3"> 
+                    {% for ep in eps %}
+                    <div class="col-lg-2 col-md-3 col-sm-6 col-12"> 
+                    
+                        <h1>{{ ep.title }}</h1>
+                        <strong>EP {{ forloop.counter }}</strong>
+                        <h3>{{ ep.description }}</h3>
+                        <audio controls>
+                            <source src="{{ ep.audio.url }}" type="audio/mp3" />
+                        </audio>
+                    </div>
+                    {% empty %}
+                    <p>Não há episodios disponíveis no momento.</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

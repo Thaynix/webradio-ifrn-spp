@@ -1,10 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Program, WarningCard, ProfileCard, ImageCarousel, AboutRadio
+from .models import Program, WarningCard, ProfileCard, ImageCarousel, AboutRadio, ProgramEp
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from .forms import ProgramForm, UserForm, ImageCarouselForm, WarningCardForm, AboutRadioForm, ProfileCardForm
 from django.contrib.auth import authenticate, login
-
 
 def index(request):
     cards = WarningCard.objects.all()
@@ -249,6 +248,18 @@ def program_delete(request, pk):
     }
     return render(request,'form-delete.html', context)
 
+# EP PROGRAMAS
+def program_detail(request, pk):
+    program = get_object_or_404(Program, pk=pk)
+    eps = ProgramEp.objects.filter(program=program).order_by("timestamp")
+    return render(request, 'program/detail.html', {'program': program, 'eps': eps})
+
+
+
+
+
+
+
 # CRUD PEDIDOS DE MUSICAS
 
 # List
@@ -267,8 +278,9 @@ def register(request):
             password  = form.cleaned_data['password1']
             user = authenticate(username=username, password=password)
             if user is not None:
-                login(request, user)
+                login(request, user)  
                 return redirect('index')
     else:
         form = UserCreationForm()
     return render(request, 'registration/register.html', {'form': form})
+
