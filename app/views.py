@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Program, WarningCard, ProfileCard, ImageCarousel, AboutRadio, ProgramEp, Pedidos
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
-from .forms import ProgramForm, UserForm, ImageCarouselForm, WarningCardForm, AboutRadioForm, ProfileCardForm
+from .forms import ProgramForm, UserForm, ImageCarouselForm, WarningCardForm, AboutRadioForm, ProfileCardForm, PedidosForm
 from django.contrib.auth import authenticate, login
 
 def index(request):
@@ -262,10 +262,26 @@ def program_detail(request, pk):
 
 # CRUD PEDIDOS DE MUSICAS
 
-# List
+# List e Create
+@login_required
 def pedidos_list(request):
     musiclist = Pedidos.objects.all()
-    return render(request, 'music-requests/music-request-list.html', {'musiclist': musiclist})
+
+    if request.method == "POST":
+        form = PedidosForm(request.POST)
+        if form.is_valid():
+            form.instance.author = request.user
+            form.save()
+            return redirect('pedidos_list') 
+    else:
+        form = PedidosForm()
+
+    context = {
+        'form': form,
+        'musiclist': musiclist,
+    }
+    return render(request, 'music-requests/music-request-list.html', context)
+
 
 
 # ===== AUTH =====

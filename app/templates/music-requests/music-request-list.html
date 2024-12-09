@@ -7,8 +7,19 @@
     <div class="row">
         <div class="col">
             <h1 class="text-main">FAÇA UM PEDIDO</h1>
+            <form action="{% url 'pedidos_list' %}" method="post">
+                {% csrf_token %}
+                {{form.as_p}}
+                <button class="btn btn-success" type="submit">Enviar</button>
+            </form>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col">
+            <h2>Pedidos!</h2>
             {% for pedidos in musiclist %}
-            <p>{{ pedidos.description }}</p>
+            <p><strong>{{pedidos.author}}</strong>: {{ pedidos.description }}</p>
             {% endfor %}
             
         </div>
