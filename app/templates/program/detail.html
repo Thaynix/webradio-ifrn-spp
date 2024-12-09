@@ -3,30 +3,61 @@
 {% block title %}EPISODIOS_PROGRAMA{% endblock %}
 
 {% block content %}
-<div class="container-fluid main">
-    <div class="row">
-        <div class="col-12 content justify-content-center">
-            <h1 class="text-main">{{ program.name }}</h1>
-            <p>{{ program.description }}</p>
 
-            <div class="container-fluid card-container">
-                <div class="row g-3"> 
+<div class="container-fluid main">
+    
+    <div class="container-fluid content-program mt-5">
+        <div class="row">
+            <div class="col-12 d-flex align-items-center">
+                {% if program.image %}
+                    <img src="{{ program.image.url }}" class="img-fluid program-img"  alt="{{ program.title }}"> 
+                {% endif %}
+
+                <a href="{% url 'index' %}"></a>
+
+                <div class="text ms-3">
+                    <h1 class="mb-1">{{ program.name }}</h1>
+                    <p class="mb-0">{{ program.description }}</p>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="content-ep mt-5">
+        <div class="row">
+            <div class="col d-flex align-items-center">
+                <table class="w-100">
+                    <thead>
+                        <tr>
+                            <th>EPISODIOS</th>
+                        </tr>
+                    </thead>
                     {% for ep in eps %}
-                    <div class="col-lg-2 col-md-3 col-sm-6 col-12"> 
-                    
-                        <h1>{{ ep.title }}</h1>
-                        <strong>EP {{ forloop.counter }}</strong>
-                        <h3>{{ ep.description }}</h3>
-                        <audio controls>
-                            <source src="{{ ep.audio.url }}" type="audio/mp3" />
-                        </audio>
-                    </div>
+                    <tbody>
+                        <tr>
+                            
+                            <td>
+                                <strong>EP {{ forloop.counter }}</strong>
+                            </td>
+                            <td>
+                                <p>{{ ep.title }}</p>
+                            </td>
+                            <td>
+                                <audio controls>
+                                    <source src="{{ ep.audio.url }}" type="audio/mp3" />
+                                </audio>
+                            </td>
+                        </tr>
+                    </tbody>
                     {% empty %}
                     <p>Não há episodios disponíveis no momento.</p>
                     {% endfor %}
-                </div>
+                </table>
             </div>
         </div>
     </div>
+    
 </div>
 {% endblock content %}
