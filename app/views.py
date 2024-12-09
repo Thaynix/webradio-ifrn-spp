@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Program, WarningCard, ProfileCard, ImageCarousel, AboutRadio, ProgramEp
+from .models import Program, WarningCard, ProfileCard, ImageCarousel, AboutRadio, ProgramEp, Pedidos
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from .forms import ProgramForm, UserForm, ImageCarouselForm, WarningCardForm, AboutRadioForm, ProfileCardForm
@@ -263,8 +263,9 @@ def program_detail(request, pk):
 # CRUD PEDIDOS DE MUSICAS
 
 # List
-def music_request_list(request):
-    return render(request, 'music-requests/music-request-list.html')
+def pedidos_list(request):
+    musiclist = Pedidos.objects.all()
+    return render(request, 'music-requests/music-request-list.html', {'musiclist': musiclist})
 
 
 # ===== AUTH =====

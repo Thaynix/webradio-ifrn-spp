@@ -40,7 +40,7 @@ urlpatterns = [
     path('programas/<int:pk>/', program_detail, name='program_detail'),
 
     # CRUD PEDIDOS
-    path('pedidos', music_request_list, name='music_request_list'),
+    path('pedidos', pedidos_list, name='pedidos_list'),
     
     # AUTH
     path('login/', LoginView.as_view(), name='login'),

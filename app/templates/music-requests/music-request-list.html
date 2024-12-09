@@ -1,3 +1,17 @@
 {% extends "base.html" %}
 
 {% block title %}Pedidos{% endblock %}
+
+{% block content %}
+<div class="container-fluid main">
+    <div class="row">
+        <div class="col">
+            <h1 class="text-main">FAÇA UM PEDIDO</h1>
+            {% for pedidos in musiclist %}
+            <p>{{ pedidos.description }}</p>
+            {% endfor %}
+            
+        </div>
+    </div>
+</div>
+{% endblock %}

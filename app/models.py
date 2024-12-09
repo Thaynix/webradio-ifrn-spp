@@ -40,7 +40,14 @@ class ProfileCard(models.Model):
     def __str__(self):
         return self.position
 
+class Pedidos (models.Model):
+    description = models.CharField(max_length=225, verbose_name="Descrição")
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    date = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return self.description
+    
 
 # Cards dos programas na pagina de programação
 class Program(models.Model):
