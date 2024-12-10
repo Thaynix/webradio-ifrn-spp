@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 
 {% block title %}Pedidos{% endblock %}
 
@@ -9,7 +10,7 @@
             <h1 class="text-main">FAÇA UM PEDIDO</h1>
             <form action="{% url 'pedidos_list' %}" method="post">
                 {% csrf_token %}
-                {{form.as_p}}
+                {{ form|crispy }}
                 <button class="btn btn-success" type="submit">Enviar</button>
             </form>
         </div>
@@ -19,7 +20,7 @@
         <div class="col">
             <h2>Pedidos!</h2>
             {% for pedidos in musiclist %}
-            <p><strong>{{pedidos.author}}</strong>: {{ pedidos.description }}</p>
+            <p><strong>{{pedidos.author}}</strong>: {{ pedidos.description }} - {{ pedidos.singer }}</p>
             {% endfor %}
             
         </div>

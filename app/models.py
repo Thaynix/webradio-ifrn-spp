@@ -41,12 +41,13 @@ class ProfileCard(models.Model):
         return self.position
 
 class Pedidos (models.Model):
+    singer = models.CharField(null=True,max_length=90, verbose_name="Cantor")
     description = models.CharField(max_length=225, verbose_name="Descrição")
     author = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Autor")
     date = models.DateTimeField(auto_now_add=True, verbose_name="Cadastrado em")
 
     def __str__(self):
-        return self.description
+        return self.singer
     
 
 # Cards dos programas na pagina de programação

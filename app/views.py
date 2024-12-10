@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Program, WarningCard, ProfileCard, ImageCarousel, AboutRadio, ProgramEp, Pedidos
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
-from .forms import ProgramForm, UserForm, ImageCarouselForm, WarningCardForm, AboutRadioForm, ProfileCardForm, PedidosForm
+from .forms import ProgramForm, UserForm, ImageCarouselForm, WarningCardForm, AboutRadioForm, ProfileCardForm, PedidosForm, ProgramEpForm
 from django.contrib.auth import authenticate, login
 
 def index(request):
@@ -249,14 +249,28 @@ def program_delete(request, pk):
     return render(request,'form-delete.html', context)
 
 # EP PROGRAMAS
+@login_required
 def program_detail(request, pk):
     program = get_object_or_404(Program, pk=pk)
     eps = ProgramEp.objects.filter(program=program).order_by("timestamp")
     return render(request, 'program/detail.html', {'program': program, 'eps': eps})
 
-
-
-
+@login_required
+def programep_create(request, pk):
+    program = get_object_or_404(Program, pk=pk)
+    if request.method == "POST":
+        form = ProgramEpForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.instance.program = program
+            form.save()
+            return redirect('program_detail', pk=program.pk)
+    else:
+        form = ProgramEpForm()
+    context = {
+        'form': form,
+        'title':'Criar um novo episodio'
+    }
+    return render(request, 'form.html', context)
 
 
 

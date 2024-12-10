@@ -1,5 +1,5 @@
 from django import forms
-from .models import Program, ImageCarousel, WarningCard, AboutRadio, ProfileCard, Pedidos
+from .models import Program, ImageCarousel, WarningCard, AboutRadio, ProfileCard, Pedidos, ProgramEp
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
@@ -39,4 +39,9 @@ class ProfileCardForm(forms.ModelForm):
 class PedidosForm(forms.ModelForm):
     class Meta:
         model = Pedidos
-        fields = ['description']
+        fields = ['description', 'singer']
+
+class ProgramEpForm(forms.ModelForm):
+    class Meta:
+        model = ProgramEp
+        fields = ['audio', 'title', 'description']

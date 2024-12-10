@@ -38,6 +38,8 @@ urlpatterns = [
     path('<int:pk>/deletar/programas', program_delete, name='program_delete'),
     # EP PROGRAMAS
     path('programas/<int:pk>/', program_detail, name='program_detail'),
+    path('cadastrar/programas/<int:pk>/episodios', programep_create, name='programep_create'),
+
 
     # CRUD PEDIDOS
     path('pedidos', pedidos_list, name='pedidos_list'),
