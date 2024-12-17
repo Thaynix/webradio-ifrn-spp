@@ -340,9 +340,39 @@ body {
 
 /* ========== FOOTER ========== */
 
-footer {
-    background: var(--primary-color);
+.footer {
+    background-color: var(--primary-color); 
+    color: #FFF; 
+    text-align: center;
+    padding: 40px 0;
+    font-size: 13px; 
+    font-family: Arial, sans-serif;
+    border-radius: 20px;
 }
+
+.footer p {
+    margin: 0;
+    letter-spacing: 1px; 
+    line-height: 1.6;
+}
+
+.footer strong {
+    color: white; 
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.footer a {
+    color: #A3D9A5;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+    color: #FFF; 
+}
+
 
 
 
