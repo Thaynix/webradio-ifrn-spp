@@ -2,34 +2,44 @@
 <div class="row">
   <div class="col-12 p-sm-0 p-0">
       <div class="sidebar">
-          <header class="sidebar-header">
+          {% comment %} <header class="sidebar-header">
+            <a href="{% url 'index' %}">
               <img class="logo-img" src= {% static 'img/icons/frame-2.png' %} alt="">
-          </header>
+            </a>  
+          </header> {% endcomment %}
           <ul>
               <li>
                   <a href={% url "index" %} class="btn-menu">
-                  <img src= {% static 'img/icons/icons8-casa-32.png' %} alt="" class="nav-icon">
-                  <span class="nav-text">Inicio</span>
+                    <i class="bi bi-house-heart-fill nav-icon"></i>
+                    <span class="nav-text">Inicio</span>
                   </a>
               </li>
               <li>
                   <a href={% url "program_list" %} class="btn-menu">
-                  <img src= {% static 'img/icons/icons8-microfone-32.png' %} alt="" class="nav-icon">
-                  <span class="nav-text">Programas</span>
+                    <i class="bi bi-mic-fill nav-icon"></i>
+                    <span class="nav-text">Programas</span>
                   </a>
               </li>
               <li>
                   <a href="#" class="btn-menu">
-                  <img src= {% static 'img/icons/icons8-semana-da-linha-do-tempo-32.png' %} alt="" class="nav-icon">
-                  <span class="nav-text">Agenda</span>
+                    <i class="bi bi-calendar-range-fill nav-icon"></i>
+                    <span class="nav-text">Agenda</span>
                   </a>
               </li>
               <li>
                   <a href="{% url 'pedidos_list' %}" class="btn-menu">
-                  <img src= "{% static 'img/icons/icons8-balão-de-fala-com-pontos-32.png' %}" alt="" class="nav-icon">
-                  <span class="nav-text">Pedidos</span>
+                    <i class="bi bi-chat-left-heart-fill nav-icon"></i>
+                    <span class="nav-text">Pedidos</span>
                   </a>
               </li>
+              {% if request.user.is_authenticated %}
+              <li>
+                <a href="{% url 'home_list_system' %}" class="btn-menu">
+                  <i class="bi bi-gear-fill nav-icon"></i>
+                  <span class="nav-text">Sistema</span>
+                </a>
+              </li>             
+              {% endif %}
           </ul>
           <div class="sidebar-footer d-md-block">
               <ul>
@@ -39,13 +49,11 @@
                 <form action="{% url 'logout' %}" method="post">
                     {% csrf_token %}
                     <button class="bg-transparent border-0" type="submit">
-                    <li><a href="{% url 'logout' %}" class="btn-menu"><img src="{% static 'img/icons/icons8-sair-32.png' %}" alt="" class="nav-icon"><span class="nav-text">Sair</span></a></li></button>
+                    <li><a href="{% url 'logout' %}" class="btn-menu"><i class='bx bx-log-out-circle nav-icon' style='color:#ffffff' ></i><span class="nav-text">Sair</span></a></li></button>
                 </form>
 
-                <li><a href="{% url 'home_list_system' %}" class="btn-menu"><img src="{% static 'img/icons/icons8-config-32.png' %}" alt="" class="nav-icon"><span class="nav-text">Sistema</span></a></li>
-
                 {% else %}
-                    <li class="nav-item"><a href="{% url 'login' %}" class="btn-menu"><img src="{% static 'img/icons/icons8-entrar-32.png' %}" alt="" class="nav-icon"><span class="nav-text">Login</span></a></li>
+                    <li class="nav-item"><a href="{% url 'login' %}" class="btn-menu"><i class='bx bx-log-in-circle nav-icon' style='color:#ffffff' ></i><span class="nav-text">Login</span></a></li>
                 {% endif %}
 
                   

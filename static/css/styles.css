@@ -9,7 +9,7 @@
 :root {
     /* ===== COLORS ===== */
     --body-color: #E4E9F7;
-    --sidebar-color: #668C65;
+    --sidebar-color: #2c475a;
     --primary-color: #40573D;
     --sidebar-color-light: #F6F5FF;
     --toggle-color: #DDD;
@@ -19,7 +19,7 @@
     --card-danger-color: #e15244;
     --card-warning-color: #f8a348;
     --card-primary-color: #3a7b50;
-
+    /* --sideebar-color-antiga: #668C65; */
     /* ===== TRANSITIONS ===== */
     --tran-03: all 0.3s ease;
     --tran-04: all 0.4s ease;
@@ -72,8 +72,6 @@ body {
 .logo-img {
     width: auto;
     height: 55px;
-    border: 2px solid var(--text-color);
-    border-radius: 10px;
     margin: 5px;
     padding: 5px;
 }
@@ -102,6 +100,12 @@ body {
     display: none;
 }
 
+.nav-icon {
+    color: var(--text-color);
+    font-size: 1.7rem;
+    font-weight:100 !important;
+}
+
 /*===== EFFECTS ===== */
 
 .sidebar li:hover .nav-text {
@@ -115,13 +119,10 @@ body {
     margin-top: 10px;
 }
 
-.sidebar .btn-menu:hover .nav-icon {
-    transform: scale(1.05);    
+.sidebar .nav-icon:hover  {
+    margin-top: 10px;
+    margin-bottom: 10px;
     transition: var(--tran-03);
-    box-shadow: 0px 2px 2px rgb(7, 47, 35);
-    background: var(--primary-color);
-    border-radius: 20px;
-    padding: 10px;
 }
 
 .sidebar .btn-menu:hover {
@@ -136,7 +137,7 @@ body {
     width: calc(100% - 120px);
     height: 100vh;
     margin-right: 10px;
-    margin-top: 80px;
+    /* margin-top: 80px; */
     margin-bottom: 80px;
 }
 
@@ -249,7 +250,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: var(--primary-color);
+    background: var(--sidebar-color);
     border-radius: 20px;
 }
 

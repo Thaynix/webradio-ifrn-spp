@@ -49,11 +49,18 @@
                                     <source src="{{ ep.audio.url }}" type="audio/mp3" />
                                 </audio>
                             </td>
+                            {% comment %} {% for object in programsep %} {% endcomment %}
+                            <td>
+                                {% comment %} <a href="{% url 'programep_update' %}" type="button" class="btn btn-primary"><i class='bx bx-edit'></i></a> {% endcomment %}
+
+                            </td>
+                            {% comment %} <td>
+                                <a href="" type="button" class="btn btn-danger"><i class='bx bx-trash'></i></a>
+                            </td> {% endcomment %}
+                            {% endfor %}
                         </tr>
                     </tbody>
-                    {% empty %}
-                    <p>Não há episodios disponíveis no momento.</p>
-                    {% endfor %}
+
                 </table>
             </div>
         </div>

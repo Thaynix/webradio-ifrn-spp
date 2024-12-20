@@ -39,7 +39,7 @@ class ProfileCardForm(forms.ModelForm):
 class PedidosForm(forms.ModelForm):
     class Meta:
         model = Pedidos
-        fields = ['description', 'singer']
+        fields = ['description', 'singer', 'author']
 
 class ProgramEpForm(forms.ModelForm):
     class Meta:

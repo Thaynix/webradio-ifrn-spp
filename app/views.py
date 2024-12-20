@@ -249,7 +249,6 @@ def program_delete(request, pk):
     return render(request,'form-delete.html', context)
 
 # EP PROGRAMAS
-@login_required
 def program_detail(request, pk):
     program = get_object_or_404(Program, pk=pk)
     eps = ProgramEp.objects.filter(program=program).order_by("timestamp")
@@ -272,22 +271,26 @@ def programep_create(request, pk):
     }
     return render(request, 'form.html', context)
 
+# Update
+
+
+
 
 
 # CRUD PEDIDOS DE MUSICAS
 
 # List e Create
-@login_required
+# @login_required
 def pedidos_list(request):
     musiclist = Pedidos.objects.all()
 
     if request.method == "POST":
         form = PedidosForm(request.POST)
         if form.is_valid():
-            form.instance.author = request.user
+            # form.instance.author = request.user
             form.save()
             return redirect('pedidos_list') 
-    else:
+    else:   
         form = PedidosForm()
 
     context = {

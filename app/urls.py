@@ -36,9 +36,10 @@ urlpatterns = [
     path('cadastrar/programas/', program_create, name='program_create'),
     path('<int:pk>/atualizar/programas', program_update, name='program_update'),
     path('<int:pk>/deletar/programas', program_delete, name='program_delete'),
-    # EP PROGRAMAS
+    # EP PROGRA'MAS
     path('programas/<int:pk>/', program_detail, name='program_detail'),
     path('cadastrar/programas/<int:pk>/episodios', programep_create, name='programep_create'),
+    # path('<int:pk>/atualizar/episodios', programep_update, name='programep_update'),
 
 
     # CRUD PEDIDOS
