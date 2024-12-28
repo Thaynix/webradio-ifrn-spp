@@ -14,7 +14,7 @@
     --sidebar-color-light: #F6F5FF;
     --toggle-color: #DDD;
     --text-color: #eaeaea;
-    --header-color-light: #E53834;    
+    --header-color-light: #E53834;
     --header-color: #b21515;
     --card-danger-color: #e15244;
     --card-warning-color: #f8a348;
@@ -113,7 +113,7 @@ body {
     justify-content: center;
     text-transform: uppercase;
     font-size: 0.7rem;
-    transform: scale(1.05);  
+    transform: scale(1.05);
     transition: var(--tran-05);
 
     margin-top: 10px;
@@ -137,7 +137,7 @@ body {
     width: calc(100% - 120px);
     height: 100vh;
     margin-right: 10px;
-    /* margin-top: 80px; */
+    margin-top: 80px;
     margin-bottom: 80px;
 }
 
@@ -149,12 +149,15 @@ body {
     font-weight: 700;
 }
 
-/* ========== PLAYER ========== */
+.carousel-content {
+    margin-top: 2.5rem;
+}
 
+/* ========== PLAYER ========== */
 .playbody {
     width: calc(100% - 120px);
     height: 60px;
-    background: var(--primary-color);
+    background: var(--sidebar-color);
     display: flex;
     align-items: center;
     position: fixed;
@@ -164,7 +167,7 @@ body {
     justify-content: center;
     z-index: var(--z-fixed);
     padding: 0 20px;
-} 
+}
 
 .header {
     width: 100%;
@@ -208,7 +211,7 @@ body {
 }
 
 .menu-dropdown:hover {
-    transform: scale(1.1);    
+    transform: scale(1.1);
     cursor: pointer;
 }
 
@@ -216,7 +219,7 @@ body {
 
 .card-img {
     object-fit: cover;
-    border-radius: 20px; 
+    border-radius: 20px;
 }
 
 .card-img:hover {
@@ -225,7 +228,7 @@ body {
 }
 
 .program-img {
-    width: 200px; 
+    width: 200px;
     height: auto;
 }
 
@@ -235,11 +238,11 @@ body {
 }
 
 .img-container {
-    padding-right: 1rem; 
+    padding-right: 1rem;
     padding-bottom: 1rem;
 }
 
-/* 
+/*
 .card-link {
     width: 140px;
     height: 140px;
@@ -267,11 +270,11 @@ body {
 
 }
 .card-body {
-    word-wrap: break-word; 
+    word-wrap: break-word;
 }
 .card-text {
-    white-space: pre-wrap; 
-    word-break: break-word; 
+    white-space: pre-wrap;
+    word-break: break-word;
 }
 
 .card-eqp {
@@ -281,7 +284,7 @@ body {
     border: none;
 
     max-width: 12rem;
-    
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -292,13 +295,13 @@ body {
 .card-img-eqp {
     width: 100px;
     height: 160px;
-    border-radius: 50%; 
-    border: 3px solid var(--sidebar-color); 
+    border-radius: 50%;
+    border: 3px solid var(--sidebar-color);
     padding: 3px;
-    object-fit: cover; 
+    object-fit: cover;
     margin-top: 5px;
     margin-bottom: 5px;
-    
+
 }
 
 .pos-eqp {
@@ -333,8 +336,8 @@ body {
 /* ========== OWL CAROUSEL ========== */
 
 .carousel-imgs .item img{
-    width: 100%; 
-    height: 400px; 
+    width: 100%;
+    height: 400px;
     object-fit: cover;
 
 }
@@ -342,23 +345,25 @@ body {
 /* ========== FOOTER ========== */
 
 .footer {
-    background-color: var(--primary-color); 
-    color: #FFF; 
+    width: 50%;
+    background-color: var(--sidebar-color);
+    color: #FFF;
     text-align: center;
     padding: 40px 0;
-    font-size: 13px; 
+    font-size: 13px;
     font-family: Arial, sans-serif;
     border-radius: 20px;
+
 }
 
 .footer p {
     margin: 0;
-    letter-spacing: 1px; 
+    letter-spacing: 1px;
     line-height: 1.6;
 }
 
 .footer strong {
-    color: white; 
+    color: white;
     font-weight: bold;
     text-transform: uppercase;
 }
@@ -371,7 +376,7 @@ body {
 
 .footer a:hover {
     text-decoration: underline;
-    color: #FFF; 
+    color: #FFF;
 }
 
 
@@ -430,9 +435,9 @@ body {
         transform: translateY(-500%);
         transition: var(--tran-05);
     }
-    
+
     .sidebar .btn-menu:hover .nav-icon {
-        transform: scale(1.05);    
+        transform: scale(1.05);
         transition: var(--tran-03);
         background: var(--primary-color);
         border-radius: 50px;
@@ -440,20 +445,20 @@ body {
         margin-top: 75px;
         box-shadow: none;
     }
-    
+
     .sidebar .btn-menu:hover {
         margin-top: 20px;
         margin-bottom: 50px;
         transition: var(--tran-03);
     }
-    
+
     .container-offc {
         display: block;
     }
 
     .content {
         margin-left: 0;
-        padding-top: 70px; 
+        padding-top: 70px;
         /* margin-bottom: 80px; */
     }
 
@@ -500,6 +505,4 @@ body {
         max-width: 25rem;
     }
 }
-
-
 

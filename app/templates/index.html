@@ -11,10 +11,10 @@
                 <div class="container-fluid home-container">
                     <div class="row">
                     <div class="title-section">
-                        <h1 class="text-main">INICIO</h1>
-                        
+                        <h1 class="text-main">RÁDIO IFRN-SPP</h1>
+
                     </div>
-                        <div class="col pb-3">
+                        <div class="col pb-3 carousel-content">
                             <div class="owl-carousel carousel-imgs owl-theme">
                                 {% for ImageCarousel in carousel %}
                                 {% if ImageCarousel.image %}
@@ -71,7 +71,6 @@
                     <div class="row">
                         <div class="col pb-3">
                             {% for AboutRadio in about %}
-                            
                             <div class="row">
                                 <div class="col pb-3 d-flex justify-content-center p-3 rounded">
                                     {% if AboutRadio.image %}
@@ -79,7 +78,8 @@
                                     {% endif %}
                                 </div>
                             </div>
-                            
+                        </div>
+                        <div class="col">
                             <p class="about-text">{{ AboutRadio.text }}</p>
                             {% endfor %}
                             <div class="row">
@@ -109,17 +109,10 @@
                                 </div>
                             </div>
                         </div>
-                        
-                        
                     </div>
                 </div>
             </div>
         </section>
-        <footer class="footer">
-            <div>
-                <p>&copy; 2024 <strong>Your Website</strong>. All rights reserved.</p>
-            </div>
-        </footer>        
     </div>
 </div>
 
