@@ -4,25 +4,35 @@
 {% block title %}Pedidos{% endblock %}
 
 {% block content %}
-<div class="container-fluid main">
-    <div class="row">
-        <div class="col">
-            <h1 class="text-main">FAÇA UM PEDIDO</h1>
-            <form action="{% url 'pedidos_list' %}" method="post">
-                {% csrf_token %}
-                {{ form|crispy }}
-                <button class="btn btn-success" type="submit">Enviar</button>
-            </form>
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h1 class="text-center text-success mb-4" style="padding-top: 1rem;">Faça um Pedido</h1>
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <form action="{% url 'pedidos_list' %}" method="post">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <div class="d-grd">
+                            <button class="btn btn-success btn-lg" type="submit">Enviar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
-    
-    <div class="row">
-        <div class="col">
-            <h2>Pedidos!</h2>
-            {% for pedidos in musiclist %}
-            <p><strong>{{pedidos.author}}</strong>: {{ pedidos.description }} - {{ pedidos.singer }}</p>
-            {% endfor %}
-            
+
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-8">
+            <h2 class="text-center text-primary">Pedidos!</h2>
+            <ul class="list-group list-group-flush shadow-sm">
+                {% for pedidos in musiclist %}
+                <li class="list-group-item">
+                    <p class="mb-1"><strong>{{ pedidos.author }}</strong>:</p>
+                    <p class="mb-0 text-muted">{{ pedidos.description }} - <em>{{ pedidos.singer }}</em></p>
+                </li>
+                {% endfor %}
+            </ul>
         </div>
     </div>
 </div>
