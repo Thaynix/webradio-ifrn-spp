@@ -41,7 +41,28 @@ class PedidosForm(forms.ModelForm):
         model = Pedidos
         fields = ['description', 'singer', 'author']
 
+
+def check_audio_extension(filename):
+    """
+    Checa se o arquivo tem uma extensão de áudio
+    """
+    audio_extensions = [".mp3", ".wav", ".ogg", ".oga", ".m4a"]
+    for ext in audio_extensions:
+        if filename.endswith(ext):
+            return True
+    return False
+
 class ProgramEpForm(forms.ModelForm):
     class Meta:
         model = ProgramEp
         fields = ['audio', 'title', 'description']
+
+    def clean(self):
+        cleaned_data = super().clean()
+
+        audio = cleaned_data.get("audio")
+        is_audio =  check_audio_extension(str(audio))
+        if is_audio == False:
+            self.add_error("audio", "É necessário cadastrar com um arquivo de áudio.")
+        
+        return cleaned_data

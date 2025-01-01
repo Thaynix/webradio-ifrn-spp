@@ -22,7 +22,7 @@
       </div>
     </div>
   </div>
-    
+
   <div class="container-fluid table-content pt-5 ps-0">
     <div class="row">
       <div class="col">
@@ -40,7 +40,7 @@
               <th scope="row">{{ object.name}}</th>
               <th>{{ object.description}}</th>
               <th>
-                <a href="{% url 'programep_create' object.pk %}" type="button" class="btn btn-success"><i class='bx bx-podcast'></i></a>
+                <a href="{% url 'programep_list' object.pk %}" type="button" class="btn btn-success"><i class='bx bx-podcast'></i></a>
                 <a href="{% url 'program_update' object.pk %}" type="button" class="btn btn-primary"><i class='bx bx-edit'></i></a>
                 <a href="{% url 'program_delete' object.pk %}" type="button" class="btn btn-danger"><i class='bx bx-trash'></i></a>
                 <a href="{% url 'program_list' %}" type="button" class="btn btn-secondary"><i class='bx bx-show-alt'></i></a>

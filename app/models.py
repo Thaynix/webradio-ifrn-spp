@@ -47,7 +47,7 @@ class Pedidos (models.Model):
     date = models.DateTimeField(auto_now_add=True, verbose_name="Cadastrado em")
     def __str__(self):
         return self.singer
-    
+
 
 # Cards dos programas na pagina de programação
 class Program(models.Model):

@@ -20,18 +20,18 @@ def admin_system(request):
 
 # ========== CRUD INICIO ==========
 # ===== CARROSEL =====
-# List 
+# LIST IMG CAROUSEL
 def home_list_system(request):
-    img_carousel = ImageCarousel.objects.all() 
+    img_carousel = ImageCarousel.objects.all()
     return render(request,'system/home/home-list.html', {'img_carousel': img_carousel})
 
-# Create das imagens do carrosel
+# CREATE IMG CAROUSEL
 def img_carousel_create(request):
     if request.method == "POST":
         form = ImageCarouselForm(request.POST, request. FILES)
         if form.is_valid():
             form.save()
-            return redirect('home_list_system') 
+            return redirect('home_list_system')
     else:
         form = ImageCarouselForm()
     context = {
@@ -40,7 +40,7 @@ def img_carousel_create(request):
     }
     return render(request, 'system/home/form.html', context)
 
-# Update
+# UPDATE IMG CAROUSEL 
 def img_carousel_update(request, pk):
     img_carousel = get_object_or_404(ImageCarousel, pk=pk)
     if request.method == "POST":
@@ -56,7 +56,7 @@ def img_carousel_update(request, pk):
     }
     return render(request, 'form.html', context)
 
-# Delete
+# DELETE IMG CAROUSEL
 def img_carousel_delete(request, pk):
     img_carousel = get_object_or_404(ImageCarousel, pk=pk)
     if request.method== 'POST':
@@ -70,12 +70,12 @@ def img_carousel_delete(request, pk):
     return render(request,'form-delete.html', context)
 
 # ===== AVISOS =====
-# List
+# LIST CARDS WARNING
 def warning_list_system(request):
     cards = WarningCard.objects.all()
     return render(request,'system/home/warning-list.html', {'cards': cards})
 
-# Create
+# CREATE CARD WARNING
 def warning_create(request):
     if request.method == "POST":
         form = WarningCardForm(request.POST, request. FILES)
@@ -90,7 +90,7 @@ def warning_create(request):
     }
     return render(request, 'system/home/form.html', context)
 
-# Update
+# UPDATE CARD WARNING
 def warning_update(request, pk):
     cards = get_object_or_404(WarningCard, pk=pk)
     if request.method == "POST":
@@ -106,7 +106,7 @@ def warning_update(request, pk):
     }
     return render(request, 'form.html', context)
 
-# Delete
+# DELETE CARD WARNING
 def warning_delete(request, pk):
     cards = get_object_or_404(WarningCard, pk=pk)
     if request.method== 'POST':
@@ -120,12 +120,12 @@ def warning_delete(request, pk):
     return render(request,'form-delete.html', context)
 
 # ===== SOBRE =====
-# List
+# LIST ABOUT
 def about_list_system(request):
     about = AboutRadio.objects.all()
     return render(request,'system/home/about-list.html', {'about': about})
 
-# update
+# UPDATE ABOUT
 def about_update(request, pk):
     about = get_object_or_404(AboutRadio, pk=pk)
     if request.method == "POST":
@@ -142,12 +142,12 @@ def about_update(request, pk):
     return render(request, 'form.html', context)
 
 # ===== CARDS DE PERFIL DOS MEMBROS DA RADIO =====
-# List
+# LIST CARDS PROFILE
 def profile_list_system(request):
     profile_cards = ProfileCard.objects.all()
     return render(request,'system/home/profile-card-list.html', {'profile_cards': profile_cards})
 
-# Create
+# CREATE CARD PROFILE
 def profile_create(request):
     if request.method == "POST":
         form = ProfileCardForm(request.POST, request. FILES)
@@ -162,7 +162,7 @@ def profile_create(request):
     }
     return render(request, 'system/home/form.html', context)
 
-# Update
+# UPDATE CARD PROFILE
 def profile_update(request, pk):
     profile_cards = get_object_or_404(ProfileCard, pk=pk)
     if request.method == "POST":
@@ -178,7 +178,7 @@ def profile_update(request, pk):
     }
     return render(request, 'form.html', context)
 
-# Delete
+# DELETE CARD PROFILE
 def profile_delete(request, pk):
     profile_cards = get_object_or_404(ProfileCard, pk=pk)
     if request.method== 'POST':
@@ -191,7 +191,10 @@ def profile_delete(request, pk):
     }
     return render(request,'form-delete.html', context)
 
-# ===== CRUD PROGRAMAS ======
+
+
+# ========== SISTEMA ADMIN ==========
+# ===== CRUD PROGRAMAS =====
 def program_list_system(request):
     programs = Program.objects.all()
     return render(request, 'system/programs/programs-list.html', {'programs': programs})
@@ -248,12 +251,22 @@ def program_delete(request, pk):
     }
     return render(request,'form-delete.html', context)
 
-# EP PROGRAMAS
+# ===== CRUD EPISODIOS =====
+# EPISODIOS PROGRAMAS
+# LIST EPISODIOS
+def programep_list(request, pk):
+    program = get_object_or_404(Program, pk=pk)
+    programep = ProgramEp.objects.filter(program=program) 
+    return render(request, 'system/programs/episodes-list.html', {'programep': programep, 'program':program})
+
+# DETAIL/LIST EPISODIOS
 def program_detail(request, pk):
     program = get_object_or_404(Program, pk=pk)
     eps = ProgramEp.objects.filter(program=program).order_by("timestamp")
     return render(request, 'program/detail.html', {'program': program, 'eps': eps})
 
+
+# CREATE EPISODIOS
 @login_required
 def programep_create(request, pk):
     program = get_object_or_404(Program, pk=pk)
@@ -262,17 +275,49 @@ def programep_create(request, pk):
         if form.is_valid():
             form.instance.program = program
             form.save()
-            return redirect('program_detail', pk=program.pk)
+            return redirect('programep_list', pk=program.pk)
     else:
         form = ProgramEpForm()
     context = {
         'form': form,
-        'title':'Criar um novo episodio'
+        'program': program,
+        'title':f'Criar um novo episodio para {program.name}'
     }
     return render(request, 'form.html', context)
 
-# Update
+# UPDATE
+@login_required
+def programep_update(request, pk):
+    programep = get_object_or_404(ProgramEp, pk=pk)
+    if request.method == "POST":
+        form = ProgramEpForm(request.POST, request.FILES, instance=programep)
+        if form.is_valid():
+            form.save()
+            return redirect('programep_list', pk=programep.program.pk)
+    else:
+        form = ProgramEpForm(instance=programep)
+    context = {
+        'form': form,
+        'title':  f"Editar o episodio {programep}"
+    }
+    return render(request, 'form.html', context)
 
+# DELETE 
+@login_required
+def programep_delete(request, pk):
+    programep = get_object_or_404(ProgramEp, pk=pk)
+    program = programep.program.pk
+
+    if request.method == 'POST':
+        programep.delete()
+        return redirect('programep_list', pk=program)
+    context = {
+        'object': programep,
+        'program': program,
+        'title':f"Deletar o episodio {programep}",
+        'message':f"Tem certeza que deseja deletar o episodio {programep}?"
+    }
+    return render(request,'form-delete.html', context)
 
 
 
@@ -289,8 +334,8 @@ def pedidos_list(request):
         if form.is_valid():
             # form.instance.author = request.user
             form.save()
-            return redirect('pedidos_list') 
-    else:   
+            return redirect('pedidos_list')
+    else:
         form = PedidosForm()
 
     context = {
@@ -312,7 +357,7 @@ def register(request):
             password  = form.cleaned_data['password1']
             user = authenticate(username=username, password=password)
             if user is not None:
-                login(request, user)  
+                login(request, user)
                 return redirect('index')
     else:
         form = UserCreationForm()
