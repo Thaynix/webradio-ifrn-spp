@@ -379,7 +379,9 @@ body {
     color: #FFF;
 }
 
-
+.asteriskField {
+    display: none; 
+}   
 
 
 
