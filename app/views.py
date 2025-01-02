@@ -322,23 +322,24 @@ def programep_delete(request, pk):
 # CRUD PEDIDOS DE MUSICAS
 # List e Create
 # @login_required
-def pedidos_list(request):
+def pedidos_list_system(request):
     musiclist = Pedidos.objects.all()
+    return render(request, 'system/music-request/music-request-list.html', {'musiclist': musiclist})
 
+def pedidos_create(request):
     if request.method == "POST":
         form = PedidosForm(request.POST)
         if form.is_valid():
-            # form.instance.author = request.user
             form.save()
-            return redirect('pedidos_list')
+            return redirect('pedidos_create')
     else:
         form = PedidosForm()
-
     context = {
         'form': form,
-        'musiclist': musiclist,
+        'title':'PEÇA UMA MUSICA'
     }
-    return render(request, 'music-requests/music-request-list.html', context)
+    return render(request, 'form.html', context)
+
 
 # CALENDARIO
 def calendar(request):

@@ -44,8 +44,8 @@ urlpatterns = [
     path('<int:pk>/deletar/episodios', programep_delete, name='programep_delete'),
 
     # CRUD PEDIDOS
-    path('pedidos', pedidos_list, name='pedidos_list'),
-
+    path('sistema/pedidos', pedidos_list_system, name='pedidos_list'),
+    path('pedidos/', pedidos_create, name='pedidos_create'),
     # CRUD CALENDARIO
     path('calendario/', calendar_list, name='calendar_list'),
     # path('cadastrar/calendario/', calendar_create, name='calendar_create'),

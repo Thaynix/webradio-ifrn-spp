@@ -1,0 +1,52 @@
+{% extends "system/base.html" %}
+
+{% block title %}Programas{% endblock title %}
+
+{% block content %}
+<div class="container-fluid content ">
+  <div class="row">
+    <div class="col-12 d-flex header-main">
+      <div class="text">
+        PEDIDOS DE MUSICA
+      </div>
+      
+      <div class="col-5 pt-3">
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-search btn-outline" type="submit"><i class='bx bx-search-alt'></i></button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid table-content pt-5 ps-0">
+    <div class="row">
+      <div class="col">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">NOME</th>
+              <th scope="col">MUSICA</th>
+              <th scopa="col">CANTOR</th>
+              <th scopa="col">DATA</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for object in musiclist %}
+            <tr>
+              <th scope="row">{{ object.author}}</th>
+              <th>{{ object.description}}</th>
+              <th>{{ object.singer}}</th>
+              <th>{{ object.date}}</th>
+              <th>
+                <a href="" type="button" class="btn btn-success"><i class='bx bxs-check-circle'></i></a>
+                <a href="" type="button" class="btn btn-danger"><i class='bx bxs-x-circle' ></i></a>
+              </th>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+  </div>
+</div>
+{% endblock content %}
