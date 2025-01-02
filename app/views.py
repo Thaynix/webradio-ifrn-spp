@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Program, WarningCard, ProfileCard, ImageCarousel, AboutRadio, ProgramEp, Pedidos
+from .models import Program, WarningCard, ProfileCard, ImageCarousel, AboutRadio, ProgramEp, Pedidos, Calendar
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
-from .forms import ProgramForm, UserForm, ImageCarouselForm, WarningCardForm, AboutRadioForm, ProfileCardForm, PedidosForm, ProgramEpForm
+from .forms import ProgramForm, UserForm, ImageCarouselForm, WarningCardForm, AboutRadioForm, ProfileCardForm, PedidosForm, ProgramEpForm, CalendarForm
 from django.contrib.auth import authenticate, login
 
 def index(request):
@@ -319,11 +319,7 @@ def programep_delete(request, pk):
     }
     return render(request,'form-delete.html', context)
 
-
-
-
 # CRUD PEDIDOS DE MUSICAS
-
 # List e Create
 # @login_required
 def pedidos_list(request):
@@ -344,7 +340,27 @@ def pedidos_list(request):
     }
     return render(request, 'music-requests/music-request-list.html', context)
 
+# CALENDARIO
+def calendar(request):
+    return render(request, 'calendar/calendar.html')
 
+#LIST
+def calendar_list(request):
+    calendar = Calendar.objects.all()
+    
+    if request.method == "POST":
+        form = CalendarForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('calendar_list')
+    else:
+        form = CalendarForm()
+
+    context = {
+        'form': form,
+        'calendar': calendar,
+    }
+    return render(request, 'calendar/calendar.html', context)
 
 # ===== AUTH =====
 # Register

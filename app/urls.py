@@ -43,9 +43,14 @@ urlpatterns = [
     path('<int:pk>/atualizar/episodios', programep_update, name='programep_update'),
     path('<int:pk>/deletar/episodios', programep_delete, name='programep_delete'),
 
-
     # CRUD PEDIDOS
     path('pedidos', pedidos_list, name='pedidos_list'),
+
+    # CRUD CALENDARIO
+    path('calendario/', calendar_list, name='calendar_list'),
+    # path('cadastrar/calendario/', calendar_create, name='calendar_create'),
+    # path('<int:pk>/atualizar/calendario', calendar_update, name='calendar_update'),
+    # path('<int:pk>/deletar/calendario', calendar_delete, name='calendar_delete'),
     
     # AUTH
     path('login/', LoginView.as_view(), name='login'),

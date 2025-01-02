@@ -1,5 +1,5 @@
 from django import forms
-from .models import Program, ImageCarousel, WarningCard, AboutRadio, ProfileCard, Pedidos, ProgramEp
+from .models import Program, ImageCarousel, WarningCard, AboutRadio, ProfileCard, Pedidos, ProgramEp, Calendar
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
@@ -41,6 +41,16 @@ class PedidosForm(forms.ModelForm):
         model = Pedidos
         fields = ['description', 'singer', 'author']
 
+class CalendarForm(forms.ModelForm):
+    class Meta:
+        model = Calendar
+        fields = ['date','color', 'program']
+        widgets = {
+            'date': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
+            'color': forms.Select(attrs={'class': 'form-select'}),
+            'program': forms.Select(attrs={'class': 'form-select'}),
+        }
+        
 
 def check_audio_extension(filename):
     """
@@ -66,3 +76,4 @@ class ProgramEpForm(forms.ModelForm):
             self.add_error("audio", "É necessário cadastrar com um arquivo de áudio.")
         
         return cleaned_data
+    

@@ -77,6 +77,29 @@ class ProgramEp(models.Model):
     def __str__(self):
         return self.title
     
+
+# Agenda pt.2
+class Calendar(models.Model):
+    COLORS_CHOICES = [
+        ('#005c81', 'Azul'),
+        ('#d40f60', 'Rosa'),
+        ('#f84339', 'Laranja'),
+        ('#e79a32', 'Amarelo'),
+        ('#368986', 'Verde'),
+        ('#7345d6', 'Roxo'),
+        ('#99b333', 'Verde-claro'),
+    ]
+    
+    date = models.DateField(verbose_name="Data do programa")
+    program = models.ForeignKey(Program, on_delete=models.PROTECT, null=True, blank=True)
+    color = models.CharField(max_length=7, choices=COLORS_CHOICES, default='#005c81')
+
+    class Meta:
+        ordering = ['-date']
+    
+    def __str__(self):
+        return self.date.strftime("%d/%m/%Y")
+    
 # Calendario de eventos.
 class Event(models.Model):
     name = models.CharField(max_length=100, verbose_name='nome')
