@@ -1,0 +1,104 @@
+:root {
+  /* ===== COLORS ===== */
+  --body-color: #E4E9F7;
+  --sidebar-color: #2c475a;
+  --primary-color: #40573D;
+  --sidebar-color-light: #F6F5FF;
+  --toggle-color: #DDD;
+  --text-color: #eaeaea;
+  --header-color-light: #E53834;
+  --header-color: #b21515;
+  --card-danger-color: #e15244;
+  --card-warning-color: #f8a348;
+  --card-primary-color: #3a7b50;
+  /* --sideebar-color-antiga: #668C65; */
+  /* ===== TRANSITIONS ===== */
+  --tran-03: all 0.3s ease;
+  --tran-04: all 0.4s ease;
+  --tran-05: all 0.5s ease;
+  /* ===== FONTS ===== */
+
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+}
+
+#calendar{
+  background-color: #322c8e;
+  /* margin: 20px; */
+  /* border: black 3px solid; */
+  border-radius: 20px;
+  padding: 2% 1% 1% 1%;
+  width: 600px;
+}
+
+h1 {
+  margin: 20px;
+}
+
+.fc-toolbar-title{
+  font-family: 'Poppins';
+  color: var(--text-color);
+}
+
+.fc-event-time{
+  display: none;
+}
+
+.fc-daygrid-event-dot{
+  width: 10px;
+  height: 10px;
+  border-radius: 25px;
+}
+
+.fc-next-button {
+  background-color: #007bff; /* Nova cor de fundo */
+  color: #ffffff;           /* Cor do texto */
+  border-color: #0056b3;    /* Cor da borda */
+}
+
+.fc-next-button:hover {
+  background-color: #0056b3; /* Cor de fundo ao passar o mouse */
+  border-color: #004085;     /* Cor da borda ao passar o mouse */
+  color: #ffffff;            /* Cor do texto ao passar o mouse */
+}
+
+.fc-next-button:focus {
+  outline: none;             /* Remove o contorno padrão ao focar */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Efeito de foco */
+}
+
+#calendar a {
+  font-size: 1.2rem;
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+/* #calendar .fc-daygrid-event-harness :hover{
+  background-color: red;
+} */
+
+
+#calendar td,#calendar tr, #calendar th, #calendar table{
+  /* border-color: lightcoral; */
+  border: none;
+}
+#calendar .fc-day-today{
+  background-color: #c4037a;
+}
+
+#calendar .fc-day-other{
+  background-color: #c4037a;
+  opacity: 0.2;
+}
+#calendar .fc-popover{
+  background-color: palegreen;
+
+}
+
+/* LEGENDA */
+.dot-legend{
+  border: 10px solid;
+  border-radius: 25px;
+  width: 10px;
+  height: 10px;
+}

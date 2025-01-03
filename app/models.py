@@ -41,12 +41,22 @@ class ProfileCard(models.Model):
         return self.position
 
 class Pedidos (models.Model):
-    singer = models.CharField(null=True,max_length=90, verbose_name="Cantor")
+    # CHOICE aprovado - negado - pendente
+    # Campo Choice default pendente
+    STATUS_CHOICES = [
+        ('aprovado', 'aprovado'),
+        ('negado', 'negado'),
+        ('pendente', 'pendente'),
+    ]
+    
+    singer = models.CharField(null=True,max_length=90, verbose_name="Artista/Banda")
     description = models.CharField(max_length=225, verbose_name="Descrição")
     author = models.CharField(max_length=90, verbose_name="Autor", help_text="Digite seu nominho")
     date = models.DateTimeField(auto_now_add=True, verbose_name="Cadastrado em")
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='pendente')
+    
     def __str__(self):
-        return self.singer
+        return f"{self.description} - {self.singer}"
 
 
 # Cards dos programas na pagina de programação
@@ -81,13 +91,13 @@ class ProgramEp(models.Model):
 # Agenda pt.2
 class Calendar(models.Model):
     COLORS_CHOICES = [
-        ('#005c81', 'Azul'),
-        ('#d40f60', 'Rosa'),
-        ('#f84339', 'Laranja'),
-        ('#e79a32', 'Amarelo'),
-        ('#368986', 'Verde'),
-        ('#7345d6', 'Roxo'),
-        ('#99b333', 'Verde-claro'),
+        ('#005c81', 'azul'),
+        ('#d40f60', 'rosa'),
+        ('#f84339', 'laranja'),
+        ('#e79a32', 'amarelo'),
+        ('#368986', 'verde'),
+        ('#7345d6', 'roxo'),
+        ('#99b333', 'verde-claro'),
     ]
     
     date = models.DateField(verbose_name="Data do programa")
@@ -100,18 +110,7 @@ class Calendar(models.Model):
     def __str__(self):
         return self.date.strftime("%d/%m/%Y")
     
-# Calendario de eventos.
-class Event(models.Model):
-    name = models.CharField(max_length=100, verbose_name='nome')
-    date = models.DateField()
-    hour = models.TimeField()
-    description = models.CharField(max_length=255, verbose_name='description')
 
-    class Meta:
-        ordering = ['date']
-
-    def __str__(self):
-        return self.name
 
 
 

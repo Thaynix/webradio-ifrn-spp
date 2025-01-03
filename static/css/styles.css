@@ -137,8 +137,8 @@ body {
     width: calc(100% - 120px);
     height: 100vh;
     margin-right: 10px;
-    margin-top: 80px;
-    margin-bottom: 80px;
+    /* margin-top: 80px; */
+    /* margin-bottom: 80px; */
 }
 
 .text-main {
@@ -149,11 +149,7 @@ body {
     font-weight: 700;
 }
 
-.carousel-content {
-    margin-top: 2.5rem;
-}
-
-/* ========== PLAYER ========== */
+/* ========== PLAYER ========== 
 .playbody {
     width: calc(100% - 120px);
     height: 60px;
@@ -214,6 +210,7 @@ body {
     transform: scale(1.1);
     cursor: pointer;
 }
+    */
 
 /* ========== CARDS ========== */
 
@@ -383,126 +380,5 @@ body {
 
 
 
-/* ========== RESPONSIVE ========== */
 
-@media (max-width: 768px) {
-    .sidebar {
-        width: 100%;
-        flex-direction: row;
-        height: 70px;
-        position: fixed;
-        padding: 0;
-        z-index: 1000;
-        top: 0;
-        left: 0;
-        background-color: var(--primary-color);
-        border-radius: 0;
-    }
-
-    .sidebar .logo-img {
-        display: none;
-    }
-
-    .sidebar ul {
-        margin-top: 20px;
-        margin-left: 0;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        width: 100%;
-        height: 100%;
-        padding: 0;
-    }
-
-    .sidebar ul li,
-    .sidebar-footer {
-        width: 50%;
-        height: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 0;
-
-    }
-
-    .sidebar ul li:hover .nav-text {
-        display: flex;
-        justify-content: center;
-        text-transform: uppercase;
-        font-size: 0.7rem;
-        font-weight: 700;
-        color: var(--text-color);
-        transform: translateY(-500%);
-        transition: var(--tran-05);
-    }
-
-    .sidebar .btn-menu:hover .nav-icon {
-        transform: scale(1.05);
-        transition: var(--tran-03);
-        background: var(--primary-color);
-        border-radius: 50px;
-        padding: 20px;
-        margin-top: 75px;
-        box-shadow: none;
-    }
-
-    .sidebar .btn-menu:hover {
-        margin-top: 20px;
-        margin-bottom: 50px;
-        transition: var(--tran-03);
-    }
-
-    .container-offc {
-        display: block;
-    }
-
-    .content {
-        margin-left: 0;
-        padding-top: 70px;
-        /* margin-bottom: 80px; */
-    }
-
-    .content-about{
-        margin-bottom: 90px;
-    }
-
-    .header {
-        background-color: var(--primary-color);
-        height: 100px;
-        width: 100%;
-        left: 0;
-        top: 90vh;
-        border-radius: 30px 30px 0 0;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .playbody {
-        background: none;
-        width: 100%;
-        top: 93%;
-        left: 0;
-        margin-bottom: 15px;
-        transition: var(--tran-03);
-        position: unset;
-    }
-
-    .player {
-        width: 100%;
-        padding: 0;
-        margin-top: 20px;
-    }
-
-    .main {
-        width: 100%;
-        height: 100vh;
-        /* margin-top: 10px; */
-        padding-bottom: 80px;
-    }
-
-    .card-program {
-        min-width: 15rem;
-        max-width: 25rem;
-    }
-}
 

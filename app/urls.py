@@ -44,10 +44,14 @@ urlpatterns = [
     path('<int:pk>/deletar/episodios', programep_delete, name='programep_delete'),
 
     # CRUD PEDIDOS
-    path('sistema/pedidos', pedidos_list_system, name='pedidos_list'),
     path('pedidos/', pedidos_create, name='pedidos_create'),
+    path('sistema/pedidos/', pedidos_list_system, name='pedidos_list_system'),
+    path('<int:pk>/deletar/pedidos/', pedidos_delete, name='pedidos_delete'),
+    path('<int:pk>/aceitar/pedidos/', pedido_aceito, name='pedido_aceito'),
+    path('<int:pk>/negar/pedidos/', pedido_negado, name='pedido_negado'),
+    
     # CRUD CALENDARIO
-    path('calendario/', calendar_list, name='calendar_list'),
+    path('calendario/', calendar, name='calendar'),
     # path('cadastrar/calendario/', calendar_create, name='calendar_create'),
     # path('<int:pk>/atualizar/calendario', calendar_update, name='calendar_update'),
     # path('<int:pk>/deletar/calendario', calendar_delete, name='calendar_delete'),

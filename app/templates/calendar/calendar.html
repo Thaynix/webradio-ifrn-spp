@@ -6,16 +6,60 @@
 {% block content %}
 <div class="container-fluid main">
     <div class="row">
-        <div class="col">
-            <h1>Adicionar Evento ao Calendário</h1>
-            <form action="{% url 'calendar_list' %}" method="post">
-                {% csrf_token %}
-                {{ form|crispy }}
-
-                <button class="btn btn-dark" type="submit">Salvar</button>
-            </form>
-            
+        <div class="col">    
+            <div class="d-flex gap-3 pt-5">
+                <div id="calendar"></div>
+            </div>
         </div>
+
+        <div class="col">
+            <div class="legend-group">
+                <h1>CALENDÁRIO LINDO</h1>
+                {% for program in programs %}
+                <div class="d-flex gap-2">
+                    <div class="dot-legend" style="border-color: red"></div>
+                    <span>{{program.name}}</span>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
     </div>
+    
+    
+    
+    
 </div>
+{% endblock %}
+
+{% block script %}
+  <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js'></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const calendarEl = document.getElementById('calendar');
+        const calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            locale: 'pt-br',
+            buttonText: {today: 'Hoje'},
+            dayMaxEventRows: true, // for all non-TimeGrid views
+            views: {
+                timeGrid: {
+                    dayMaxEventRows: 6 // adjust to 6 only for timeGridWeek/timeGridDay
+                }
+            },
+            events: [
+                // {% for event in events %}
+                {
+                    title: '{{ event.program.name }}',
+                    start: '{{ event.date | date:"Y-m-d" }}T12:00:00',
+                    id: '{{event.id}}',
+                    borderColor: '{{event.color}}'
+                }, 
+                // {% endfor %}
+            ],
+        });
+        calendar.render();
+    });
+</script>
+
 {% endblock %}

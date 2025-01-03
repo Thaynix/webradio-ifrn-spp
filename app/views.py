@@ -321,10 +321,6 @@ def programep_delete(request, pk):
 
 # CRUD PEDIDOS DE MUSICAS
 # List e Create
-# @login_required
-def pedidos_list_system(request):
-    musiclist = Pedidos.objects.all()
-    return render(request, 'system/music-request/music-request-list.html', {'musiclist': musiclist})
 
 def pedidos_create(request):
     if request.method == "POST":
@@ -334,16 +330,61 @@ def pedidos_create(request):
             return redirect('pedidos_create')
     else:
         form = PedidosForm()
+
     context = {
         'form': form,
         'title':'PEÇA UMA MUSICA'
     }
-    return render(request, 'form.html', context)
+    return render(request, 'music-requests/form.html', context)
 
+## View pega o pk do pedido, muda pra aprovado
+def pedido_aceito(request, pk):
+    pedido = get_object_or_404(Pedidos, pk=pk)
+
+    # se pedido diferente de pedendte, redirect para lista
+    # if pedido.status != 'pendente':
+    #     return redirect('pedidos_list_system')
+    
+    if request.method == 'POST':
+        pedido.status = 'aprovado'
+        pedido.save()
+    return redirect('pedidos_list_system')
+
+## View pega o pk do pedido, muda pra negado
+def pedido_negado(request, pk):
+    pedido = get_object_or_404(Pedidos, pk=pk)
+    if request.method == 'POST':
+        pedido.status = 'negado'
+        pedido.save()
+    return redirect ('pedidos_list_system')
+
+@login_required
+def pedidos_list_system(request):
+    musiclist = Pedidos.objects.all()
+    return render(request, 'system/music-request/music-request-list.html', {'musiclist': musiclist})
+
+@login_required
+def pedidos_delete(request, pk):
+    music = get_object_or_404(Pedidos, pk=pk)
+    if request.method == 'POST':
+        music.delete()
+        return redirect('pedidos_list_system')
+    context = {
+        'object': music,
+        'title':f"Deletar o pedido {music}",
+        'message':f"Tem certeza que deseja deletar o pedido {music}?"
+    }
+    return render(request,'form-delete.html', context)
 
 # CALENDARIO
 def calendar(request):
-    return render(request, 'calendar/calendar.html')
+    context = {}
+    events = Calendar.objects.all()
+    context['events'] = events
+    programs = Program.objects.all()
+    context['programs'] = programs
+
+    return render(request, 'calendar/calendar.html', context)
 
 #LIST
 def calendar_list(request):

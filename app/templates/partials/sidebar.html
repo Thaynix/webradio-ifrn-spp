@@ -9,19 +9,19 @@
           </header> {% endcomment %}
           <ul>
               <li>
-                  <a href={% url "index" %} class="btn-menu">
+                  <a href="{% url 'index' %}" class="btn-menu">
                     <i class="bi bi-house-heart-fill nav-icon"></i>
                     <span class="nav-text">Inicio</span>
                   </a>
               </li>
               <li>
-                  <a href={% url "program_list" %} class="btn-menu">
+                  <a href="{% url 'program_list' %}" class="btn-menu">
                     <i class="bi bi-mic-fill nav-icon"></i>
                     <span class="nav-text">Programas</span>
                   </a>
               </li>
               <li>
-                  <a href="{% url 'calendar_list' %}" class="btn-menu">
+                  <a href="{% url 'calendar' %}" class="btn-menu">
                     <i class="bi bi-calendar-range-fill nav-icon"></i>
                     <span class="nav-text">Agenda</span>
                   </a>

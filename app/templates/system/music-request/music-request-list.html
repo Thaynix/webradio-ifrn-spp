@@ -9,7 +9,7 @@
       <div class="text">
         PEDIDOS DE MUSICA
       </div>
-      
+
       <div class="col-5 pt-3">
         <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -27,20 +27,29 @@
             <tr>
               <th scope="col">NOME</th>
               <th scope="col">MUSICA</th>
-              <th scopa="col">CANTOR</th>
-              <th scopa="col">DATA</th>
+              <th scope="col">CANTOR</th>
+              <th scope="col">DATA</th>
+              <th>STATUS</th>
             </tr>
           </thead>
           <tbody>
             {% for object in musiclist %}
             <tr>
-              <th scope="row">{{ object.author}}</th>
-              <th>{{ object.description}}</th>
-              <th>{{ object.singer}}</th>
-              <th>{{ object.date}}</th>
-              <th>
-                <a href="" type="button" class="btn btn-success"><i class='bx bxs-check-circle'></i></a>
-                <a href="" type="button" class="btn btn-danger"><i class='bx bxs-x-circle' ></i></a>
+              <th scope="row">{{ object.author }}</th>
+              <th>{{ object.description }}</th>
+              <th>{{ object.singer }}</th>
+              <th>{{ object.date }}</th>
+              <th>{{ object.status }}</th>
+              <th class="d-flex gap-3">
+                <form action="{% url 'pedido_aceito' object.pk %}" method="post">
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-success"><i class='bx bxs-check-circle'></i></button>
+                </form>
+                <form action="{% url 'pedido_negado' object.pk %}" method="post">
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-warning"><i class='bx bxs-x-circle' ></i></button>                  
+                </form>
+                <a href="{% url 'pedidos_delete' object.pk %}" type="button" class="btn btn-danger"><i class='bx bxs-x-circle' ></i></a>
               </th>
             </tr>
             {% endfor %}
