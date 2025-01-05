@@ -1,6 +1,8 @@
 /* ========== RESPONSIVE ========== */
 
 @media (max-width: 768px) {
+
+    /* ===== NAVBAR ===== */
     .navbar-toggler {
         display: block;
 
@@ -24,71 +26,30 @@
     }
     
     .sidebar {
-        width: 100%;
-        flex-direction: row;
-        height: 70px;
-        position: fixed;
-        padding: 0;
-        z-index: 1000;
-        top: 0;
-        left: 0;
-        background-color: var(--primary-color);
-        border-radius: 0;
-
         display: none;
     }
 
-    .sidebar .logo-img {
-        display: none;
-    }
-
-    .sidebar ul {
-        margin-top: 20px;
-        margin-left: 0;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
+    .offcanvas {
         width: 100%;
-        height: 100%;
-        padding: 0;
-    }
-
-    .sidebar ul li,
-    .sidebar-footer {
-        width: 50%;
-        height: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 0;
-
-    }
-
-    .sidebar ul li:hover .nav-text {
-        display: flex;
-        justify-content: center;
-        text-transform: uppercase;
-        font-size: 0.7rem;
-        font-weight: 700;
+        height: 100vh;
+        background-color: var(--color-32);
         color: var(--text-color);
-        transform: translateY(-500%);
-        transition: var(--tran-05);
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 20px;
+        transition: var(--tran-03);
     }
 
-    .sidebar .btn-menu:hover .nav-icon {
-        transform: scale(1.05);
-        transition: var(--tran-03);
-        background: var(--primary-color);
-        border-radius: 50px;
-        padding: 20px;
-        margin-top: 75px;
-        box-shadow: none;
+    .active {
+        color: var(--text-color);
     }
 
-    .sidebar .btn-menu:hover {
-        margin-top: 20px;
-        margin-bottom: 50px;
-        transition: var(--tran-03);
+    .nav-link {
+        color: var(--text-color);
     }
 
     .container-offc {

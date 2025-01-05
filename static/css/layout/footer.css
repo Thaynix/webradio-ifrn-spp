@@ -1,14 +1,15 @@
 /* ========== FOOTER ========== */
 
 .footer {
-    width: 50%;
-    background-color: var(--sidebar-color);
-    color: #FFF;
+    width: 100%;
+    background-color: var(--color-11);
+    color: var(--text-color);
     text-align: center;
     padding: 40px 0;
-    font-size: 13px;
+    font-size: 1rem;
     font-family: Arial, sans-serif;
-    border-radius: 20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 
 }
 
