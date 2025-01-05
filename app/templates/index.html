@@ -71,42 +71,42 @@
                     <div class="row">
                         <div class="col pb-3">
                             {% for AboutRadio in about %}
-                            <div class="row">
-                                <div class="col pb-3 d-flex justify-content-center p-3 rounded">
-                                    {% if AboutRadio.image %}
-                                    <img src="{{ AboutRadio.image.url }}" class="img-about align-self-center" alt="...">
-                                    {% endif %}
-                                </div>
+                            <div class="col">
+                                <p class="about-text">{{ AboutRadio.text }}</p>
                             </div>
                         </div>
-                        <div class="col">
-                            <p class="about-text">{{ AboutRadio.text }}</p>
-                            {% endfor %}
-                            <div class="row">
-                                <div class="col pb-3">
-                                    <div class="owl-carousel carousel-cards-team owl-theme">
-                                        {% for ProfileCard in profilecards %}
-                                        <div class="item">
-                                            <div class="equipe-card">
-                                                <div class="card card-eqp">
-                                                    <div class="card-body cb-eqp">
-                                                        {% if ProfileCard.image %}
-                                                        <img src="{{ ProfileCard.image.url }}" class="card-img-eqp" alt="...">
-                                                        {% else %}
-                                                        <p>Nenhuma imagem disponível</p>
-                                                        {% endif %}
-                                                        <h5 class="card-text name-eqp">{{ ProfileCard.name }}</h5>
-                                                        <p class="card-title pos-eqp m-0">{{ ProfileCard.position }}</p>
-                                                        <p class="card-text ct-desc m-0">{{ ProfileCard.description }}</p>
-                                                    </div>
-                                                </div>
+                        <div class="col pb-3 d-flex justify-content-center">
+                            {% if AboutRadio.image %}
+                            <img src="{{ AboutRadio.image.url }}" class="img-about align-self-center" alt="...">
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                    </div>
+                    
+                    
+                    <div class="row">
+                        <div class="col d-flex align-items-center pb-3">
+                            <div class="owl-carousel carousel-cards-team owl-theme">
+                                {% for ProfileCard in profilecards %}
+                                <div class="item">
+                                    <div class="equipe-card">
+                                        <div class="card card-eqp">
+                                            <div class="card-body cb-eqp">
+                                                {% if ProfileCard.image %}
+                                                <img src="{{ ProfileCard.image.url }}" class="card-img-eqp" alt="...">
+                                                {% else %}
+                                                <p>Nenhuma imagem disponível</p>
+                                                {% endif %}
+                                                <h5 class="card-text name-eqp">{{ ProfileCard.name }}</h5>
+                                                <p class="card-title pos-eqp m-0">{{ ProfileCard.position }}</p>
+                                                <p class="card-text ct-desc m-0">{{ ProfileCard.description }}</p>
                                             </div>
                                         </div>
-                                        {% empty %}
-                                        <p>nao tem nada</p>
-                                        {% endfor %}
                                     </div>
                                 </div>
+                                {% empty %}
+                                <p>nao tem nada</p>
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
@@ -114,7 +114,7 @@
             </div>
         </section>
 
-        <footer class="container-fluid footer ">
+        <footer class="container-fluid s footer ">
             <div>
                 <p>&copy; 2024 <strong>Your Website</strong>. All rights reserved.</p>
             </div>
