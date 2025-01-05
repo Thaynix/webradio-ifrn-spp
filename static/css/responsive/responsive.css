@@ -1,38 +1,28 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-:root {
-    /* ===== COLORS ===== */
-    --body-color: #E4E9F7;
-    --sidebar-color: #2c475a;
-    --primary-color: #40573D;
-    --sidebar-color-light: #F6F5FF;
-    --toggle-color: #DDD;
-    --text-color: #eaeaea;
-    --header-color-light: #E53834;
-    --header-color: #b21515;
-    --card-danger-color: #e15244;
-    --card-warning-color: #f8a348;
-    --card-primary-color: #3a7b50;
-    /* --sideebar-color-antiga: #668C65; */
-    /* ===== TRANSITIONS ===== */
-    --tran-03: all 0.3s ease;
-    --tran-04: all 0.4s ease;
-    --tran-05: all 0.5s ease;
-    /* ===== FONTS ===== */
-
-    font-size: 16px;
-    font-family: "Poppins", sans-serif;
-}
-
 /* ========== RESPONSIVE ========== */
 
 @media (max-width: 768px) {
+    .navbar-toggler {
+        display: block;
+
+        border: 0;
+    }
+
+    .btn-toggler-header:focus {
+        outline: none;
+        box-shadow: none;
+    }
+
+    .icon-menu:hover {
+ 
+        transform: scale(1.2);
+       transition: ease-in-out var(--tran-03);
+    }
+
+    .icon-menu{
+        color: var(--text-color);
+        font-size: 2rem;
+    }
+    
     .sidebar {
         width: 100%;
         flex-direction: row;
@@ -44,6 +34,8 @@
         left: 0;
         background-color: var(--primary-color);
         border-radius: 0;
+
+        display: none;
     }
 
     .sidebar .logo-img {
@@ -103,9 +95,17 @@
         display: block;
     }
 
+    .main {
+        width: 100%;
+        padding: 0;
+        /* height: 100vh; */
+        /* margin-top: 10px; */
+        /* padding-bottom: 80px; */
+    }
+
     .content {
         margin-left: 0;
-        padding-top: 70px;
+        /* padding-top: 20px; */
         /* margin-bottom: 80px; */
     }
 
@@ -114,13 +114,13 @@
     }
 
     .header {
-        background-color: var(--primary-color);
-        height: 100px;
+        background-color: var(--color-32);
+        height: 60px;
         width: 100%;
         left: 0;
-        top: 90vh;
-        border-radius: 30px 30px 0 0;
-        justify-content: center;
+        /* top: 90vh; */
+        /* border-radius: 30px 30px 0 0; */
+        /* justify-content: center; */
         align-items: center;
     }
 

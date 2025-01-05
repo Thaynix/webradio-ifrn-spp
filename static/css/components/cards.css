@@ -1,0 +1,124 @@
+/* ========== CARDS ========== */
+
+.card-img {
+    object-fit: cover;
+    aspect-ratio: 1/1;
+    border-radius: 10px;
+}
+
+.card-img:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.program-img {
+    object-fit: cover;
+    aspect-ratio: 1/1;
+}
+
+.btn-img-program {
+    background: transparent;
+    border: none;
+}
+
+.img-container {
+    padding-right: 1rem;
+    padding-bottom: 1rem;
+}
+
+/*
+.card-link {
+    width: 140px;
+    height: 140px;
+} */
+
+.card-carousel {
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--color-13);
+    border-radius: 20px;
+}
+
+.card-carousel:hover {
+    transform: scale(1.01);
+    transition: var(--tran-03);
+}
+
+.cb-avisos {
+    align-items: center;
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 20px;
+
+
+    color: var(--text-color);
+
+}
+.card-body {
+    word-wrap: break-word;
+}
+.card-text {
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.card-eqp {
+    border-radius: 30px;
+
+    background: transparent;
+    border: none;
+
+    max-width: 12rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
+
+.card-img-eqp {
+    /* width: 100px;
+    height: 160px; */
+    border-radius: 50%;
+    border: 3px solid var(--color-12);
+    padding: 3px;
+    object-fit: cover;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    aspect-ratio: 1/1;
+
+}
+
+.pos-eqp {
+    font-weight: 500;
+    font-size: 1rem;
+    color: var(--color-13);
+}
+
+.name-eqp {
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: var(--color-12);
+    margin: 0;
+
+
+}
+.ct-desc {
+    padding-top: 10px;
+    font-weight: 300;
+    font-size: 1rem;
+    color: var(--color-13);
+}
+
+/* olhar isso aqui dps */
+.img-about{
+    width: 332px;
+    height: 245px;
+    object-fit: cover;
+
+}

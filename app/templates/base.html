@@ -20,8 +20,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    <link rel="stylesheet" href="{% static 'css/calendar.css' %}">
-    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+    <link rel="stylesheet" href="{% static 'css/layout/responsive.css' %}">
+
 
 </head>
 
@@ -30,7 +30,7 @@
         {% block sidebar %} {% include "partials/sidebar.html" %} {% endblock %}
         <div class="container-fluid">
             <div class="row">
-                {% comment %} {% block header %} {% include "partials/header.html" %} {% endblock %} {% endcomment %}
+                {% block header %} {% include "partials/header.html" %} {% endblock %}
 
                 {% block content %} {% endblock content %}
 

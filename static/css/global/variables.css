@@ -1,0 +1,76 @@
+:root {
+    /* ===== COLORS ===== */
+    --body-color: #E4E9F7;
+    --body-color2: #fafefe;
+    --sidebar-color: #2c475a;
+    --primary-color: #40573D;
+    --sidebar-color-light: #F6F5FF;
+    --toggle-color: #DDD;
+    --text-color: #eaeaea;
+    --header-color-light: #E53834;
+    --header-color: #b21515;
+    --card-danger-color: #e15244;
+    --card-warning-color: #f8a348;
+    --card-primary-color: #3a7b50;
+
+    /* ===== ESQUEMA DE CORES 01 ===== */
+    --color-1: #031E4E;
+    --color-2: #01678D;
+    --color-3: #018794;
+    --color-4: #f7ddac;
+    --color-5: #fba868;
+    --color-6: #f8682c;
+    --color-7: #f93518;
+
+    /* ===== ESQUEMA DE CORES 02 - MONOCROMATICA - ROXO ===== */
+    --color-9: #000028;
+    --color-10: #0b0737;
+    --color-11: #160d47;
+    --color-12: #201456;
+    --color-13: #2b1a65;
+
+    /* ===== ESQUEMA DE CORES 03 - MONOCROMATICA - PRETO ===== */
+    --color-14: #000006;
+    --color-15: #0c0b15;
+    --color-16: #171625;
+    --color-17: #232034;
+    --color-18: #2e2b43;
+
+    /* ===== ESQUEMA DE CORES 04 - MARROM - LARANJA ===== */
+    --color-19: #3f271f;
+    --color-20: #51372e;
+    --color-21: #8d5529;
+    --color-22: #b97230;
+    --color-23: #bc7c3d;
+    --color-24: #d1a77f;
+
+    /* ===== ESQUEMA DE CORES 05 - SPOTIFY ===== */
+    --color-25: #1DB954;
+    --color-26: #212121;
+    --color-27: #282828;
+    
+
+    /* ===== ESQUEMA DE CORES 06 - NARANJA ===== */
+    --color-28: #f8c9d3;
+    --color-29: #E37B58;
+    --color-30: #d6740b;
+    --color-31: #e95014;
+
+    /* ===== ESQUEMA DE CORES 07 - MEU TEMA ===== */
+    --color-32: #2e229c;
+    
+
+
+    /* ===== TRANSITIONS ===== */
+    --tran-03: all 0.3s ease;
+    --tran-04: all 0.4s ease;
+    --tran-05: all 0.5s ease;
+
+    /* ===== FONTS ===== */
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+
+    /*  ===== DIRECTIONS ===== */
+    --direction-tt: to top;
+    --direction-tr: to right;
+}
