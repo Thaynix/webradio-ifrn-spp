@@ -18,10 +18,25 @@
     text-align: center;
     color: var(--color-33);
     font-family: londonaregular;
-    font-size: 3rem;    
+    font-size: 5rem;    
     letter-spacing: .2rem;
     /* border: 2px solid var(--color-38); */
 }
+
+.roll {
+    color: var(--color-33);
+    text-decoration: none;
+    display: flex;
+    font-size: 8rem;
+    /* text-align: center; */
+    justify-content: center;
+}
+
+.roll i:hover {
+    transform: scale(1.2);
+    transition: var(--tran-05);
+}
+
 
 .apresentation {
     width: 100%;
@@ -32,6 +47,7 @@
     display: flex;
     align-items: center;
 }
+
 
 
 .box {

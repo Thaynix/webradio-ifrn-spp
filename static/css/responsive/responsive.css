@@ -93,7 +93,7 @@
         left: 0;
         margin-bottom: 15px;
         transition: var(--tran-03);
-        /* position: unset; */
+        position: unset;
     }
 
     .player {
