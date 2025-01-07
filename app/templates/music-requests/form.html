@@ -5,25 +5,15 @@
 
 {% block content %}
 <div class="container-fluid main">
-    <div class="row">
-        <div class="col">
-            <h1 class="text-main">FAÇA UM PEDIDO</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-6 form-pedidos">
+            <h1 class="text-main text-center">PEÇA UMA MÚSICA</h1>
             <form action="{% url 'pedidos_create' %}" method="post">
                 {% csrf_token %}
                 {{ form|crispy }}
-                <button class="btn btn-success" type="submit">Enviar</button>
+                <button class="btn btn-success w-100 mt-3" type="submit">Enviar</button>
             </form>
         </div>
     </div>
-{% comment %}     
-    <div class="row">
-        <div class="col">
-            <h2>Pedidos!</h2>
-            {% for pedidos in musiclist %}
-            <p><strong>{{pedidos.author}}</strong>: {{ pedidos.description }} - {{ pedidos.singer }}</p>
-            {% endfor %}
-            
-        </div>
-    </div> {% endcomment %}
 </div>
 {% endblock %}

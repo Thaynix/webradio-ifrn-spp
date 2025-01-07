@@ -1,0 +1,81 @@
+
+@font-face {
+    font-family: 'billoregular';
+    src: url('../fonts/billo___-webfont.woff2') format('woff2'),
+         url('../fonts/billo___-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'super_theoryregular';
+    src: url('../fonts/super_theory-webfont.woff2') format('woff2'),
+         url('../fonts/super_theory-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'londonaregular';
+    src: url('../fonts/londona-reguler-webfont.woff2') format('woff2'),
+         url('../fonts/londona-reguler-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'billo_dreamregular';
+    src: url('../fonts/billd___-webfont.woff2') format('woff2'),
+         url('../fonts/billd___-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'eight_track_program_twoRg';
+    src: url('../fonts/eigh1___-webfont.woff2') format('woff2'),
+         url('../fonts/eigh1___-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'eight_track_program_3regular';
+    src: url('../fonts/eigh3___-webfont.woff2') format('woff2'),
+         url('../fonts/eigh3___-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'eight_track_program_4regular';
+    src: url('../fonts/eigh4___-webfont.woff2') format('woff2'),
+         url('../fonts/eigh4___-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'eight_trackregular';
+    src: url('../fonts/eight___-webfont.woff2') format('woff2'),
+         url('../fonts/eight___-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}

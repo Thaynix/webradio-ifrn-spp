@@ -37,14 +37,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: var(--color-13);
+    background: var(--color-35);
     border-radius: 20px;
 }
 
-.card-carousel:hover {
+/* .card-carousel:hover {
     transform: scale(1.01);
     transition: var(--tran-03);
-}
+} */
 
 .cb-avisos {
     align-items: center;

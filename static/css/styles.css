@@ -2,6 +2,9 @@
 @import url('global/variables.css');
 @import url('global/globals.css');
 
+/* ===== FONTS ===== */
+@import url('global/fonts.css');
+
 /* ===== COMPONENTS ===== */
 @import url('components/cards.css');
 @import url('components/carousel.css');

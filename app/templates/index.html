@@ -1,20 +1,42 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}Inicio{% endblock %}
 
-{% block content %}
+{% block inicio %}
+    <section class="apresentation box">
+        <div class="col-12 content justify-content-center">
+            <div class="container-fluid p-0 home-container">
+                <div class="row">
+                <div class="title-section">
+                    <h1 class="text-main text-logo-home">RÁDIO IFRN-SPP</h1>
+                </div>
+    
+                </div>
+            </div>                
+        </div>
+    </section>
 
+{% endblock inicio %}
+
+
+
+
+{% block content %}
 <div class="container-fluid main">
     <div class="row">
+
+        {% comment %} <div class="box"></div> {% endcomment %}
+
         <section class="home">
             <div class="col-12 content justify-content-center">
                 <div class="container-fluid home-container">
                     <div class="row">
                     <div class="title-section">
-                        <h1 class="text-main text-logo-home">RÁDIO IFRN-SPP</h1>
+                        {% comment %} <h1 class="text-main text-logo-home">RÁDIO IFRN-SPP</h1> {% endcomment %}
 
                     </div>
-                        <div class="col pb-3 carousel-content">
+                        <div class="col pb-3 carousel-content mt-5">
                             <div class="owl-carousel carousel-imgs owl-theme">
                                 {% for ImageCarousel in carousel %}
                                 {% if ImageCarousel.image %}
