@@ -1,15 +1,15 @@
 {% load static %}
-<div class="col header-bg">
+<div class="col header-bg ">
   <header class="header" id="header">
       <div class="container-player playbody navbar">
           <div class="row">
-            <div class="col d-flex">
+            <div class="col d-flex align-items-center justify-content-between">
               
               <button class="navbar-toggler btn-toggler-header" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                 <i class='icon-menu bx bx-menu'></i>
               </button>
               
-              <div class="offcanvas offcanvas-start tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+              <div class="offcanvas offcanvas-start" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                 <div class="offcanvas-header gap-5">
                   <h5 class="offcanvas-title" id="offcanvasNavbarLabel">RÁDIO IFRN-SPP</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -35,35 +35,23 @@
                     {% endif %}
                     <li class="nav-item">
                       {% if request.user.is_authenticated %}
-                      <form action="{% url 'logout' %}" method="post">
-                      {% csrf_token %}
+                      <form action="{% url 'logout' %}" method="post" class="d-inline">
+                        {% csrf_token %}
                         <button class="bg-transparent border-0" type="submit">
-                        <li><a href="{% url 'logout' %}" class="btn-menu">Sair</a></li></button>
+                          Sair
+                        </button>
                       </form>
                       {% else %}
-                      <li class="nav-item"><a href="{% url 'login' %}" class="btn-menu nav-link">Login</a></li>
+                      <a href="{% url 'login' %}" class="btn-menu nav-link">Login</a>
                       {% endif %}
-
-                    </li>
-                  
-                                          
-                      
                     </li>
                   </ul>
-                  {% comment %} <form class="d-flex mt-3" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                  </form> {% endcomment %}
                 </div>
               </div>
 
               <h1 class="fingir">LOGO IFRN-SPP</h1>
 
-
             </div>            
-            {% comment %} <div class="col">
-              <img class="logo-header" src="{% static 'img/icons/frame-1.png' %}" alt="" srcset="">
-            </div> {% endcomment %}
           </div>
       </div>
   </header>

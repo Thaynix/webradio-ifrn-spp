@@ -3,6 +3,11 @@
 @media (max-width: 768px) {
 
     /* ===== NAVBAR ===== */
+
+    .header-bg{
+        display: flex;
+    }
+
     .navbar-toggler {
         display: block;
 

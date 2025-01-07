@@ -2,67 +2,17 @@
 
 .main {
     width: calc(100% - 120px);
-    height: 100vh;
+    min-height: 100vh;
     margin-right: 10px;
-    margin-top: 10px;
+    padding-top: 10px;
 }
+
 
 .text-main {
-    color: var(--color-10);
-    font-size: 2rem;
+    color: var(--color-38);
+    font-size: 2.5rem;
     margin: 20px;
     font-weight: 700;
-}
-
-.text-logo-home {
-    text-align: center;
-    color: var(--color-33);
-    font-family: londonaregular;
-    font-size: 5rem;    
     letter-spacing: .2rem;
-    /* border: 2px solid var(--color-38); */
-}
-
-.roll {
-    color: var(--color-33);
-    text-decoration: none;
-    display: flex;
-    font-size: 8rem;
-    /* text-align: center; */
-    justify-content: center;
-}
-
-.roll i:hover {
-    transform: scale(1.2);
-    transition: var(--tran-05);
-}
-
-
-.apresentation {
-    width: 100%;
-    /* padding: 0; */
-    height: 99vh;
-    background-color: var(--color-35);
-    /* border-radius: 10px; */
-    display: flex;
-    align-items: center;
-}
-
-
-
-.box {
-    --mask:
-    radial-gradient(34.02px at 50% calc(100% - 41.25px),#000 99%,#0000 101%) calc(50% - 66px) 0/132px 100%,
-    radial-gradient(34.02px at 50% calc(100% + 8.25px),#0000 99%,#000 101%) 50% calc(100% - 33px)/132px 100% repeat-x;
-    -webkit-mask: var(--mask);
-    mask: var(--mask);
-}
-
-.playerbody {
-    display: none;
-
-}
-
-.header {
-    display: none;
+    font-family: londonaregular;
 }
