@@ -78,3 +78,53 @@
     cursor: pointer;
     overflow: hidden;
 }
+
+/* ===== PROGRAM DETAILS ==== */
+
+.container-program-detail {
+    display: flex;
+    flex-direction: column;
+    background: var(--color-34);
+}
+
+.table-ep {
+    width: 20%;
+}
+
+.info-program {
+    padding: 10px;
+    background-color: var(--color-35);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: var(--color-33);
+    font-family: QuickSand, sans-serif;
+    font-size: 1.2rem;
+    font-weight: 900;
+}
+
+.program-img {
+    position: relative;
+    left: 0;
+}
+
+/* .container-program-detail {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: var(--color-34);
+} */
+
+.box-left {
+    --mask:
+      radial-gradient(24.12px at calc(100% - 31.9px) 50%,#000 99%,#0000 101%) 0 calc(50% - 44px)/100% 88px,
+      radial-gradient(24.12px at calc(100% + 9.9px) 50%,#0000 99%,#000 101%) calc(100% - 22px) 50%/100% 88px repeat-y;
+    -webkit-mask: var(--mask);
+            mask: var(--mask);
+}
+
+.ep-title {
+    display: none;
+}
