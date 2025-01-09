@@ -1,27 +1,35 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 
-{% block title %}Pedidos{% endblock %}
+{% block title %}EVENTOS{% endblock %}
 
 {% block content %}
-<div class="container-fluid main">
+<div class="container-fluid main mb-3 mt-4 content-calendar">
+    {% comment %} <div class="row">
+        <div class="col-12">
+            <h1 class="text-main"> AGENDA DE PROGRAMAS E EVENTOS </h1>
+        </div>
+    </div> {% endcomment %}
     <div class="row">
         <div class="col">    
-            <div class="d-flex gap-3 pt-5">
+            <div class="d-flex gap-3 mb-2">
                 <div id="calendar"></div>
             </div>
         </div>
 
-        <div class="col">
-            <div class="legend-group">
-                <h1>CALENDÁRIO LINDO</h1>
-                {% for program in programs %}
-                <div class="d-flex gap-2">
-                    <div class="dot-legend" style="border-color: red"></div>
-                    <span>{{program.name}}</span>
+        <div class="col d-flex justify-content-center align-content-center w-100">
+            <div class="container-fluid">
+                <div class="legend-group legend-content">
+                    <h1 class="text-main">CALENDÁRIO LINDO</h1>
+                    {% for program in programs %}
+                    <div class="d-flex align-content-center gap-3 ps-4 text-center">
+                        <div class="dot-legend"></div>
+                        <span class="text-calendar">{{program.name}}</span>
+                    </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
             </div>
+            
         </div>
 
     </div>

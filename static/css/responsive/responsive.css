@@ -8,6 +8,10 @@
         display: flex;
     }
 
+    .content-calendar {
+        margin-top: 2.5rem;
+    }
+
     .navbar-toggler {
         display: block;
 

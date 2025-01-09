@@ -1,20 +1,52 @@
 #calendar{
-  background-color: #322c8e;
+  background-color: var(--color-39);
   /* margin: 20px; */
   /* border: black 3px solid; */
   border-radius: 20px;
   padding: 2% 1% 1% 1%;
-  width: 600px;
+  width: 800px;
 }
 
 h1 {
   margin: 20px;
 }
 
-.fc-toolbar-title{
-  font-family: 'Poppins';
+.fc .fc-toolbar-title{
+
+  font-size: 2.5rem;
+  margin-left: 50px;
+  text-align: center;
+  font-family: londonaregular;
   color: var(--text-color);
 }
+
+
+.fc .fc-toolbar {
+  text-align: center;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.fc .fc-button-primary:disabled {
+  display: none;
+}
+
+.fc .fc-button-primary {
+  background-color: var(--color-35);
+}
+
+
+.fc-direction-ltr .fc-button-group > .fc-button:not(:first-child) {
+  background: transparent;
+  border: none;
+}
+
+.fc-direction-ltr .fc-button-group > .fc-button:not(:last-child) {
+  background: transparent;
+  border: none;
+}
+
 
 .fc-event-time{
   display: none;
@@ -59,11 +91,11 @@ h1 {
   border: none;
 }
 #calendar .fc-day-today{
-  background-color: #c4037a;
+  background-color: var(--color-35);
 }
 
 #calendar .fc-day-other{
-  background-color: #c4037a;
+  background-color: var(--color-35);
   opacity: 0.2;
 }
 #calendar .fc-popover{
@@ -77,4 +109,24 @@ h1 {
   border-radius: 25px;
   width: 10px;
   height: 10px;
+}
+
+.legend-content {
+  background: var(--color-35);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.text-calendar {
+  font-family: quicksand;
+  color: var(--color-39);
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: .2rem;
+}
+
+.dot-legend {
+  justify-content: center;
+  background: var(--color-39);
+  border: 2px solid var(--color-33);
 }
