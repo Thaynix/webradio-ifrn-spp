@@ -2,39 +2,34 @@
 <div class="row">
   <div class="col-12 p-sm-0 p-0">
       <div class="sidebar">
-          {% comment %} <header class="sidebar-header">
-            <a href="{% url 'index' %}">
-              <img class="logo-img" src= {% static 'img/icons/frame-2.png' %} alt="">
-            </a>  
-          </header> {% endcomment %}
           <ul>
               <li>
-                  <a href="{% url 'index' %}" class="btn-menu">
+                  <a href="{% url 'index' %}" class="btn-menu d-flex justify-content-center align-content-center">
                     <i class="bi bi-house-heart-fill nav-icon"></i>
                     <span class="nav-text">Inicio</span>
                   </a>
               </li>
               <li>
-                  <a href="{% url 'program_list' %}" class="btn-menu">
+                  <a href="{% url 'program_list' %}" class="btn-menu d-flex justify-content-center align-content-center">
                     <i class="bi bi-mic-fill nav-icon"></i>
                     <span class="nav-text">Programas</span>
                   </a>
               </li>
               <li>
-                  <a href="{% url 'calendar' %}" class="btn-menu">
+                  <a href="{% url 'calendar' %}" class="btn-menu d-flex justify-content-center align-content-center">
                     <i class="bi bi-calendar-range-fill nav-icon"></i>
                     <span class="nav-text">Agenda</span>
                   </a>
               </li>
               <li>
-                  <a href="{% url 'pedidos_create' %}" class="btn-menu">
+                  <a href="{% url 'pedidos_create' %}" class="btn-menu d-flex justify-content-center align-content-center">
                     <i class="bi bi-chat-left-heart-fill nav-icon"></i>
                     <span class="nav-text">Pedidos</span>
                   </a>
               </li>
               {% if request.user.is_authenticated %}
               <li>
-                <a href="{% url 'home_list_system' %}" class="btn-menu">
+                <a href="{% url 'home_list_system' %}" class="btn-menu d-flex justify-content-center align-content-center">
                   <i class="bi bi-gear-fill nav-icon"></i>
                   <span class="nav-text">Sistema</span>
                 </a>
@@ -46,10 +41,16 @@
 
                 {% if request.user.is_authenticated %}
 
-                <form action="{% url 'logout' %}" method="post">
-                    {% csrf_token %}
-                    <button class="bg-transparent border-0" type="submit">
-                    <li><a href="{% url 'logout' %}" class="btn-menu"><i class='bx bx-log-out-circle nav-icon' style='color:#ffffff' ></i><span class="nav-text">Sair</span></a></li></button>
+                <form action="{% url 'logout' %}" method="post" class="d-flex justify-content-center align-content-center">
+                  {% csrf_token %}
+                  <button class="bg-transparent border-0" type="submit">
+                    <li>
+                      <a href="{% url 'logout' %}" class="btn-menu">
+                        <i class='bx bx-log-out-circle nav-icon' style='color:#ffffff'></i>
+                        <span class="nav-text mb-5">Sair</span>
+                      </a>
+                    </li>
+                  </button>
                 </form>
 
                 {% else %}

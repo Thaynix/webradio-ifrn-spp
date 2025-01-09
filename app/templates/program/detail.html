@@ -4,28 +4,28 @@
 
 {% block content %}
 
-<div class="container-fluid main d-flex justify-align-content-center align-items-center">
-
-    <div class="container container-program-detail">
-        <div class="row unified-element">
-            {% comment %} d-flex flex-column info-program p-3 {% endcomment %}
-            <div class="col-lg-6 col-sm-12 col-md-12 box-left info-program">
+<div class="container-fluid main">
+    <div class="container-fluid content-program content-program-detail mt-5 mb-4">
+        <div class="row d-flex justify-content-center align-content-center">
+            <div class="col-lg-6 col-md-12 col-sm-12 info-program box-left ps-3">
                 {% if program.image %}
                     <img src="{{ program.image.url }}" class="img-fluid program-img"  alt="{{ program.title }}"> 
                 {% endif %}
-                <div class="text ms-3">
-                    <h1 class="mb-1">{{ program.name }}</h1>
-                    <p class="mb-0">{{ program.description }}</p>
+
+                <a href="{% url 'index' %}"></a>
+
+                <div class="text">
+                    <h1 class="mb-1 program-title-detail">{{ program.name }}</h1>
+                    <p class="mb-0 desc-detail-program">{{ program.description }}</p>
                 </div>
+
             </div>
-            {% comment %} d-flex flex-column tab-ep p-3 {% endcomment %}
-            <div class="col-lg-6 col-md-12 col-sm-12 table-responsive d-flex justify-content-center align-content-center    ">
-                <table class="table-ep">
+
+            <div class="col-lg-6 col-md-12 col-sm-12  table-responsive d-flex align-items-center tb-content">
+                <table class="w-100">
                     <thead>
                         <tr>
-                            <th colspan="5" scope="col" class="text-center">
-                                <h1 class="title-list-ep">EPISÓDIOS</h1>
-                            </th>
+                            <th scope="col">EPISODIOS</th>
                         </tr>
                     </thead>
                     {% for ep in eps %}
@@ -34,7 +34,7 @@
                             <td>
                                 <strong>EP {{ forloop.counter }}</strong>
                             </td>
-                            <td class="ep-title">
+                            <td>
                                 <p>{{ ep.title }}</p>
                             </td>
                             <td>
@@ -42,15 +42,28 @@
                                     <source src="{{ ep.audio.url }}" type="audio/mp3" />
                                 </audio>
                             </td>
+                            {% comment %} {% for object in programsep %} {% endcomment %}
                             <td>
+                                {% comment %} <a href="{% url 'programep_update' %}" type="button" class="btn btn-primary"><i class='bx bx-edit'></i></a> {% endcomment %}
+
                             </td>
+                            {% comment %} <td>
+                                <a href="" type="button" class="btn btn-danger"><i class='bx bx-trash'></i></a>
+                            </td> {% endcomment %}
                             {% endfor %}
                         </tr>
                     </tbody>
 
                 </table>
             </div>
+
         </div>
     </div>
+    <footer class="container-fluid footer footer-programs">
+        <div>
+            <p>&copy; 2024 <strong>Your Website</strong>. All rights reserved.</p>
+        </div>
+    </footer>
 </div>
+
 {% endblock content %}

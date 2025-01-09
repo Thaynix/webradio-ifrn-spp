@@ -7,11 +7,53 @@
     /* border: 2px solid var(--color-38); */
 }
 
+/* ========== OWL CAROUSEL ========== */
+
+.carousel-imgs .item img{
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+
+}
+
+/* ========== SCROLL ========== */
+
 .btn .roll {
     background: transparent;
     border: none;
 }
 
+.logo-section {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.img-logo {
+    position: relative;
+    z-index: 1; 
+}
+
+.img-icon {
+    position: absolute; 
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+.img-logo {
+    animation: spin 60s infinite linear;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
 
 .roll i {
     color: var(--color-33);
@@ -67,4 +109,98 @@
 
 .about-text {
     text-align: justify;
+}
+
+/* ========== CARDS ========== */
+
+
+/*
+.card-link {
+    width: 140px;
+    height: 140px;
+} */
+
+.card-carousel {
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--color-35);
+    border-radius: 20px;
+}
+
+/* .card-carousel:hover {
+    transform: scale(1.01);
+    transition: var(--tran-03);
+} */
+
+.cb-avisos {
+    align-items: center;
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 20px;
+
+
+    color: var(--text-color);
+
+}
+.card-body {
+    word-wrap: break-word;
+}
+.card-text {
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.card-eqp {
+    border-radius: 30px;
+
+    background: transparent;
+    border: none;
+
+    max-width: 12rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
+
+.card-img-eqp {
+    /* width: 100px;
+    height: 160px; */
+    border-radius: 50%;
+    border: 5px solid var(--color-38);
+    padding: 3px;
+    object-fit: cover;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    aspect-ratio: 1/1;
+
+}
+
+.pos-eqp {
+    font-weight: 500;
+    font-size: 1rem;
+    color: var(--color-35);
+}
+
+.name-eqp {
+    font-family: londonaregular;
+    letter-spacing: .2rem;
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: var(--color-35);
+    margin: 0;
+
+
+}
+.ct-desc {
+    padding-top: 10px;
+    font-weight: 300;
+    font-size: 1rem;
+    color: var(--color-35);
 }

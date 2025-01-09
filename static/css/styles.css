@@ -1,13 +1,10 @@
 /* ===== GLOBAL ===== */
 @import url('global/variables.css');
 @import url('global/globals.css');
+@import url('global/animation.css');
 
 /* ===== FONTS ===== */
 @import url('global/fonts.css');
-
-/* ===== COMPONENTS ===== */
-@import url('components/cards.css');
-@import url('components/carousel.css');
 
 /* ===== LAYOUT ===== */
 @import url('layout/footer.css');
@@ -17,9 +14,6 @@
 @import url('layout/main.css');
 @import url('layout/header.css');
 
-/* ===== ANIMATIONS ===== */
-@import url('components/animation.css');
-
 /* ===== PAGINAS ===== */
 @import url('pages/home.css');
 @import url('pages/programs.css');
@@ -27,4 +21,5 @@
 /* ===== RESPONSIVIDADE ===== */
 @import url('responsive/responsive.css');
 
+@import url('forms/forms.css');
 

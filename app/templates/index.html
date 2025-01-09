@@ -8,15 +8,17 @@
         <div class="col-12 content justify-content-center">
             <div class="container-fluid p-0 home-container">
                 <div class="row">
-                    <div class="title-section">
-                        <h1 class="text-main text-logo-home">RÁDIO IFRN-SPP</h1>
+                    <div class="logo-section d-flex justify-content-center align-content-center position-relative">
+                        <img class="img-fluid img-logo" src="{% static 'img/icons/title-logo.png' %}" alt="">
+                        <img class="img-fluid img-icon" src="{% static 'img/icons/logo-icon.png' %}" alt="">
+                    </div>
+                    <div class="col d-flex justify-content-center">
+                        <div class="row">
+                            <a class="btn roll" href="#home" onclick="scrollToSection(#home)"><i class='bx bx-chevron-down'></i></a>
+                        </div>
                     </div>
                 </div>
-                <div class="col d-flex justify-content-center">
-                    <div class="row">
-                        <a class="btn roll" href="#home" onclick="scrollToSection(#home)"><i class='bx bx-chevron-down'></i></a>
-                    </div>
-                </div>
+                
                 
 
             </div>      
@@ -93,13 +95,13 @@
                     <!-- ==== CARDS ====-->
                 <div class="container content-about align-items-center">
                     <div class="row">
-                        <div class="col pb-3">
+                        <div class="col-lg-6 col-md-12 pb-3">
                             {% for AboutRadio in about %}
                             <div class="col">
                                 <p class="about-text">{{ AboutRadio.text }}</p>
                             </div>
                         </div>
-                        <div class="col pb-3 d-flex justify-content-center">
+                        <div class="col-lg-6 col-md-12 pb-3 d-flex justify-content-center">
                             {% if AboutRadio.image %}
                             <img src="{{ AboutRadio.image.url }}" class="img-about align-self-center" alt="...">
                             {% endif %}
@@ -139,9 +141,9 @@
         </section>
 
         <footer class="container-fluid footer ">
-            <div>
-                <p>&copy; 2024 <strong>Your Website</strong>. All rights reserved.</p>
-            </div>
+            <div class="container">
+                <p>&copy; 2024 <strong>Your Website</strong>. All rights reserved.</p>	        <div class="footer-channels">
+                </div>
         </footer>
 
     </div>

@@ -1,3 +1,53 @@
-/* .form-pedidos {
+.content-form-pedidos {
+    height: 100vh;
+}
 
-} */
+.form-pedidos {
+    border-radius: 10px;
+    padding: 20px;
+    background: var(--color-35);
+}
+
+.text-main-form {
+    color: var(--color-39);
+    font-size: 3rem;
+    margin: 20px;
+    font-weight: 700;
+    letter-spacing: .2rem;
+    font-family: londonaregular;
+}
+
+.form-label {
+    margin-bottom: .5rem;
+    font-size: 1.3rem;
+    font-family: Quicksand;
+    text-transform: uppercase;
+    color: var(--color-33);
+}
+
+.btn-forms {
+    background-color: var(--color-39);
+    color: var(--color-35);
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
+    font-family: Quicksand;
+    text-transform: uppercase;
+}
+.btn-forms:hover {
+    /* color: var(--bs-btn-hover-color); */
+    /* background-color: var(--bs-btn-hover-bg); */
+    border-color: var(--bs-btn-hover-border-color);
+}
+
+/* .box-all-sides {
+    background: var(--color-35);
+    --mask: 
+    linear-gradient(#000 0 0) center/calc(100% - 88px) calc(100% - 88px) no-repeat,
+    conic-gradient(from  135deg at top   ,#0000,#000 1deg 89deg,#0000 90deg) 0 0   /88px 44px space no-repeat,
+    conic-gradient(from  -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) 0 100%/88px 44px space no-repeat,
+    conic-gradient(from   45deg at left  ,#0000,#000 1deg 89deg,#0000 90deg) 0 0   /44px 88px no-repeat space,
+    conic-gradient(from -135deg at right ,#0000,#000 1deg 89deg,#0000 90deg) 100% 0/44px 88px no-repeat space;
+  -webkit-mask: var(--mask);
+          mask: var(--mask);
+  } */

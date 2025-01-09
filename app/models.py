@@ -50,8 +50,8 @@ class Pedidos (models.Model):
     ]
     
     singer = models.CharField(null=True,max_length=90, verbose_name="Artista/Banda")
-    description = models.CharField(max_length=225, verbose_name="Descrição")
-    author = models.CharField(max_length=90, verbose_name="Autor", help_text="Digite seu nominho")
+    description = models.CharField(max_length=225, verbose_name="Nome da Música")	
+    author = models.CharField(max_length=90, verbose_name="Seu Nome")
     date = models.DateTimeField(auto_now_add=True, verbose_name="Cadastrado em")
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='pendente')
     
