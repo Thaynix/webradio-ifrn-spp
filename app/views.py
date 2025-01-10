@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.core.paginator import Paginator
 from .models import Program, WarningCard, ProfileCard, ImageCarousel, AboutRadio, ProgramEp, Pedidos, Calendar
 from django.contrib.auth.decorators import login_required
+from django.utils.timezone import now
 from django.contrib.auth.forms import UserCreationForm
 from .forms import ProgramForm, UserForm, ImageCarouselForm, WarningCardForm, AboutRadioForm, ProfileCardForm, PedidosForm, ProgramEpForm, CalendarForm
 from django.contrib.auth import authenticate, login
@@ -17,6 +19,7 @@ def index(request):
 def admin_system(request):
     profilecards = ProfileCard.objects.all()
     return render(request, 'system/index.html', {'profilecards': profilecards})
+
 
 # ========== CRUD INICIO ==========
 # ===== CARROSEL =====
@@ -337,7 +340,7 @@ def pedidos_create(request):
     }
     return render(request, 'music-requests/form.html', context)
 
-## View pega o pk do pedido, muda pra aprovado
+# ## View pega o pk do pedido, muda pra aprovado
 def pedido_aceito(request, pk):
     pedido = get_object_or_404(Pedidos, pk=pk)
 

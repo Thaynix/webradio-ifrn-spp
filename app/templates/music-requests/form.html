@@ -18,4 +18,32 @@
         </div>
     </div>
 </div>
+{% comment %} <section class="pedidos-musicas">
+    <div class="col-12 content pt-0 justify-content-center">
+        <h1 class="text-main">AS MAIS PEDIDAS</h1>
+        <!-- ==== CARDS ====-->
+        <div class="container-fluid card-container">
+            <div class="row">
+                <div class="col pb-3">
+                    <div class="owl-carousel carousel-cards owl-theme">
+                        {% for WarningCard in cards %}
+                        <div class="item">
+                            <div class="card card-carousel">
+                                <div class="card-body cb-avisos">
+                                    <h5 class="card-title">{{ WarningCard.title }}</h5>
+                                    <p class="card-text wordwrap:p ">{{ WarningCard.description }}</p>
+                                    <p class="card-text text-white"><small class=" text-white">publicado por {{ WarningCard.author.username }} em {{ WarningCard.date|date:"SHORT_DATE_FORMAT" }}</small></p>
+                                </div>
+                            </div>
+                        </div>
+                        {% empty %}
+                        <p>nao tem nada</p>
+                        {% endfor %}
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> {% endcomment %}
 {% endblock %}
