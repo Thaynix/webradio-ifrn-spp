@@ -160,7 +160,7 @@
     background: transparent;
     border: none;
 
-    max-width: 12rem;
+    max-width: 13rem;
 
     display: flex;
     justify-content: center;
@@ -173,7 +173,7 @@
     /* width: 100px;
     height: 160px; */
     border-radius: 50%;
-    border: 5px solid var(--color-38);
+    border: 5px solid var(--color-39);
     padding: 3px;
     object-fit: cover;
     margin-top: 5px;
@@ -185,7 +185,7 @@
 .pos-eqp {
     font-weight: 500;
     font-size: 1rem;
-    color: var(--color-35);
+    color: var(--color-39);
 }
 
 .name-eqp {
@@ -195,12 +195,14 @@
     font-size: 1.5rem;
     color: var(--color-35);
     margin: 0;
+    margin-top: 20px;
+    text-transform: uppercase;
 
 
 }
 .ct-desc {
     padding-top: 10px;
     font-weight: 300;
-    font-size: 1rem;
-    color: var(--color-35);
+    font-size: 1.02rem;
+    color: var(--color-39);
 }

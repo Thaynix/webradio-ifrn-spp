@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}calendario{% endblock %}
+
+{% block content %}
+<div class="container-fluid main pt-0">
+    <div class="container-fluid d-flex justify-content-center align-items-center">
+        <div class="row">
+            <div class="col ">
+                <h1 class="text-main-form text-center">Adicionar Programa</h1>
+                <form action="{% url 'calendar_create' %}" method="post">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <button class="btn btn-forms w-100 mt-3" type="submit">Enviar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

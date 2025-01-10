@@ -1,0 +1,51 @@
+{% extends "system/base.html" %}
+
+{% block title %}Calendario{% endblock title %}
+
+{% block content %}
+<div class="container-fluid content ">
+  <div class="row">
+    <div class="col-12 d-flex header-main">
+      <div class="text">
+        AGENDA DE PROGRAMAS
+      </div>
+
+      <div class="col">
+        <a href="{% url 'calendar_create' %}" type="button" class="btn btn-success mt-3 mx-2"><i class='bx bx-plus' ></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid table-content table-responsive pt-5 ps-0">
+    <div class="row">
+      <div class="col">
+        <table class="table">
+          <thead>
+            <tr>
+                <th scope="col">DATA</th>
+                <th scope="col">PROGRAMA</th>
+                <th scope="col">COR</th>
+                <th scope="col">AÇÕES</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for object in calendar %}
+            <tr>
+                <th scope="row">{{ object.date }}</th>
+                <th>{{ object.program }}</th>
+                <th>{{ object.color }}</th>
+              <th>
+                <a href="{% url 'calendar_update' object.pk %}" type="button" class="btn btn-primary"><i class='bx bx-edit'></i></a>
+                <a href="{% url 'calendar_delete' object.pk %}" type="button" class="btn btn-danger"><i class='bx bx-trash'></i></a>
+                <a href="{% url 'calendar' %}" type="button" class="btn btn-secondary"><i class='bx bx-show-alt'></i></a>
+              </th>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+  </div>
+</div>
+{% endblock content %}
+
+

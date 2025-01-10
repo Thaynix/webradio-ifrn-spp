@@ -52,9 +52,10 @@ urlpatterns = [
     
     # CRUD CALENDARIO
     path('calendario/', calendar, name='calendar'),
-    # path('cadastrar/calendario/', calendar_create, name='calendar_create'),
-    # path('<int:pk>/atualizar/calendario', calendar_update, name='calendar_update'),
-    # path('<int:pk>/deletar/calendario', calendar_delete, name='calendar_delete'),
+    path('cadastrar/calendario/', calendar_create, name='calendar_create'),
+    path("sistema/calendario/", calendar_list, name="calendar_list"),
+    path('<int:pk>/atualizar/calendario', calendar_update, name='calendar_update'),
+    path('<int:pk>/deletar/calendario', calendar_delete, name='calendar_delete'),
     
     # AUTH
     path('login/', LoginView.as_view(), name='login'),
