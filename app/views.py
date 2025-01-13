@@ -4,8 +4,24 @@ from .models import Program, WarningCard, ProfileCard, ImageCarousel, AboutRadio
 from django.contrib.auth.decorators import login_required
 from django.utils.timezone import now
 from django.contrib.auth.forms import UserCreationForm
-from .forms import ProgramForm, UserForm, ImageCarouselForm, WarningCardForm, AboutRadioForm, ProfileCardForm, PedidosForm, ProgramEpForm, CalendarForm
+from .forms import ProgramForm, UserForm, ImageCarouselForm, WarningCardForm, AboutRadioForm, ProfileCardForm, PedidosForm, ProgramEpForm, CalendarForm, UserUpdateForm
+from django.contrib.auth.forms import SetPasswordForm
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.models import User
+
+from .decorators import is_orientador, is_bolsista
+
+# funcao pra paginar
+# a funcao tem q receber uma lista de objetos e a quant. de objetos por pagina 
+# e retornar  o page objetos
+
+
+def paginate(request, coisas, num_page):
+    paginator = Paginator(coisas, num_page)
+    page_number = request.GET.get('page')
+    page_objects = paginator.get_page(page_number)
+    
+    return page_objects
 
 def index(request):
     cards = WarningCard.objects.all()
@@ -16,6 +32,7 @@ def index(request):
     return render(request, 'index.html', {'cards': cards, 'profilecards': profilecards, 'carousel': carousel, 'about': about, 'carouselform': form})
 
 @login_required
+@is_bolsista
 def admin_system(request):
     profilecards = ProfileCard.objects.all()
     return render(request, 'system/index.html', {'profilecards': profilecards})
@@ -24,11 +41,21 @@ def admin_system(request):
 # ========== CRUD INICIO ==========
 # ===== CARROSEL =====
 # LIST IMG CAROUSEL
+@login_required
+@is_bolsista
 def home_list_system(request):
     img_carousel = ImageCarousel.objects.all()
-    return render(request,'system/home/home-list.html', {'img_carousel': img_carousel})
+    page = paginate(request, img_carousel, 6)
+    context = {
+        'page': page,
+        'img_carousel': img_carousel
+    }
+    
+    return render(request,'system/home/home-list.html', context)
 
 # CREATE IMG CAROUSEL
+@login_required
+@is_bolsista
 def img_carousel_create(request):
     if request.method == "POST":
         form = ImageCarouselForm(request.POST, request. FILES)
@@ -44,6 +71,8 @@ def img_carousel_create(request):
     return render(request, 'system/home/form.html', context)
 
 # UPDATE IMG CAROUSEL 
+@login_required
+@is_bolsista
 def img_carousel_update(request, pk):
     img_carousel = get_object_or_404(ImageCarousel, pk=pk)
     if request.method == "POST":
@@ -60,6 +89,8 @@ def img_carousel_update(request, pk):
     return render(request, 'form.html', context)
 
 # DELETE IMG CAROUSEL
+@login_required
+@is_bolsista
 def img_carousel_delete(request, pk):
     img_carousel = get_object_or_404(ImageCarousel, pk=pk)
     if request.method== 'POST':
@@ -74,11 +105,21 @@ def img_carousel_delete(request, pk):
 
 # ===== AVISOS =====
 # LIST CARDS WARNING
+@login_required
+@is_bolsista
 def warning_list_system(request):
     cards = WarningCard.objects.all()
-    return render(request,'system/home/warning-list.html', {'cards': cards})
+    page = paginate(request, cards, 6)
+    
+    context = {
+        'page': page,
+        'cards': cards,
+    }
+    return render(request,'system/home/warning-list.html', context)
 
 # CREATE CARD WARNING
+@login_required
+@is_bolsista
 def warning_create(request):
     if request.method == "POST":
         form = WarningCardForm(request.POST, request. FILES)
@@ -94,6 +135,8 @@ def warning_create(request):
     return render(request, 'system/home/form.html', context)
 
 # UPDATE CARD WARNING
+@login_required
+@is_bolsista
 def warning_update(request, pk):
     cards = get_object_or_404(WarningCard, pk=pk)
     if request.method == "POST":
@@ -110,6 +153,8 @@ def warning_update(request, pk):
     return render(request, 'form.html', context)
 
 # DELETE CARD WARNING
+@login_required
+@is_bolsista
 def warning_delete(request, pk):
     cards = get_object_or_404(WarningCard, pk=pk)
     if request.method== 'POST':
@@ -124,11 +169,15 @@ def warning_delete(request, pk):
 
 # ===== SOBRE =====
 # LIST ABOUT
+@login_required
+@is_bolsista
 def about_list_system(request):
     about = AboutRadio.objects.all()
     return render(request,'system/home/about-list.html', {'about': about})
 
 # UPDATE ABOUT
+@login_required
+@is_bolsista
 def about_update(request, pk):
     about = get_object_or_404(AboutRadio, pk=pk)
     if request.method == "POST":
@@ -146,11 +195,21 @@ def about_update(request, pk):
 
 # ===== CARDS DE PERFIL DOS MEMBROS DA RADIO =====
 # LIST CARDS PROFILE
+@login_required
+@is_bolsista
 def profile_list_system(request):
     profile_cards = ProfileCard.objects.all()
-    return render(request,'system/home/profile-card-list.html', {'profile_cards': profile_cards})
+    page = paginate(request, profile_cards, 6)
+    context = {
+        'page': page,
+        'profile_cards': profile_cards
+    }
+    
+    return render(request,'system/home/profile-card-list.html', context)
 
 # CREATE CARD PROFILE
+@login_required
+@is_bolsista
 def profile_create(request):
     if request.method == "POST":
         form = ProfileCardForm(request.POST, request. FILES)
@@ -166,6 +225,8 @@ def profile_create(request):
     return render(request, 'system/home/form.html', context)
 
 # UPDATE CARD PROFILE
+@login_required
+@is_bolsista
 def profile_update(request, pk):
     profile_cards = get_object_or_404(ProfileCard, pk=pk)
     if request.method == "POST":
@@ -182,6 +243,8 @@ def profile_update(request, pk):
     return render(request, 'form.html', context)
 
 # DELETE CARD PROFILE
+@login_required
+@is_bolsista
 def profile_delete(request, pk):
     profile_cards = get_object_or_404(ProfileCard, pk=pk)
     if request.method== 'POST':
@@ -198,9 +261,15 @@ def profile_delete(request, pk):
 
 # ========== SISTEMA ADMIN ==========
 # ===== CRUD PROGRAMAS =====
+@login_required
+@is_bolsista
 def program_list_system(request):
     programs = Program.objects.all()
-    return render(request, 'system/programs/programs-list.html', {'programs': programs})
+    page = paginate(request, programs, 6)
+    context = {
+        'page': page,
+    }
+    return render(request, 'system/programs/programs-list.html', context)
 
 # List
 def program_list(request):
@@ -209,6 +278,7 @@ def program_list(request):
 
 # Create
 @login_required
+@is_bolsista
 def program_create(request):
     if request.method == "POST":
         form = ProgramForm(request.POST, request.FILES) # coisa a img
@@ -225,6 +295,7 @@ def program_create(request):
 
 # Update
 @login_required
+@is_bolsista
 def program_update(request, pk):
     program = get_object_or_404(Program, pk=pk)
     if request.method == "POST":
@@ -242,6 +313,7 @@ def program_update(request, pk):
 
 # Delete
 @login_required
+@is_bolsista
 def program_delete(request, pk):
     program = get_object_or_404(Program, pk=pk)
     if request.method== 'POST':
@@ -257,20 +329,36 @@ def program_delete(request, pk):
 # ===== CRUD EPISODIOS =====
 # EPISODIOS PROGRAMAS
 # LIST EPISODIOS
+@login_required
+@is_bolsista
 def programep_list(request, pk):
     program = get_object_or_404(Program, pk=pk)
     programep = ProgramEp.objects.filter(program=program) 
-    return render(request, 'system/programs/episodes-list.html', {'programep': programep, 'program':program})
+    page = paginate(request, programep, 5)
+    context = {
+        'page': page,
+        'program':program
+    }
+    return render(request, 'system/programs/episodes-list.html', context)
 
 # DETAIL/LIST EPISODIOS
 def program_detail(request, pk):
     program = get_object_or_404(Program, pk=pk)
     eps = ProgramEp.objects.filter(program=program).order_by("timestamp")
-    return render(request, 'program/detail.html', {'program': program, 'eps': eps})
+    page = paginate(request, eps, 5)
+    
+    context = {
+        'page': page,
+        'program':program,
+        'eps':eps,
+        
+    }
+    return render(request, 'program/detail.html', context)
 
 
 # CREATE EPISODIOS
 @login_required
+@is_bolsista
 def programep_create(request, pk):
     program = get_object_or_404(Program, pk=pk)
     if request.method == "POST":
@@ -290,6 +378,7 @@ def programep_create(request, pk):
 
 # UPDATE
 @login_required
+@is_bolsista
 def programep_update(request, pk):
     programep = get_object_or_404(ProgramEp, pk=pk)
     if request.method == "POST":
@@ -307,6 +396,7 @@ def programep_update(request, pk):
 
 # DELETE 
 @login_required
+@is_bolsista
 def programep_delete(request, pk):
     programep = get_object_or_404(ProgramEp, pk=pk)
     program = programep.program.pk
@@ -324,7 +414,8 @@ def programep_delete(request, pk):
 
 # CRUD PEDIDOS DE MUSICAS
 # List e Create
-
+@login_required
+@is_bolsista
 def pedidos_create(request):
     if request.method == "POST":
         form = PedidosForm(request.POST)
@@ -341,6 +432,8 @@ def pedidos_create(request):
     return render(request, 'music-requests/form.html', context)
 
 # ## View pega o pk do pedido, muda pra aprovado
+@login_required
+@is_bolsista
 def pedido_aceito(request, pk):
     pedido = get_object_or_404(Pedidos, pk=pk)
 
@@ -354,7 +447,9 @@ def pedido_aceito(request, pk):
     return redirect('pedidos_list_system')
 
 ## View pega o pk do pedido, muda pra negado
-def pedido_negado(request, pk):
+@login_required
+@is_bolsista
+def pedido_negado(request, pk):    
     pedido = get_object_or_404(Pedidos, pk=pk)
     if request.method == 'POST':
         pedido.status = 'negado'
@@ -362,11 +457,18 @@ def pedido_negado(request, pk):
     return redirect ('pedidos_list_system')
 
 @login_required
+@is_bolsista
 def pedidos_list_system(request):
     musiclist = Pedidos.objects.all()
-    return render(request, 'system/music-request/music-request-list.html', {'musiclist': musiclist})
+    page = paginate(request, musiclist, 5)
+    context = {
+        'page': page,
+        'musiclist': musiclist
+    }
+    return render(request, 'system/music-request/music-request-list.html', context)
 
 @login_required
+@is_bolsista
 def pedidos_delete(request, pk):
     music = get_object_or_404(Pedidos, pk=pk)
     if request.method == 'POST':
@@ -380,6 +482,8 @@ def pedidos_delete(request, pk):
     return render(request,'form-delete.html', context)
 
 # CALENDARIO
+@login_required
+@is_bolsista
 def calendar_create(request):
     if request.method == "POST":
         form = CalendarForm(request.POST)
@@ -404,6 +508,8 @@ def calendar(request):
 
     return render(request, 'calendar/calendar.html', context)
 
+@login_required
+@is_bolsista
 def calendar_update(request, pk):
     event = get_object_or_404(Calendar, pk=pk)
     if request.method == "POST":
@@ -420,8 +526,12 @@ def calendar_update(request, pk):
     return render(request, 'form.html', context)
 
 #LIST
+@login_required
+@is_bolsista
 def calendar_list(request):
     calendar = Calendar.objects.all()
+    # program = get_object_or_404(Program)
+    page = paginate(request, calendar, 6)    
     
     if request.method == "POST":
         form = CalendarForm(request.POST)
@@ -432,11 +542,15 @@ def calendar_list(request):
         form = CalendarForm()
 
     context = {
+        'page': page,
         'form': form,
         'calendar': calendar,
+        # 'program': program,
     }
     return render(request, 'system/calendar/calendar-list.html', context)
 
+@login_required
+@is_bolsista
 def calendar_delete(request, pk):
     calendar = get_object_or_404(Calendar, pk=pk)
     if request.method == 'POST':
@@ -448,6 +562,84 @@ def calendar_delete(request, pk):
         'message':f"Tem certeza que deseja deletar o evento {calendar}?"
     }
     return render(request,'form-delete.html', context)
+
+# ===== USUÁRIOS =====
+# CRUD de usuário
+@login_required
+@is_orientador
+def user_list(request):
+    users = User.objects.all()
+    page = paginate(request, users, 6)
+    context = {
+        'page': page,
+    }
+    return render(request, 'registration/user-list.html', context )
+
+@login_required
+@is_orientador
+def user_create(request):
+    if request.method == 'POST':
+        form = UserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('user_list')
+    else:
+        form = UserForm()
+
+    context = {
+        'form': form,
+        'title': 'CRIAR USUARIO'
+    }
+    return render(request, 'form.html', context)
+
+@login_required
+@is_orientador
+def user_update(request, pk):
+    user_update = get_object_or_404(User,pk=pk)
+    if request.method == "POST":
+        form = UserUpdateForm(request.POST, instance=user_update)
+        if form.is_valid():
+            form.save()
+            return redirect('user_list')
+    else:
+        form = UserUpdateForm(instance=user_update)
+    
+    context = {
+        'form': form,
+        'title':  f"Editar o usuario {user_update}"
+    }
+    return render(request, 'form.html', context)
+
+@login_required
+@is_orientador
+def user_delete(request, pk):
+    user = get_object_or_404(User, pk=pk)
+    if request.method == 'POST':
+        user.delete()
+        return redirect('user_list')
+    context = {
+        'object': user,
+        'title': f"deletar o usuario {user}"
+    }
+    return render(request, 'form-delete.html', context )
+
+@login_required
+@is_orientador
+def user_update_password(request, pk):
+    user = get_object_or_404(User, pk=pk)
+    if request.method == 'POST':
+        form = SetPasswordForm(data=request.POST, user=user)
+        if form.is_valid():
+            form.save()
+            return redirect('user_list')
+    else:
+        form = SetPasswordForm(user=user)
+    context = {
+        'form' : form,
+        'title': f"Alterar a senha do usuario {user}"
+    }
+    return render(request, 'form.html', context)
+
 
 # ===== AUTH =====
 # Register

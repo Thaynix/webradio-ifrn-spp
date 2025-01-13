@@ -2,20 +2,32 @@
     height: 100vh;
 }
 
-.content-form-login {
-    height: 100vh;
+.login {
+    width: 30vw;
+    height: auto;
+    border-radius: 10px;
+    padding: 40px;
+    background: var(--color-35);
+    @media screen and (max-width:1024px){
+        width: 95vw;
+    }
+}
+
+.login h3{
+    font-size: 2.7rem;
+    font-family: 'londonaregular';
+    font-weight: 600;
+}
+
+.login-form{
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
 }
 
 .form-pedidos {
     border-radius: 10px;
     padding: 20px;
-    background: var(--color-35);
-}
-
-.form-login {
-
-    border-radius: 10px;
-    padding: 40px;
     background: var(--color-35);
 }
 

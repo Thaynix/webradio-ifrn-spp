@@ -28,7 +28,7 @@
                             <th scope="col">EPISODIOS</th>
                         </tr>
                     </thead>
-                    {% for ep in eps %}
+                    {% for ep in page.object_list %}
                     <tbody>
                         <tr>
                             <td>
@@ -42,22 +42,17 @@
                                     <source src="{{ ep.audio.url }}" type="audio/mp3" />
                                 </audio>
                             </td>
-                            {% comment %} {% for object in programsep %} {% endcomment %}
-                            <td>
-                                {% comment %} <a href="{% url 'programep_update' %}" type="button" class="btn btn-primary"><i class='bx bx-edit'></i></a> {% endcomment %}
-
-                            </td>
-                            {% comment %} <td>
-                                <a href="" type="button" class="btn btn-danger"><i class='bx bx-trash'></i></a>
-                            </td> {% endcomment %}
+                            
                             {% endfor %}
-                        </tr>
+                        </tr>                       
+                        
                     </tbody>
-
                 </table>
             </div>
+            
 
         </div>
+
     </div>
     <footer class="container-fluid footer footer-programs">
         <div>

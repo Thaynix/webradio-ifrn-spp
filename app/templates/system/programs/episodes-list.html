@@ -27,7 +27,7 @@
             </tr>
           </thead>
           <tbody>
-            {% for object in programep %}
+            {% for object in page.object_list %}
             <tr>
                 <th>{{ object.title}}</th>
                 <th scope="row">
@@ -47,6 +47,7 @@
             {% endfor %}
           </tbody>
         </table>
+        {% include "partials/pagination.html" %}
       </div>
   </div>
 </div>

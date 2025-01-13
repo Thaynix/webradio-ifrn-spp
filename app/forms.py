@@ -1,20 +1,54 @@
 from django import forms
 from .models import Program, ImageCarousel, WarningCard, AboutRadio, ProfileCard, Pedidos, ProgramEp, Calendar
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from django.contrib.auth.forms import UserCreationForm
 
 
 class ProgramForm(forms.ModelForm):
     class Meta:
         model = Program
-        fields = ['image', 'name', 'description']
+        fields = ['image', 'name', 'description', 'color']
+        widgets = {
+            'color': forms.Select(attrs={'class': 'form-select'}),
+        }
 
 
 class UserForm(UserCreationForm):
-    email = forms.EmailField(max_length=100)
+    # email = forms.EmailField(max_length=100)
+    group =  forms.ModelChoiceField(queryset=Group.objects.all(), required=True, label="Grupo de Permissão")
     class Meta:
         model = User
-        fields  = ('username', 'email', 'password1', 'password2')
+        fields  = ('username', 'first_name', 'password1', 'password2', 'group')
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        if commit:
+            user.save()
+            group = self.cleaned_data['group']
+            user.groups.add(group)
+        return user
+
+
+class UserUpdateForm(forms.ModelForm):
+    group = forms.ModelChoiceField(queryset=Group.objects.all(), required=True, label="Grupo de Permissão")
+    
+    class Meta:
+        model = User
+        fields = ('username', 'first_name', 'group')
+    
+    def __init__(self, *args, **kwargs):
+        user = kwargs.get('instance')
+        super().__init__(*args, **kwargs)
+        if user and user.groups.exists():
+            self.fields['group'].initial = user.groups.first() 
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        if commit:
+            user.save()
+            group = self.cleaned_data['group']
+            user.groups.add(group)
+        return user
 
 class ImageCarouselForm(forms.ModelForm):
     class Meta:
@@ -44,10 +78,9 @@ class PedidosForm(forms.ModelForm):
 class CalendarForm(forms.ModelForm):
     class Meta:
         model = Calendar
-        fields = ['date','color', 'program']
+        fields = ['date', 'program']
         widgets = {
             'date': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
-            'color': forms.Select(attrs={'class': 'form-select'}),
             'program': forms.Select(attrs={'class': 'form-select'}),
         }
         

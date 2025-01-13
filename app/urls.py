@@ -57,10 +57,17 @@ urlpatterns = [
     path('<int:pk>/atualizar/calendario', calendar_update, name='calendar_update'),
     path('<int:pk>/deletar/calendario', calendar_delete, name='calendar_delete'),
     
+    # CRUD USUARIOS
+    path('usuario/', user_create, name='user_create'),
+    path('sistema/usuarios/', user_list, name='user_list'),
+    path('<int:pk>/atualizar/usuarios', user_update, name='user_update'),
+    path('<int:pk>/deletar/usuarios', user_delete, name='user_delete'),
+    path('<int:pk>/atualizar-senha/usuarios', user_update_password, name='user_update_password'),
+    
     # AUTH
     path('login/', LoginView.as_view(), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
-    path('cadastro/', register, name='register'),
+    # path('cadastro/', register, name='register'),
     
 
 ]

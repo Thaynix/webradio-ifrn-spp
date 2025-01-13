@@ -1,17 +1,17 @@
 {% extends "system/base.html" %}
 
-{% block title %}Programas{% endblock title %}
+{% block title %}Usuarios{% endblock title %}
 
 {% block content %}
 <div class="container-fluid content ">
   <div class="row">
     <div class="col-12 d-flex header-main">
       <div class="text">
-        PROGRAMAS
+        USUARIOS
       </div>
 
       <div class="col">
-        <a href="{% url 'program_create' %}" type="button" class="btn btn-success mt-3 mx-2"><i class='bx bx-plus' ></i></a>
+        <a href="{% url 'user_create' %}" type="button" class="btn btn-success mt-3 mx-2"><i class='bx bx-plus' ></i></a>
       </div>
     </div>
   </div>
@@ -22,21 +22,20 @@
         <table class="table">
           <thead>
             <tr>
+              <th scope="col">USERNAME</th>
               <th scope="col">NOME</th>
-              <th scope="col">DESCRIÇÃO</th>
               <th scopa="col">AÇÕES</th>
             </tr>
           </thead>
           <tbody>
             {% for object in page.object_list %}
             <tr>
-              <th scope="row">{{ object.name}}</th>
-              <th>{{ object.description}}</th>
+              <th scope="row">{{ object.username }}</th>
+              <th>{{ object.first_name }}</th>
               <th>
-                <a href="{% url 'programep_list' object.pk %}" type="button" class="btn btn-success"><i class='bx bx-podcast'></i></a>
-                <a href="{% url 'program_update' object.pk %}" type="button" class="btn btn-primary"><i class='bx bx-edit'></i></a>
-                <a href="{% url 'program_delete' object.pk %}" type="button" class="btn btn-danger"><i class='bx bx-trash'></i></a>
-                <a href="{% url 'program_list' %}" type="button" class="btn btn-secondary"><i class='bx bx-show-alt'></i></a>
+                <a href="{% url 'user_update' object.pk %}" type="button" class="btn btn-primary"><i class='bx bx-edit'></i></a>
+                <a href="{% url 'user_delete' object.pk %}" type="button" class="btn btn-danger"><i class='bx bx-trash'></i></a>
+                <a href="{% url 'user_update_password' object.pk %}" type="button" class="btn-warning"><i class='bx bx-key' ></i></a>
               </th>
             </tr>
             {% endfor %}

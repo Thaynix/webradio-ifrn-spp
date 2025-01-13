@@ -62,10 +62,23 @@ class Pedidos (models.Model):
 
 # Cards dos programas na pagina de programação
 class Program(models.Model):
+    COLORS_CHOICES = [
+        ('#005c81', 'azul'),
+        ('#d40f60', 'rosa'),
+        ('#f84339', 'laranja'),
+        ('#e79a32', 'amarelo'),
+        ('#368986', 'verde'),
+        ('#7345d6', 'roxo'),
+        ('#99b333', 'verde-claro'),
+    ]
+    
+    # Adicionar  campo "cor do coiso" Choice Field e tirar o choice do model calendar
     image = models.ImageField(null=True, blank=True, upload_to='images/', verbose_name='Imagem')
     name = models.CharField(max_length=100, verbose_name='Nome')
     description = models.CharField(max_length=255, verbose_name="Descrição")
     timestamp = models.DateTimeField(auto_now_add=True, verbose_name="Cadastrado em")
+    color = models.CharField(max_length=7, choices=COLORS_CHOICES, default='#005c81')
+
 
     class Meta:
         ordering = ['-timestamp']
@@ -91,19 +104,8 @@ class ProgramEp(models.Model):
 
 # Agenda pt.2
 class Calendar(models.Model):
-    COLORS_CHOICES = [
-        ('#005c81', 'azul'),
-        ('#d40f60', 'rosa'),
-        ('#f84339', 'laranja'),
-        ('#e79a32', 'amarelo'),
-        ('#368986', 'verde'),
-        ('#7345d6', 'roxo'),
-        ('#99b333', 'verde-claro'),
-    ]
-    
     date = models.DateField(verbose_name="Data do programa")
     program = models.ForeignKey(Program, on_delete=models.PROTECT, null=True, blank=True)
-    color = models.CharField(max_length=7, choices=COLORS_CHOICES, default='#005c81')
 
     class Meta:
         ordering = ['-date']

@@ -10,18 +10,18 @@
     {% block title %}
     {% endblock %}
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-    <link rel="stylesheet" href="{% static 'css/system.css' %}">
+    <link rel="stylesheet" href="{% static 'css/pages/system.css' %}">
 </head>
 <body>
 
     {% block sidebar_system %}
 
-    <div class="sidebar">
+    <div class="sidebar sidebar-system">
         <header class="sidebar-header">
-            <img class="logo-img" src="{% static 'img/icons/icons8-iheartradio-100.png' %}" alt="">
             <span class="text-logo">RÁDIO IFRN-SPP</span>
         </header>
         <i id="btn" class='bx bx-menu bx-rotate-180'></i>
@@ -68,6 +68,16 @@
                     <span class="nav-text">Pedidos</span>
                 </a>
             </li>
+            {% for group in request.user.groups.all %}
+            {% if group.name == 'Orientador' %}
+            <li>
+                <a href="{% url 'user_list' %}">
+                    <i class='bx bxs-user-circle'></i>
+                    <span class="nav-text">Usuarios</span>
+                </a>
+            </li>
+            {% endif %}
+            {% endfor %}
             <li>
                 <a href="{% url 'index' %}">
                     <i class='bx bx-arrow-back'></i>
@@ -81,7 +91,7 @@
                     <div class="profile-name">
                         {% if request.user.is_authenticated %}
                         <div class="name">{{ request.user }}</div>
-                        <div class="position">Bolsista</div>
+                        {% comment %} <div class="position">Bolsista</div> {% endcomment %}
                     </div>
                 </div>
                 <form action="{% url 'logout' %}" method="post">

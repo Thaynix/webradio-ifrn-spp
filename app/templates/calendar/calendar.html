@@ -4,13 +4,13 @@
 {% block title %}EVENTOS{% endblock %}
 
 {% block content %}
-<div class="container-fluid main mb-3 mt-4 content-calendar">
+<div class="container-fluid main mb-3 content-calendar">
     {% comment %} <div class="row">
         <div class="col-12">
             <h1 class="text-main"> AGENDA DE PROGRAMAS E EVENTOS </h1>
         </div>
     </div> {% endcomment %}
-    <div class="row">
+    <div class="row mt-5">
         <div class="col">    
             <div class="d-flex gap-3 mb-2">
                 <div id="calendar"></div>
@@ -69,7 +69,7 @@
                     title: '{{ event.program.name }}',
                     start: '{{ event.date | date:"Y-m-d" }}T12:00:00',
                     id: '{{event.id}}',
-                    borderColor: '{{event.color}}'
+                    borderColor: '{{event.program.color}}'
                 }, 
                 // {% endfor %}
             ],
