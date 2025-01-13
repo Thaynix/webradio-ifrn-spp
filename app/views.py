@@ -11,11 +11,6 @@ from django.contrib.auth.models import User
 
 from .decorators import is_orientador, is_bolsista
 
-# funcao pra paginar
-# a funcao tem q receber uma lista de objetos e a quant. de objetos por pagina 
-# e retornar  o page objetos
-
-
 def paginate(request, coisas, num_page):
     paginator = Paginator(coisas, num_page)
     page_number = request.GET.get('page')
@@ -413,9 +408,7 @@ def programep_delete(request, pk):
     return render(request,'form-delete.html', context)
 
 # CRUD PEDIDOS DE MUSICAS
-# List e Create
-@login_required
-@is_bolsista
+# PEDIDOS INICIO
 def pedidos_create(request):
     if request.method == "POST":
         form = PedidosForm(request.POST)
