@@ -10,9 +10,6 @@ O Sistema da rádio IFRN-SPP é um sistema web desenvolvido em Django, com o obj
 ### Configurando o ambiente
 
 1. **Clone o repositório**:
-   ```bash
-   git clone https://github.com/SEU_USUARIO/nome-do-repositorio.git
-   ```
 
 2. **Crie um ambiente virtual**:
    ```bash
