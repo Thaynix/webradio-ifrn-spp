@@ -26,6 +26,10 @@
     height: 40px;
 }
 
+.table-color {
+    background: var(--color-33);
+}
+
 .sidebar .sidebar-header {
     color: var(--text-color);
     font-family: londonaregular;
