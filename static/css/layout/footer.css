@@ -35,3 +35,19 @@
     text-decoration: underline;
     color: #FFF;
 }
+
+.link-footer i {
+    color: var(--text-color);
+    font-size: 2rem;
+    padding: 1rem;
+}
+
+.link-footer i:hover {
+    color: var(--color-39);
+    transition: var(--tran-03);
+}
+
+.text-footer {
+    font-size: 1.2rem;
+    font-weight: 600;
+}

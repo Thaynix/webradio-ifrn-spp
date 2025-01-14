@@ -22,9 +22,15 @@
         <table class="table">
           <thead>
             <tr>
-              <th scope="col">USERNAME</th>
-              <th scope="col">NOME</th>
-              <th scopa="col">AÇÕES</th>
+              <th scope="col">
+                <span class="thead">USERNAME</span>
+              </th>
+              <th scope="col">
+                <span class="thead">NOME</span>
+              </th>
+              <th scopa="col">
+                <span class="thead">AÇÕES</span> 
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -35,7 +41,7 @@
               <th>
                 <a href="{% url 'user_update' object.pk %}" type="button" class="btn btn-primary"><i class='bx bx-edit'></i></a>
                 <a href="{% url 'user_delete' object.pk %}" type="button" class="btn btn-danger"><i class='bx bx-trash'></i></a>
-                <a href="{% url 'user_update_password' object.pk %}" type="button" class="btn-warning"><i class='bx bx-key' ></i></a>
+                <a href="{% url 'user_update_password' object.pk %}" type="button" class="btn btn-warning"><i class='bx bx-key' ></i></a>
               </th>
             </tr>
             {% endfor %}

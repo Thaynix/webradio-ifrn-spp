@@ -22,10 +22,18 @@
         <table class="table">
           <thead>
             <tr>
-                <th scope="col">DATA</th>
-                <th scope="col">PROGRAMA</th>
-                <th scope="col">COR</th>
-                <th scope="col">AÇÕES</th>
+              <th scope="col">
+                <span class="thead">DATA</span>
+              </th>
+              <th scope="col">
+                <span class="thead">PROGRAMA</span>
+              </th>
+              <th scope="col">
+                <span class="thead">COR</span> 
+              </th>
+              <th scopa="col">
+                <span class="thead">AÇÕES</span> 
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -34,7 +42,7 @@
                 <th scope="row">{{ object.date }}</th>
                 <th>{{ object.program }}</th>
                 <th>
-                  <div style="background-color:{{object.program.color}}; width:20px; height:20px;"></div>
+                  <div style="background-color:{{object.color}}; width:20px; height:20px;"></div>
                 </th>
               <th>
                 <a href="{% url 'calendar_update' object.pk %}" type="button" class="btn btn-primary"><i class='bx bx-edit'></i></a>

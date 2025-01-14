@@ -99,16 +99,20 @@ h1 {
   opacity: 0.2;
 }
 #calendar .fc-popover{
-  background-color: palegreen;
+  background-color: var(--color-39);
+}
 
+.fc-daygrid-event-dot {
+  aspect-ratio: 1/1;
 }
 
 /* LEGENDA */
 .dot-legend{
+  aspect-ratio: 1/1;
   border: 10px solid;
   border-radius: 25px;
-  width: 10px;
-  height: 10px;
+  width: 15px;
+  height: 15px;
 }
 
 .legend-content {
@@ -118,8 +122,12 @@ h1 {
 }
 
 .text-calendar {
+  word-wrap: break-word;
+  text-transform: uppercase;
   font-family: quicksand;
-  color: var(--color-39);
+  font-weight: 500;
+  font-size: 1.9rem;
+  color: var(--color-33);
   font-size: 1rem;
   font-weight: 500;
   letter-spacing: .2rem;

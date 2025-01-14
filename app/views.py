@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.core.paginator import Paginator
 from .models import Program, WarningCard, ProfileCard, ImageCarousel, AboutRadio, ProgramEp, Pedidos, Calendar
 from django.contrib.auth.decorators import login_required
-from django.utils.timezone import now
 from django.contrib.auth.forms import UserCreationForm
 from .forms import ProgramForm, UserForm, ImageCarouselForm, WarningCardForm, AboutRadioForm, ProfileCardForm, PedidosForm, ProgramEpForm, CalendarForm, UserUpdateForm
 from django.contrib.auth.forms import SetPasswordForm
@@ -24,7 +23,15 @@ def index(request):
     carousel = ImageCarousel.objects.all()
     about = AboutRadio.objects.all()
     form = ImageCarouselForm()
-    return render(request, 'index.html', {'cards': cards, 'profilecards': profilecards, 'carousel': carousel, 'about': about, 'carouselform': form})
+    context = {
+        'cards': cards, 
+        'profilecards': profilecards, 
+        'carousel': carousel, 
+        'about': about, 
+        'carouselform': form
+    }
+    
+    return render(request, 'index.html', context)
 
 @login_required
 @is_bolsista
@@ -423,23 +430,15 @@ def pedidos_create(request):
         'title':'PEÇA UMA MUSICA'
     }
     return render(request, 'music-requests/form.html', context)
-
-# ## View pega o pk do pedido, muda pra aprovado
 @login_required
 @is_bolsista
 def pedido_aceito(request, pk):
-    pedido = get_object_or_404(Pedidos, pk=pk)
-
-    # se pedido diferente de pedendte, redirect para lista
-    # if pedido.status != 'pendente':
-    #     return redirect('pedidos_list_system')
-    
+    pedido = get_object_or_404(Pedidos, pk=pk)    
     if request.method == 'POST':
         pedido.status = 'aprovado'
         pedido.save()
     return redirect('pedidos_list_system')
 
-## View pega o pk do pedido, muda pra negado
 @login_required
 @is_bolsista
 def pedido_negado(request, pk):    

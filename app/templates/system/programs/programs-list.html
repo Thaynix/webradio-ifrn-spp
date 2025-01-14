@@ -22,9 +22,20 @@
         <table class="table">
           <thead>
             <tr>
-              <th scope="col">NOME</th>
-              <th scope="col">DESCRIÇÃO</th>
-              <th scopa="col">AÇÕES</th>
+              <th scope="col">
+                <span class="thead">NOME</span>
+              </th>
+              <th scope="col">
+                <span class="thead">DESCRIÇÃO</span>
+              </th>
+              <th scope="col">
+                <span class="thead"> 
+                  COR
+                </span> 
+              </th>
+              <th scopa="col">
+                <span class="thead">AÇÕES</span> 
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -32,6 +43,9 @@
             <tr>
               <th scope="row">{{ object.name}}</th>
               <th>{{ object.description}}</th>
+              <th>
+                <div style="background-color:{{object.color}}; width:20px; height:20px;"></div>
+              </th>
               <th>
                 <a href="{% url 'programep_list' object.pk %}" type="button" class="btn btn-success"><i class='bx bx-podcast'></i></a>
                 <a href="{% url 'program_update' object.pk %}" type="button" class="btn btn-primary"><i class='bx bx-edit'></i></a>

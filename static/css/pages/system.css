@@ -26,8 +26,15 @@
     height: 40px;
 }
 
-.table-color {
-    background: var(--color-33);
+.table {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.table>:not(caption)>*>* {
+    background: none;
+    font-family: quicksand;
 }
 
 .sidebar .sidebar-header {
@@ -91,7 +98,7 @@
 
 .sidebar ul li a:hover {
     background: var(--body-color);
-    color: var(--primary-color);
+    color: var(--color-35);
     border-top-left-radius: 12px;
     border-bottom-left-radius: 12px;
     text-align: center;
@@ -112,7 +119,7 @@
 
 .sidebar:active ul li a:hover {
     color: var(--text-color);
-    background: var(--body-color);
+    background: var(--color-33);
     border-top-left-radius: 12px;
     border-bottom-left-radius: 12px;
     transform: scale(1.1);
@@ -121,6 +128,9 @@
 
 .sidebar.active .nav-text {
     visibility: visible;
+    font-family: quicksand;
+    font-weight: 500;
+    font-size: 1rem;
 }
 
 .sidebar ul li a i {
@@ -142,7 +152,7 @@
     position: relative;
     padding: 2px;
     height: 60px;
-    background: var(--sidebar-color);
+    background: var(--color-35);
 }
 
 .sidebar-footer .profile .profile-details{
@@ -218,10 +228,17 @@
 .content .text {
     font-family: londonaregular;
     letter-spacing: .2rem;
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: 700;
-    color: var(--primary-color);
+    color: var(--color-35);
     margin-top: 12px;
+}
+
+.thead {
+    color: var(--color-35);
+    font-family: quicksand;
+    font-size: 1.3rem;
+
 }
 
 .img-list {
@@ -245,8 +262,4 @@
 .header-main{
     justify-content: space-between;
 
-}
-
-.btn-search i{
-    font-size: 1.5rem;
 }
