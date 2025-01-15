@@ -47,8 +47,8 @@ urlpatterns = [
     path('pedidos/', pedidos_create, name='pedidos_create'),
     path('sistema/pedidos/', pedidos_list_system, name='pedidos_list_system'),
     path('<int:pk>/deletar/pedidos/', pedidos_delete, name='pedidos_delete'),
-    path('<int:pk>/aceitar/pedidos/', pedido_aceito, name='pedido_aceito'),
-    path('<int:pk>/negar/pedidos/', pedido_negado, name='pedido_negado'),
+    # path('<int:pk>/aceitar/pedidos/', pedido_aceito, name='pedido_aceito'),
+    # path('<int:pk>/negar/pedidos/', pedido_negado, name='pedido_negado'),
     
     # CRUD CALENDARIO
     path('calendario/', calendar, name='calendar'),

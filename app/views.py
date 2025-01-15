@@ -433,29 +433,29 @@ def pedidos_create(request):
     return render(request, 'music-requests/form.html', context)
 
 # ## View pega o pk do pedido, muda pra aprovado
-@login_required
-@is_bolsista
-def pedido_aceito(request, pk):
-    pedido = get_object_or_404(Pedidos, pk=pk)
+# @login_required
+# @is_bolsista
+# def pedido_aceito(request, pk):
+#     pedido = get_object_or_404(Pedidos, pk=pk)
 
-    # se pedido diferente de pedente, redirect para lista
-    # if pedido.status != 'pendente':
-    #     return redirect('pedidos_list_system')
+#     # se pedido diferente de pedente, redirect para lista
+#     # if pedido.status != 'pendente':
+#     #     return redirect('pedidos_list_system')
     
-    if request.method == 'POST':
-        pedido.status = 'aprovado'
-        pedido.save()
-    return redirect('pedidos_list_system')
+#     if request.method == 'POST':
+#         pedido.status = 'aprovado'
+#         pedido.save()
+#     return redirect('pedidos_list_system')
 
-## View pega o pk do pedido, muda pra negado
-@login_required
-@is_bolsista
-def pedido_negado(request, pk):    
-    pedido = get_object_or_404(Pedidos, pk=pk)
-    if request.method == 'POST':
-        pedido.status = 'negado'
-        pedido.save()
-    return redirect ('pedidos_list_system')
+# ## View pega o pk do pedido, muda pra negado
+# @login_required
+# @is_bolsista
+# def pedido_negado(request, pk):    
+#     pedido = get_object_or_404(Pedidos, pk=pk)
+#     if request.method == 'POST':
+#         pedido.status = 'negado'
+#         pedido.save()
+#     return redirect ('pedidos_list_system')
 
 @login_required
 @is_bolsista

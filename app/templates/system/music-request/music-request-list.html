@@ -30,9 +30,9 @@
               <th scope="col">
                 <span class="thead">DATA</span> 
               </th>
-              <th scope="col">
+              {% comment %} <th scope="col">
                 <span class="thead">STATUS</span> 
-              </th>
+              </th> {% endcomment %}
               <th scopa="col">
                 <span class="thead">AÇÕES</span> 
               </th>
@@ -45,16 +45,16 @@
               <th>{{ object.description }}</th>
               <th>{{ object.singer }}</th>
               <th>{{ object.date }}</th>
-              <th>{{ object.status }}</th>
+              {% comment %} <th>{{ object.status }}</th> {% endcomment %}
               <th class="d-flex gap-3">
-                <form action="{% url 'pedido_aceito' object.pk %}" method="post">
+                {% comment %} <form action="{% url 'pedido_aceito' object.pk %}" method="post">
                   {% csrf_token %}
                   <button type="submit" class="btn btn-success"><i class='bx bxs-check-circle'></i></button>
                 </form>
                 <form action="{% url 'pedido_negado' object.pk %}" method="post">
                   {% csrf_token %}
                   <button type="submit" class="btn btn-warning"><i class='bx bxs-x-circle' ></i></button>                  
-                </form>
+                </form> {% endcomment %}
                 <a href="{% url 'pedidos_delete' object.pk %}" type="button" class="btn btn-danger"><i class='bx bxs-x-circle' ></i></a>
               </th>
             </tr>
